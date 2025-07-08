@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LanguageSwitch from '@/components/LanguageSwitch.vue';
+import LocaleSwitch from '@/components/LocaleSwitch.vue';
 import ThemeSwitch from '@/components/ThemeSwitch.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 </script>
@@ -16,6 +17,12 @@ import { MessageKey } from '@/i18n/message-keys.g';
       <span class="header-user-settings-menu-item-title">{{ $t(MessageKey.language) }}:</span>
       <div>
         <LanguageSwitch />
+      </div>
+    </div>
+    <div class="header-user-settings-menu-item">
+      <span class="header-user-settings-menu-item-title">{{ $t(MessageKey.locale) }}:</span>
+      <div>
+        <LocaleSwitch />
       </div>
     </div>
   </div>

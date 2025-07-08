@@ -6,7 +6,7 @@ const languageStore = useLanguageStore();
 
 <template>
   <el-radio-group v-model="languageStore.language" size="small">
-    <el-radio-button label="EN" value="en" />
     <el-radio-button label="DE" value="de" />
+    <el-radio-button label="EN" value="en" />
   </el-radio-group>
 </template>

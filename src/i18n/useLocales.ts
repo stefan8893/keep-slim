@@ -8,9 +8,7 @@ export function useDateLocales() {
   const supportedLocales = [deAT, enUS];
 
   const getLocale = (code: string): Locale => {
-    const codeWithEnglishFallback = code === 'en' ? 'en-US' : code;
-
-    const found = supportedLocales.find((x) => x.code === codeWithEnglishFallback);
+    const found = supportedLocales.find((x) => x.code === code);
 
     if (!found) {
       const supportedLocaleCodes = supportedLocales.map((x) => x.code);
@@ -50,8 +48,30 @@ export function useElementPlusLocales() {
     return found;
   };
 
+  const getDateFormatString = (locale: string) => {
+    const dummyDate = new Date(2025, 0, 2);
+    const parts = new Intl.DateTimeFormat(locale).formatToParts(dummyDate);
+
+    return parts
+      .map((part) => {
+        switch (part.type) {
+          case 'day':
+            return 'dd';
+          case 'month':
+            return 'MM';
+          case 'year':
+            return 'yyyy';
+          default:
+            return part.value;
+        }
+      })
+      .join('')
+      .toUpperCase();
+  };
+
   return {
     supportedLocales,
+    getDateFormatString,
     get,
   };
 }

@@ -1,7 +1,6 @@
 {
   "appearance": "Appearence",
   "language": "Language",
-  "profile": "Profile | Profiles",
   "settings": "Settings",
   "userSettings": "User Settings",
   "logout": "Logout",
@@ -28,5 +27,9 @@
   "light": "Light",
   "auto": "Auto",
   "dark": "Dark",
-  "bodyData": "Body Data"
+  "bodyData": "Body Data",
+  "startDate": "Start date",
+  "endDate": "End date",
+  "dateTo": "To",
+  "locale": "Locale"
 }

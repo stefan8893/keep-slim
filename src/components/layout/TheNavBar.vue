@@ -25,7 +25,6 @@ const activeMenu = computed(() => {
     :ellipsis-icon="ArrowDown"
   >
     <el-menu-item index="body-data">{{ $t(MessageKey.bodyData) }}</el-menu-item>
-    <el-menu-item index="profile">{{ $t(MessageKey.profile) }}</el-menu-item>
   </el-menu>
 </template>
 

@@ -7,7 +7,6 @@
 export const MessageKey = {
 	appearance: 'appearance',
 	language: 'language',
-	profile: 'profile',
 	settings: 'settings',
 	userSettings: 'userSettings',
 	logout: 'logout',
@@ -35,4 +34,8 @@ export const MessageKey = {
 	auto: 'auto',
 	dark: 'dark',
 	bodyData: 'bodyData',
+	startDate: 'startDate',
+	endDate: 'endDate',
+	dateTo: 'dateTo',
+	locale: 'locale',
 };

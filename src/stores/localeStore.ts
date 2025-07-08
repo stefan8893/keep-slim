@@ -11,7 +11,7 @@ const localeInLocalStorage = useStorage<SupportedLocale | undefined>(
   localStorage,
 );
 
-export const useLocaleStore = defineStore('userSettings', () => {
+export const useLocaleStore = defineStore('locale', () => {
   const locale: Ref<SupportedLocale> = ref(getInitialLocale());
 
   watch(locale, () => {
@@ -26,7 +26,6 @@ export const useLocaleStore = defineStore('userSettings', () => {
 function getInitialLocale(): SupportedLocale {
   if (!!localeInLocalStorage.value) return localeInLocalStorage.value;
 
-  debugger; // check base name
   const browserLanguage = new Intl.Locale(navigator.language).baseName;
   const supportedBrowserLanguage = getSupportedLocale(browserLanguage);
 

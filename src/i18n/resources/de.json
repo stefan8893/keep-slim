@@ -1,7 +1,6 @@
 {
   "appearance": "Erscheinung",
   "language": "Sprache",
-  "profile": "Profil | Profile",
   "settings": "Einstellungen",
   "userSettings": "Benutzereinstellungen",
   "logout": "Abmelden",
@@ -28,5 +27,9 @@
   "light": "Hell",
   "auto": "Auto",
   "dark": "Dunkel",
-  "bodyData": "Körperdaten"
+  "bodyData": "Körperdaten",
+  "startDate": "Startdatum",
+  "endDate": "Enddatum",
+  "dateTo": "Bis",
+  "locale": "Gebietsschema"
 }
