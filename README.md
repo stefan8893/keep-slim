@@ -1,4 +1,4 @@
-# SimpleBodyAnalysis
+# Keep Slim
 
 ## What it is
 
