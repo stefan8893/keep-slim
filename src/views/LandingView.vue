@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useAuth } from '@/auth/useAuth';
-import LanguageDropdown from '@/components/LanguageDropdown.vue';
 import ThemeDropdown from '@/components/ThemeDropdown.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import TheLayout from '@/layouts/TheLayout.vue';
@@ -12,7 +11,6 @@ const { login } = useAuth();
   <TheLayout>
     <template #headerRight>
       <ThemeDropdown class="light-color ml-5 sm:ml-10" />
-      <LanguageDropdown class="light-color ml-5 sm:ml-10" />
       <el-button type="primary" @click="login" class="ml-5 sm:ml-10">{{
         $t(MessageKey.login)
       }}</el-button>
