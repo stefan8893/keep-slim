@@ -1,45 +1,30 @@
-# keep-slim
+# SimpleBodyAnalysis
 
-This template should help get you started developing with Vue 3 in Vite.
+## What it is
 
-## Recommended IDE Setup
+A simple app to track and analyze body data, such as:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Weight
+- Body Fat
+- Body Water
+- Muscle Mass
+- BMI
+- Daily Calorie Requirement
 
-## Type Support for `.vue` Imports in TS
+Some while ago, I was obese and needed to lose weight.  
+So I started a strict diet and lifting weights.  
+In order to see the progress, not only in the mirror, I created this app.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Infrastructure
 
-## Customize configuration
+This app runs entirely in Azure and uses the following resources:
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- EntraID (OAuth2.1 + OpenID Connect)
+- Azure Blob Storage (static web site hosting)
+- Azure Tables (storage for the body data)
 
-## Project Setup
+There is no backend, the app gets served from the blob storage that is configured to host a static web site.  
+After authenticating against EntraID, tokens get issued that can be used to query Azure Tables that contain the actual body data.
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+The data itself comes from a SÖHNLE Shape Sense scale.  
+A csv export of the scale's data gets uploaded to the app(client-side) and parsed there before finally stored in Azure Tables.

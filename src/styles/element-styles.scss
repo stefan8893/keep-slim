@@ -1,0 +1,32 @@
+// fonts are handled by tailwindcss, see body-tag in index.html and styles.css
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $popover: (
+    'border-radius': 10px,
+  ),
+  $card: (
+    'border-radius': 6px,
+    //'padding': 0,
+  )
+);
+
+$zinc-700: #3f3f46;
+$zinc-800: #27272a;
+$zinc-900: #18181b;
+$zinc-950: #09090b;
+
+@use 'element-plus/theme-chalk/src/dark/var.scss' as * with (
+  $card: (
+    'bg-color': $zinc-800,
+  ),
+  $bg-color: (
+    '': $zinc-800,
+    'page': $zinc-800,
+    'overlay': $zinc-800,
+  ),
+  $mask-color: (
+    '': rgba($zinc-900, 0.8),
+    'extra-light': rgba($zinc-900, 0.3),
+  )
+);
+
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;

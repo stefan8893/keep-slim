@@ -1,0 +1,19 @@
+@import url('@/styles/fonts/font-inter.css');
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-inter: 'Inter';
+}
+
+.app-strip {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  width: 100%;
+  max-width: 64rem;
+}
+
+:root {
+  --el-text-color-regular-dark: #d2d6df;
+}

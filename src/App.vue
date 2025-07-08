@@ -1,85 +1,37 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useElementPlusLocales } from '@/i18n/useLocales';
+import { useLanguageStore } from '@/stores/languageStore';
+import { ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { RouterView } from 'vue-router';
+
+const languageStore = useLanguageStore();
+
+const { locale } = useI18n();
+
+const elPlusLocales = useElementPlusLocales();
+const elPlusLocale = ref(elPlusLocales.get(languageStore.language));
+watch(
+  languageStore,
+  () => {
+    console.debug(
+      'Syncing language in store with element plus config provider. New Language:',
+      elPlusLocale.value.name,
+    );
+    elPlusLocale.value = elPlusLocales.get(languageStore.language);
+
+    console.debug(
+      'Syncing language in store with i18n plugin. New Language:',
+      languageStore.language,
+    );
+    locale.value = languageStore.language;
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <el-config-provider :locale="elPlusLocale">
+    <RouterView />
+  </el-config-provider>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>

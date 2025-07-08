@@ -1,14 +1,53 @@
-import './assets/main.css'
+import AppVue from '@/App.vue';
+import { authConfiguration } from '@/auth/auth.config';
+import { ensureFreshTokens } from '@/auth/useAuth';
+import i18n from '@/i18n/i18n-config';
+import { msalInstanceKey } from '@/injection.types';
+import { theming } from '@/plugins/theming.plugin';
+import router from '@/router';
+import '@/styles/main.css';
+import { type AccountInfo, PublicClientApplication } from '@azure/msal-browser';
+import 'element-plus/theme-chalk/src/loading.scss';
+import 'element-plus/theme-chalk/src/message-box.scss';
+import 'element-plus/theme-chalk/src/notification.scss';
+import { createPinia } from 'pinia';
+import { type App, createApp } from 'vue';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+(async () => {
+  const app = createApp(AppVue);
 
-import App from './App.vue'
-import router from './router'
+  await initializeAuth(app);
 
-const app = createApp(App)
+  app.use(router);
+  app.use(createPinia());
+  app.use(i18n);
+  app.use(theming);
 
-app.use(createPinia())
-app.use(router)
+  app.mount('#app');
+})().catch((error) => console.error(error));
 
-app.mount('#app')
+async function initializeAuth(app: App<Element>): Promise<PublicClientApplication> {
+  const msalInstance = new PublicClientApplication(authConfiguration);
+  app.provide(msalInstanceKey, msalInstance);
+
+  await msalInstance.initialize();
+  await msalInstance.handleRedirectPromise();
+
+  const accounts = msalInstance.getAllAccounts();
+  const isAuthenticated = accounts.length > 0;
+
+  if (!isAuthenticated) {
+    return msalInstance;
+  }
+
+  await onAuthenticated(accounts, msalInstance);
+  return msalInstance;
+}
+
+async function onAuthenticated(accounts: AccountInfo[], msalInstance: PublicClientApplication) {
+  const account = accounts[0];
+  msalInstance.setActiveAccount(account);
+
+  const environment = import.meta.env.MODE;
+  if (environment === 'production') await ensureFreshTokens(msalInstance);
+}
