@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import LanguageDropdown from '@/components/LanguageDropdown.vue';
 import ThemeDropdown from '@/components/ThemeDropdown.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import TheLayout from '@/layouts/TheLayout.vue';
@@ -17,7 +16,6 @@ const goHome = async () => {
   <TheLayout>
     <template #headerRight>
       <ThemeDropdown class="light-color" />
-      <LanguageDropdown class="light-color ml-5 sm:ml-10" />
     </template>
     <template #default>
       <div class="flex h-full flex-col flex-nowrap items-center justify-center">
