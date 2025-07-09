@@ -2,7 +2,7 @@
 import {
   type DateRangeSelectionId,
   dateRangeSelections,
-} from '@/components/infrastructure/DatePicker/DateRangeSelection';
+} from '@/components/infrastructure/DatePicker/date-range-selection';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { ArrowDown } from '@element-plus/icons-vue';
 import { addDays, isSameDay } from 'date-fns';
@@ -34,21 +34,23 @@ const currentSelection = computed(() => dateRangeSelections.get(currentSelection
 watch(
   currentSelection,
   () => {
-    const range = currentSelection.value.range();
-    start.value = range.start;
-    end.value = range.end;
+    if (currentSelectionId.value !== 'CUSTOM') {
+      const range = currentSelection.value.range();
+      start.value = range.start;
+      end.value = range.end;
+    }
   },
   { immediate: true },
 );
 
 const disabledStartDates = (date: Date) => {
-  if (!start.value) return false;
+  if (!!end.value && isSameDay(end.value, date)) return false;
 
-  if (isSameDay(start.value, date)) return false;
+  if (date > maxDate.value) return true;
 
   if (date < minDate.value) return true;
 
-  if (!!end.value && isSameDay(end.value, date)) return false;
+  if (!!start.value && isSameDay(start.value, date)) return false;
 
   if (!!end.value && date > end.value) return true;
 
@@ -56,15 +58,13 @@ const disabledStartDates = (date: Date) => {
 };
 
 const disabledEndDates = (date: Date) => {
-  if (!end.value) return false;
-
-  if (isSameDay(end.value, date)) return false;
-
-  if (date > maxDate.value) return true;
+  if (!!start.value && date < start.value) return true;
 
   if (!!start.value && isSameDay(start.value, date)) return false;
 
-  if (!!start.value && date < start.value) return true;
+  if (date > maxDate.value) return true;
+
+  if (!!end.value && isSameDay(end.value, date)) return false;
 
   return false;
 };

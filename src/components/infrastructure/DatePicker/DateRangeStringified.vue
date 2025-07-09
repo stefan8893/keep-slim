@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { DateRange } from '@/components/infrastructure/DatePicker/DateRange';
 import DateStringified from '@/components/infrastructure/DatePicker/DateStringified.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { isSameDay, isToday } from 'date-fns';

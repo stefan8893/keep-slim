@@ -1,7 +1,6 @@
-import type { DateRange } from '@/components/infrastructure/DatePicker/DateRange';
+import type { DateRange } from '@/components/infrastructure/DatePicker/dateRange.types';
 import { MessageKey } from '@/i18n/message-keys.g';
 import {
-  addDays,
   endOfDay,
   endOfYear,
   startOfDay,
@@ -68,7 +67,7 @@ export const dateRangeSelections: Map<DateRangeSelectionId, DateRangeSelection> 
     {
       messageKey: MessageKey.last2Months,
       range: () => {
-        const start = startOfDay(subMonths(addDays(new Date(), 1), 2));
+        const start = startOfDay(subMonths(new Date(), 2));
         const end = endOfDay(new Date());
         return { start, end };
       },
@@ -79,7 +78,7 @@ export const dateRangeSelections: Map<DateRangeSelectionId, DateRangeSelection> 
     {
       messageKey: MessageKey.last3Months,
       range: () => {
-        const start = startOfDay(subMonths(addDays(new Date(), 1), 3));
+        const start = startOfDay(subMonths(new Date(), 3));
         const end = endOfDay(new Date());
         return { start, end };
       },
@@ -90,7 +89,7 @@ export const dateRangeSelections: Map<DateRangeSelectionId, DateRangeSelection> 
     {
       messageKey: MessageKey.last6Months,
       range: () => {
-        const start = startOfDay(subMonths(addDays(new Date(), 1), 6));
+        const start = startOfDay(subMonths(new Date(), 6));
         const end = endOfDay(new Date());
         return { start, end };
       },
@@ -101,7 +100,7 @@ export const dateRangeSelections: Map<DateRangeSelectionId, DateRangeSelection> 
     {
       messageKey: MessageKey.last12Months,
       range: () => {
-        const start = startOfDay(subMonths(addDays(new Date(), 1), 12));
+        const start = startOfDay(subMonths(new Date(), 12));
         const end = endOfDay(new Date());
         return { start, end };
       },
@@ -137,7 +136,7 @@ export const dateRangeSelections: Map<DateRangeSelectionId, DateRangeSelection> 
     {
       messageKey: MessageKey.last2Years,
       range: () => {
-        const start = subYears(addDays(new Date(), 1), 2);
+        const start = subYears(new Date(), 2);
         const end = endOfDay(new Date());
         return { start, end };
       },

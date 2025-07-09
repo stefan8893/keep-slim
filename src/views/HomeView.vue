@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
-import { type DateRangeSelectionId } from '@/components/infrastructure/DatePicker/DateRangeSelection';
+import { type DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range-selection';
 import { ref, watch } from 'vue';
 
 const start = ref<Date>();
@@ -33,7 +33,7 @@ watch(end, () => {
     <DateRangePicker
       v-model:start="start"
       v-model:end="end"
-      :initialSelection="'CUSTOM'"
+      :initialSelection="'L6M'"
       :available-selections="datePickerSelction"
     />
   </div>
