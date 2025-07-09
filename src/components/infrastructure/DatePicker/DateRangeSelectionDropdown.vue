@@ -4,6 +4,7 @@ import type {
   DateRangeSelection,
   DateRangeSelectionId,
 } from '@/components/infrastructure/DatePicker/date-range.types';
+import { ArrowDown } from '@element-plus/icons-vue';
 
 const currentSelectionId = defineModel<DateRangeSelectionId>('currentSelectionId', {
   required: true,
