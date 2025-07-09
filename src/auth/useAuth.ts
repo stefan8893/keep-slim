@@ -1,5 +1,5 @@
 import { loginScopes, storageAccountScopes } from '@/auth/auth.config';
-import type { AuthContext } from '@/auth/auth.types';
+import type { AccessTokenResult, AuthContext } from '@/auth/auth.types';
 import { msalInstanceKey } from '@/injection.types';
 import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
 import { inject } from 'vue';
@@ -23,13 +23,18 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
   }
 };
 
-export const acquireAccessToken = async (msalInstance: PublicClientApplication) => {
+export const acquireAccessToken = async (
+  msalInstance: PublicClientApplication,
+): Promise<AccessTokenResult> => {
   try {
     const authResult = await msalInstance.acquireTokenSilent({
       scopes: storageAccountScopes,
     });
 
-    return authResult.accessToken;
+    return {
+      accessToken: authResult.accessToken,
+      expiresOn: authResult.expiresOn,
+    };
   } catch (error) {
     console.error(error);
 

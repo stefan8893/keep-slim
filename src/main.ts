@@ -3,6 +3,7 @@ import { authConfiguration } from '@/auth/auth.config';
 import { ensureFreshTokens } from '@/auth/useAuth';
 import i18n from '@/i18n/i18n-config';
 import { msalInstanceKey } from '@/injection.types';
+import { bodyData } from '@/plugins/body-data.plugin';
 import { theming } from '@/plugins/theming.plugin';
 import router from '@/router';
 import '@/styles/main.css';
@@ -16,12 +17,13 @@ import { type App, createApp } from 'vue';
 (async () => {
   const app = createApp(AppVue);
 
-  await initializeAuth(app);
+  const msalInstance = await initializeAuth(app);
 
   app.use(router);
   app.use(createPinia());
   app.use(i18n);
   app.use(theming);
+  app.use(bodyData, msalInstance);
 
   app.mount('#app');
 })().catch((error) => console.error(error));

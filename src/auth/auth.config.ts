@@ -2,7 +2,10 @@ import * as msal from '@azure/msal-browser';
 import { LogLevel } from '@azure/msal-browser';
 
 export const loginScopes = ['openid', 'email', 'offline_access'];
-export const storageAccountScopes = ['offline_access', import.meta.env.VITE_STORAGE_ACCOUNT_SCOPE];
+export const storageAccountScopes = [
+  'offline_access',
+  import.meta.env.VITE_KEEP_SLIM_STORAGE_ACCOUNT_TOKEN_SCOPE,
+];
 
 export const authConfiguration: msal.Configuration = {
   auth: {
