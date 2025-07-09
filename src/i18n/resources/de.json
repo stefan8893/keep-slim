@@ -28,8 +28,21 @@
   "auto": "Auto",
   "dark": "Dunkel",
   "bodyData": "Körperdaten",
+  "locale": "Gebietsschema",
+  "last7Days": "Letzte 7 Tage",
+  "last14Days": "Letzte 14 Tage",
+  "last30Days": "Letzte 30 Tage",
+  "last2Months": "Letzte 2 Monate",
+  "last3Months": "Letzte 3 Monate",
+  "last6Months": "Letzte 6 Monate",
+  "last12Months": "Letzte 12 Monate",
+  "currentYear": "Aktuelles Jahr",
+  "previousYear": "Letztes Jahr",
+  "last2Years": "Letzte 2 Jahre",
+  "selectDateRange": "Zeitraum wählen",
   "startDate": "Startdatum",
   "endDate": "Enddatum",
-  "dateTo": "Bis",
-  "locale": "Gebietsschema"
+  "dateTo": "bis",
+  "dateFromCapitalized": "Von | Vom",
+  "today": "heute"
 }

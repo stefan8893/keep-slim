@@ -1,49 +1,41 @@
 <script setup lang="ts">
-import { MessageKey } from '@/i18n/message-keys.g';
-import { useElementPlusLocales } from '@/i18n/useLocales';
-import { useLocaleStore } from '@/stores/localeStore';
-import { computed, ref, watch } from 'vue';
+import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
+import { type DateRangeSelectionId } from '@/components/infrastructure/DatePicker/DateRangeSelection';
+import { ref, watch } from 'vue';
 
-const localeStore = useLocaleStore();
-const { getDateFormatString } = useElementPlusLocales();
-const dateFormat = computed(() => getDateFormatString(localeStore.locale));
-const dateRange = ref<Date[]>([]);
+const start = ref<Date>();
+const end = ref<Date>();
 
-const shortcuts = [
-  {
-    text: 'Last week',
-    value: () => {
-      const end = new Date();
-      const start = new Date();
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-      return [start, end];
-    },
-  },
-  {
-    text: 'Last month',
-    value: () => {
-      const end = new Date();
-      const start = new Date();
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-      return [start, end];
-    },
-  },
+const datePickerSelction: DateRangeSelectionId[] = [
+  'L7D',
+  'L14D',
+  'L30D',
+  'L2M',
+  'L3M',
+  'L6M',
+  'L12M',
+  'CURR_YEAR',
+  'PREV_YEAR',
+  'CUSTOM',
 ];
 
-watch(dateRange, () => console.log(dateRange.value));
+watch(start, () => {
+  console.log('DateRange updated in HomeView', start.value);
+});
+
+watch(end, () => {
+  console.log('DateRange updated in HomeView', end.value);
+});
 </script>
 
 <template>
   <div class="filter">
-    <el-date-picker
-      v-model="dateRange"
-      type="daterange"
-      size="default"
-      :start-placeholder="$t(MessageKey.startDate)"
-      :range-separator="$t(MessageKey.dateTo)"
-      :end-placeholder="$t(MessageKey.endDate)"
-      :shortcuts="shortcuts"
-      :format="dateFormat"
+    <DateRangePicker
+      v-model:start="start"
+      v-model:end="end"
+      :initialSelection="'L6M'"
+      :available-selections="datePickerSelction"
     />
   </div>
+  <div></div>
 </template>

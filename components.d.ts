@@ -8,6 +8,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    DateRangePicker: typeof import('./src/components/infrastructure/DatePicker/DateRangePicker.vue')['default']
+    DateRangeStringified: typeof import('./src/components/infrastructure/DatePicker/DateRangeStringified.vue')['default']
+    DateStringified: typeof import('./src/components/infrastructure/DatePicker/DateStringified.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
@@ -24,10 +27,12 @@ declare module 'vue' {
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElResult: typeof import('element-plus/es')['ElResult']
+    ElText: typeof import('element-plus/es')['ElText']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     LocaleSwitch: typeof import('./src/components/LocaleSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SingleDatePicker: typeof import('./src/components/infrastructure/DatePicker/SingleDatePicker.vue')['default']
     TextCopy: typeof import('./src/components/infrastructure/TextCopy.vue')['default']
     TheFooter: typeof import('./src/components/layout/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/layout/header/TheHeader.vue')['default']

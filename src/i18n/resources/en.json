@@ -28,8 +28,21 @@
   "auto": "Auto",
   "dark": "Dark",
   "bodyData": "Body Data",
+  "locale": "Locale",
+  "last7Days": "Last 7 days",
+  "last14Days": "Last 14 days",
+  "last30Days": "Last 30 days",
+  "last2Months": "Last 2 months",
+  "last3Months": "Last 3 months",
+  "last6Months": "Last 6 months",
+  "last12Months": "Last 12 months",
+  "currentYear": "Current year",
+  "previousYear": "Last year",
+  "last2Years": "Last 2 years",
+  "selectDateRange": "Select date range",
   "startDate": "Start date",
   "endDate": "End date",
-  "dateTo": "To",
-  "locale": "Locale"
+  "dateTo": "to",
+  "dateFromCapitalized": "From | From",
+  "today": "today"
 }

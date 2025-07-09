@@ -25,7 +25,7 @@ const disableLink = isRootRoute || props.disabledLink;
     :disabled="disableLink"
     :class="{ 'disabled-link': disableLink }"
   >
-    <span class="text-xl font-medium select-none sm:text-2xl md:text-3xl">Keep Slim</span>
+    <span class="text-2xl font-medium select-none md:text-3xl">Keep Slim</span>
   </router-link>
 </template>
 
