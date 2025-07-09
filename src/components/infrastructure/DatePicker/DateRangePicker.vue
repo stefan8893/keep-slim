@@ -5,11 +5,12 @@ import {
 } from '@/components/infrastructure/DatePicker/date-range-selection';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { ArrowDown } from '@element-plus/icons-vue';
-import { addDays, isSameDay } from 'date-fns';
+import { addDays, endOfDay } from 'date-fns';
 import { computed, ref, watch } from 'vue';
 
 import DateRangeStringified from './DateRangeStringified.vue';
 import SingleDatePicker from './SingleDatePicker.vue';
+import { isEndDateDisabled, isStartDateDisabled } from './disabled-dates';
 
 const props = defineProps<{
   availableSelections: DateRangeSelectionId[];
@@ -19,7 +20,7 @@ const props = defineProps<{
 }>();
 
 const minDate = computed(() => props.minDate ?? new Date(2000, 0));
-const maxDate = computed(() => props.maxDate ?? addDays(new Date(), 2));
+const maxDate = computed(() => props.maxDate ?? endOfDay(addDays(new Date(), 2)));
 
 const start = defineModel<Date | undefined>('start');
 const end = defineModel<Date | undefined>('end');
@@ -43,31 +44,11 @@ watch(
   { immediate: true },
 );
 
-const disabledStartDates = (date: Date) => {
-  if (!!end.value && isSameDay(end.value, date)) return false;
+const disabledStartDates = (date: Date) =>
+  isStartDateDisabled(date, minDate.value, maxDate.value, end.value);
 
-  if (date > maxDate.value) return true;
-
-  if (date < minDate.value) return true;
-
-  if (!!start.value && isSameDay(start.value, date)) return false;
-
-  if (!!end.value && date > end.value) return true;
-
-  return false;
-};
-
-const disabledEndDates = (date: Date) => {
-  if (!!start.value && date < start.value) return true;
-
-  if (!!start.value && isSameDay(start.value, date)) return false;
-
-  if (date > maxDate.value) return true;
-
-  if (!!end.value && isSameDay(end.value, date)) return false;
-
-  return false;
-};
+const disabledEndDates = (date: Date) =>
+  isEndDateDisabled(date, minDate.value, maxDate.value, start.value);
 </script>
 
 <template>
