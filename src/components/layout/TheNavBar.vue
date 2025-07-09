@@ -17,7 +17,7 @@ const activeMenu = computed(() => {
 
 <template>
   <el-menu
-    class="nav-bar select-none"
+    class="nav-bar min-h-16 select-none"
     mode="horizontal"
     :default-active="activeMenu"
     :show-timeout="0"

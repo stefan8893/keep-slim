@@ -17,7 +17,7 @@ import TheLayout from '@/layouts/TheLayout.vue';
           </div>
         </nav>
         <main class="h-center">
-          <div class="app-strip my-15">
+          <div class="app-strip my-8">
             <slot>
               <RouterView />
             </slot>
