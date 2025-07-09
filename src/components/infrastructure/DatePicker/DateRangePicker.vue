@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import {
-  type DateRangeSelectionId,
-  dateRangeSelections,
-} from '@/components/infrastructure/DatePicker/date-range-selection';
+import { dateRangeSelections } from '@/components/infrastructure/DatePicker/date-range-selection';
+import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
 import { MessageKey } from '@/i18n/message-keys.g';
-import { ArrowDown } from '@element-plus/icons-vue';
 import { addDays, endOfDay } from 'date-fns';
 import { computed, ref, watch } from 'vue';
 
+import DateRangeSelectionDropdown from './DateRangeSelectionDropdown.vue';
 import DateRangeStringified from './DateRangeStringified.vue';
 import SingleDatePicker from './SingleDatePicker.vue';
 import { isEndDateDisabled, isStartDateDisabled } from './disabled-dates';
@@ -54,26 +52,12 @@ const disabledEndDates = (date: Date) =>
 <template>
   <div class="date-range-picker-container">
     <div class="date-range-picker">
-      <el-dropdown class="date-range-picker-dropdown">
-        <el-text
-          class="dropdown-title flex cursor-pointer flex-row flex-nowrap items-center justify-center"
-          type="primary"
-        >
-          {{ $t(currentSelection.messageKey) }}
-          <el-icon class="ml-1"><ArrowDown /></el-icon>
-        </el-text>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item
-              v-for="id in props.availableSelections"
-              :key="id"
-              @click="currentSelectionId = id"
-            >
-              {{ $t(dateRangeSelections.get(id)!.messageKey) }}
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <DateRangeSelectionDropdown
+        class="date-range-picker-dropdown"
+        v-model:current-selection-id="currentSelectionId"
+        :available-selections="availableSelections"
+        :current-selection="currentSelection"
+      />
 
       <div v-if="currentSelectionId !== 'CUSTOM'" class="date-range-picker-stringified">
         <DateRangeStringified :start="start" :end="end" />

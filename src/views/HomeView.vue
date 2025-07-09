@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DashboardWidget from '@/components/DashboardWidget.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
-import { type DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range-selection';
+import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { ref, watch } from 'vue';
 

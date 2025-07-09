@@ -1,4 +1,7 @@
-import type { DateRange } from '@/components/infrastructure/DatePicker/dateRange.types';
+import type {
+  DateRangeSelection,
+  DateRangeSelectionId,
+} from '@/components/infrastructure/DatePicker/date-range.types';
 import { MessageKey } from '@/i18n/message-keys.g';
 import {
   endOfDay,
@@ -9,24 +12,6 @@ import {
   subMonths,
   subYears,
 } from 'date-fns';
-
-export type DateRangeSelectionId =
-  | 'L7D'
-  | 'L14D'
-  | 'L30D'
-  | 'L2M'
-  | 'L3M'
-  | 'L6M'
-  | 'L12M'
-  | 'CURR_YEAR' // current year
-  | 'PREV_YEAR' // previous year
-  | 'L2Y'
-  | 'CUSTOM';
-
-export type DateRangeSelection = {
-  messageKey: string;
-  range: () => DateRange;
-};
 
 export const dateRangeSelections: Map<DateRangeSelectionId, DateRangeSelection> = new Map([
   [

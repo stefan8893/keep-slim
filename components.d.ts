@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     DashboardWidget: typeof import('./src/components/DashboardWidget.vue')['default']
     DateRangePicker: typeof import('./src/components/infrastructure/DatePicker/DateRangePicker.vue')['default']
+    DateRangeSelectionDropdown: typeof import('./src/components/infrastructure/DatePicker/DateRangeSelectionDropdown.vue')['default']
     DateRangeStringified: typeof import('./src/components/infrastructure/DatePicker/DateRangeStringified.vue')['default']
     DateStringified: typeof import('./src/components/infrastructure/DatePicker/DateStringified.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
