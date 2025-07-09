@@ -9,12 +9,14 @@ export type WidgetOptions = {
 };
 
 const props = defineProps<{
-  value: number;
+  value?: number;
   titleMessageKey: string;
   options: WidgetOptions;
 }>();
 
 const percentage = computed(() => {
+  if (!props.value) return 0;
+
   const range = props.options.maxValue - props.options.minValue;
   const actual = props.value - props.options.minValue;
 
