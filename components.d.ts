@@ -8,11 +8,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    DashboardWidget: typeof import('./src/components/DashboardWidget.vue')['default']
     DateRangePicker: typeof import('./src/components/infrastructure/DatePicker/DateRangePicker.vue')['default']
     DateRangeStringified: typeof import('./src/components/infrastructure/DatePicker/DateRangeStringified.vue')['default']
     DateStringified: typeof import('./src/components/infrastructure/DatePicker/DateStringified.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElDivider: typeof import('element-plus/es')['ElDivider']

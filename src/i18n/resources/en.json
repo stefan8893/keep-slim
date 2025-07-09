@@ -44,5 +44,10 @@
   "endDate": "End date",
   "dateTo": "to",
   "dateFromCapitalized": "From | From",
-  "today": "today"
+  "today": "today",
+  "weight": "Weight",
+  "muscleMass": "Muscle Mass",
+  "bodyFat": "Body Fat",
+  "water": "Water",
+  "bmi": "Body Mass Index"
 }

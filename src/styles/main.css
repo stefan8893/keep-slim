@@ -5,6 +5,8 @@
 
 @theme {
   --font-inter: 'Inter';
+
+  --breakpoint-xs: 30rem;
 }
 
 .app-strip {

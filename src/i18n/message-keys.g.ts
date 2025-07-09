@@ -51,4 +51,9 @@ export const MessageKey = {
 	dateTo: 'dateTo',
 	dateFromCapitalized: 'dateFromCapitalized',
 	today: 'today',
+	weight: 'weight',
+	muscleMass: 'muscleMass',
+	bodyFat: 'bodyFat',
+	water: 'water',
+	bmi: 'bmi',
 };

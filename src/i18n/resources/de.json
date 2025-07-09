@@ -44,5 +44,10 @@
   "endDate": "Enddatum",
   "dateTo": "bis",
   "dateFromCapitalized": "Von | Vom",
-  "today": "heute"
+  "today": "heute",
+  "weight": "Gewicht",
+  "muscleMass": "Muskelmasse",
+  "bodyFat": "Körperfett",
+  "water": "Wasseranteil",
+  "bmi": "Body-Mass-Index"
 }
