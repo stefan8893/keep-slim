@@ -71,40 +71,47 @@ const disabledEndDates = (date: Date) => {
 </script>
 
 <template>
-  <div class="flex min-h-8 flex-row flex-wrap items-start justify-start gap-3 sm:items-center">
-    <el-dropdown>
-      <span class="daterange-dropdown">
-        {{ $t(currentSelection.messageKey) }}
-        <el-icon class="el-icon--right">
-          <arrow-down />
-        </el-icon>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item
-            v-for="id in props.availableSelections"
-            :key="id"
-            @click="currentSelectionId = id"
-          >
-            {{ $t(dateRangeSelections.get(id)!.messageKey) }}
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+  <div class="date-range-picker-container">
+    <div class="date-range-picker">
+      <el-dropdown class="date-range-picker-dropdown">
+        <el-text
+          class="dropdown-title flex cursor-pointer flex-row flex-nowrap items-center justify-center"
+          type="primary"
+        >
+          {{ $t(currentSelection.messageKey) }}
+          <el-icon class="ml-1"><ArrowDown /></el-icon>
+        </el-text>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item
+              v-for="id in props.availableSelections"
+              :key="id"
+              @click="currentSelectionId = id"
+            >
+              {{ $t(dateRangeSelections.get(id)!.messageKey) }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
 
-    <div v-if="currentSelectionId !== 'CUSTOM'">
-      <DateRangeStringified :start="start" :end="end" />
-    </div>
+      <div v-if="currentSelectionId !== 'CUSTOM'" class="date-range-picker-stringified">
+        <DateRangeStringified :start="start" :end="end" />
+      </div>
 
-    <div v-else class="flex flex-col gap-3 sm:flex-row">
-      <div>
+      <div
+        v-if="currentSelectionId === 'CUSTOM'"
+        class="date-range-picker-custom-start single-date-picker"
+      >
         <SingleDatePicker
           v-model="start"
           :disabled-date="disabledStartDates"
           :placeholder="$t(MessageKey.startDate)"
         />
       </div>
-      <div>
+      <div
+        v-if="currentSelectionId === 'CUSTOM'"
+        class="date-range-picker-custom-end single-date-picker"
+      >
         <SingleDatePicker
           v-model="end"
           :disabled-date="disabledEndDates"
@@ -116,8 +123,75 @@ const disabledEndDates = (date: Date) => {
 </template>
 
 <style scoped>
-.daterange-dropdown {
-  cursor: pointer;
-  color: var(--el-color-primary);
+.date-range-picker-container {
+  container-type: inline-size;
+  container-name: date-range-picker;
+}
+
+.date-range-picker {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto auto 1fr;
+
+  grid-template-areas: 'dropdown custom-start custom-end date-stringified';
+}
+
+.date-range-picker-dropdown {
+  grid-area: dropdown;
+}
+
+.date-range-picker-stringified {
+  grid-area: date-stringified;
+
+  margin-left: 0.75rem;
+}
+
+.date-range-picker-custom-start {
+  grid-area: custom-start;
+}
+
+.date-range-picker-custom-end {
+  grid-area: custom-end;
+}
+
+.single-date-picker {
+  margin-left: 0.75rem;
+}
+
+@container date-range-picker (382px <= width < 630px) {
+  .date-range-picker {
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto 1fr;
+
+    grid-template-areas:
+      'dropdown custom-start date-stringified'
+      '. custom-end .';
+  }
+
+  .date-range-picker-custom-end {
+    margin-top: 0.75rem;
+  }
+}
+
+@container date-range-picker (width < 382px) {
+  .date-range-picker {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      'dropdown . . .'
+      'custom-start . . .'
+      'custom-end . . .'
+      'date-stringified . . .';
+  }
+
+  .date-range-picker-stringified {
+    margin-left: 0;
+    margin-top: 0.75rem;
+  }
+
+  .single-date-picker {
+    margin-left: 0;
+    margin-top: 0.75rem;
+  }
 }
 </style>

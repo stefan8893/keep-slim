@@ -33,7 +33,7 @@ watch(end, () => {
     <DateRangePicker
       v-model:start="start"
       v-model:end="end"
-      :initialSelection="'L6M'"
+      :initialSelection="'CUSTOM'"
       :available-selections="datePickerSelction"
     />
   </div>

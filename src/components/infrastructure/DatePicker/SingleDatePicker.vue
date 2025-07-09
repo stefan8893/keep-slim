@@ -15,7 +15,7 @@ const dateFormat = computed(() => getDateFormatString(localeStore.locale));
 </script>
 
 <template>
-  <el-date-picker v-model="model" type="date" :format="dateFormat" v-bind="$attrs" />
+  <el-date-picker v-model="model" type="date" v-bind="$attrs" :format="dateFormat" />
 </template>
 
 <style scoped>
