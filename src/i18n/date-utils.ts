@@ -11,6 +11,10 @@ export function formatDate(date: Date, formatString?: string) {
   return formatInternal(date, formatString ?? 'P');
 }
 
+export function formatTime(date: Date, formatString?: string) {
+  return formatInternal(date, formatString ?? 'p');
+}
+
 export function formatDateTime(date: Date, formatString?: string) {
   return formatInternal(date, formatString ?? 'Pp');
 }

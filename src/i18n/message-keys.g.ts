@@ -57,4 +57,5 @@ export const MessageKey = {
 	water: 'water',
 	bmi: 'bmi',
 	weekly: 'weekly',
+	recordedAt: 'recordedAt',
 };

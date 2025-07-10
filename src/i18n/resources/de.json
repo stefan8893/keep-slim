@@ -50,5 +50,6 @@
   "bodyFat": "Körperfett",
   "water": "Wasseranteil",
   "bmi": "Body-Mass-Index",
-  "weekly": "Wochen"
+  "weekly": "Wochen",
+  "recordedAt": "Erfasst am {date} um {time} Uhr"
 }

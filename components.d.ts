@@ -40,6 +40,7 @@ declare module 'vue' {
     SingleDatePicker: typeof import('./src/components/infrastructure/DatePicker/SingleDatePicker.vue')['default']
     SingleWidget: typeof import('./src/components/widget/SingleWidget.vue')['default']
     SingleWidgetChangeInDateRangeSelection: typeof import('./src/components/widget/SingleWidgetChangeInDateRangeSelection.vue')['default']
+    SingleWidgetInfoIcon: typeof import('./src/components/widget/SingleWidgetInfoIcon.vue')['default']
     SingleWidgetProgressIndicator: typeof import('./src/components/widget/SingleWidgetProgressIndicator.vue')['default']
     SingleWidgetWeeklyAverage: typeof import('./src/components/widget/SingleWidgetWeeklyAverage.vue')['default']
     TextCopy: typeof import('./src/components/infrastructure/TextCopy.vue')['default']

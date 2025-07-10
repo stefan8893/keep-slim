@@ -50,5 +50,6 @@
   "bodyFat": "Body Fat",
   "water": "Water",
   "bmi": "Body Mass Index",
-  "weekly": "Weekly"
+  "weekly": "Weekly",
+  "recordedAt": "Recorded on {date} at {time}"
 }
