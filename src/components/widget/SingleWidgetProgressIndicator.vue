@@ -31,7 +31,7 @@ const percentage = computed(() => {
     :percentage="percentage"
   >
     <template #default>
-      <span class="text-lg">{{ $n(props.value, props.options.numberFormat) }}</span>
+      <span class="text-xl">{{ $n(props.value, props.options.numberFormat) }}</span>
     </template>
   </el-progress>
 </template>
