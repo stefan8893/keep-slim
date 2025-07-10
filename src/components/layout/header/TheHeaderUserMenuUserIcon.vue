@@ -14,9 +14,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <el-avatar :size="props.iconSize"
+  <el-avatar :size="props.iconSize" class="user-avatar"
     ><span :class="{ 'text-xl': props.iconSize === 'large' }" class="font-semibold select-none">{{
       props.initials
     }}</span></el-avatar
   >
 </template>
+
+<style scoped>
+.user-avatar {
+  background-color: var(--el-color-primary);
+}
+</style>
