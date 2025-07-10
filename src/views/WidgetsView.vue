@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import SingleWidget, {
-  type WidgetOptions,
-  type WidgetValues,
-} from '@/components/widget/SingleWidget.vue';
+import SingleWidget from '@/components/widget/SingleWidget.vue';
+import type { WidgetOptions, WidgetValues } from '@/components/widget/single-widget.types';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { parseISO } from 'date-fns';
 
@@ -35,9 +33,9 @@ const muscleMassOptions: WidgetOptions = {
 
 const muscleMassValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
-  latestValue: 45.2,
-  changeInSelectedTimeRange: 1,
-  weeklyAverageChange: 0.01,
+  latestValue: 45.2 / 100,
+  changeInSelectedTimeRange: 1 / 100,
+  weeklyAverageChange: 0.01 / 100,
 };
 
 const bodyFatOptions: WidgetOptions = {
@@ -49,9 +47,9 @@ const bodyFatOptions: WidgetOptions = {
 
 const bodyFatValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
-  latestValue: 13,
-  changeInSelectedTimeRange: -0.7,
-  weeklyAverageChange: 0.03,
+  latestValue: 13 / 100,
+  changeInSelectedTimeRange: -0.7 / 100,
+  weeklyAverageChange: 0.3 / 100,
 };
 
 const waterOptions: WidgetOptions = {
@@ -63,9 +61,9 @@ const waterOptions: WidgetOptions = {
 
 const waterValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
-  latestValue: 60.2,
-  changeInSelectedTimeRange: 0.5,
-  weeklyAverageChange: 0.03,
+  latestValue: 60.2 / 100,
+  changeInSelectedTimeRange: 0.5 / 100,
+  weeklyAverageChange: 0.03 / 100,
 };
 </script>
 

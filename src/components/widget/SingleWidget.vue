@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import SingleWidgetChangeInDateRangeSelection from '@/components/widget/SingleWidgetChangeInDateRangeSelection.vue';
 import InfoIcon from '@/components/widget/SingleWidgetInfoIcon.vue';
-import type { ProgressIndicatorOptions } from '@/components/widget/SingleWidgetProgressIndicator.vue';
 import SingleWidgetProgressIndicator from '@/components/widget/SingleWidgetProgressIndicator.vue';
 import SingleWidgetWeeklyAverage from '@/components/widget/SingleWidgetWeeklyAverage.vue';
+import type { WidgetOptions, WidgetValues } from '@/components/widget/single-widget.types';
 import { computed } from 'vue';
-
-export type WidgetOptions = ProgressIndicatorOptions;
-
-export type WidgetValues = {
-  latestRecordDateTime: Date;
-  latestValue: number;
-  changeInSelectedTimeRange: number;
-  weeklyAverageChange: number;
-};
 
 const props = defineProps<{
   values?: WidgetValues;
@@ -26,6 +17,7 @@ const latestValue = computed(() => {
   else return props.values?.latestValue;
 });
 
+const changeInSelectedTimeRange = computed(() => props.values?.changeInSelectedTimeRange ?? -1);
 const averageWeeklyChange = computed(() => props.values?.weeklyAverageChange ?? -1);
 </script>
 
@@ -45,11 +37,15 @@ const averageWeeklyChange = computed(() => props.values?.weeklyAverageChange ?? 
         <div class="mt-4 flex flex-col flex-nowrap items-center justify-start">
           <div class="flex flex-row flex-nowrap items-center justify-center gap-x-1">
             <SingleWidgetChangeInDateRangeSelection
-              :change-in-selected-time-range="props.values?.changeInSelectedTimeRange"
+              :change-in-selected-time-range="changeInSelectedTimeRange"
+              :options="props.options"
             />
           </div>
           <div class="mt-2 flex flex-row flex-nowrap items-center justify-start gap-x-1">
-            <SingleWidgetWeeklyAverage :average-weekly-change="averageWeeklyChange" />
+            <SingleWidgetWeeklyAverage
+              :average-weekly-change="averageWeeklyChange"
+              :options="props.options"
+            />
           </div>
         </div>
       </template>
