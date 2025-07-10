@@ -23,6 +23,6 @@ const props = defineProps({
 
 <style scoped>
 .user-avatar {
-  background-color: var(--el-color-primary);
+  background-color: var(--el-color-info);
 }
 </style>
