@@ -32,7 +32,6 @@ declare module 'vue' {
     ElResult: typeof import('element-plus/es')['ElResult']
     ElText: typeof import('element-plus/es')['ElText']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
-    InfoIcon: typeof import('./src/components/InfoIcon.vue')['default']
     KeepSlimCard: typeof import('./src/components/KeepSlimCard.vue')['default']
     LocaleSwitch: typeof import('./src/components/LocaleSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

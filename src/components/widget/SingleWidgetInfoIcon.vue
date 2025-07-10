@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatDate, formatDateTime, formatTime } from '@/i18n/date-utils';
+import { formatDate, formatTime } from '@/i18n/date-utils';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { InfoFilled } from '@element-plus/icons-vue';
 import { computed } from 'vue';
