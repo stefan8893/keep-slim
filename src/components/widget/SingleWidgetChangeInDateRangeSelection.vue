@@ -8,7 +8,7 @@ const props = defineProps<{
   options: WidgetOptions;
 }>();
 
-const changeInSelectedTimeRange = computed(() => props?.changeInSelectedTimeRange ?? -1);
+const changeInSelectedTimeRange = computed(() => Math.abs(props?.changeInSelectedTimeRange ?? 0));
 
 type IconToShow = 'none' | 'up' | 'down';
 

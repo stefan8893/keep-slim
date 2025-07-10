@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import WeeklyWeightChartView from '@/views/WeeklyWeightChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
 import { ref, watch } from 'vue';
 
@@ -40,6 +41,9 @@ watch(end, () => {
   </div>
   <div class="mt-8 flex flex-row flex-wrap items-center justify-between">
     <WidgetsView />
+  </div>
+  <div class="mt-8">
+    <WeeklyWeightChartView />
   </div>
 </template>
 
