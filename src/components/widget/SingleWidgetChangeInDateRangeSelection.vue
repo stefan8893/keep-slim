@@ -19,18 +19,20 @@ const iconToShow = computed((): IconToShow => {
 </script>
 
 <template>
-  <el-icon v-if="iconToShow === 'up'" size="large"><Top /></el-icon>
-  <el-icon v-if="iconToShow === 'down'" size="large"><Bottom /></el-icon>
-  <el-text size="large">
-    <i18n-n
-      tag="span"
-      :value="changeInSelectedTimeRange"
-      :format="options.numberFormat"
-      scope="global"
-    >
-      <template #unit="slotProps">
-        <span class="text-sm">{{ slotProps.unit }}</span>
-      </template>
-    </i18n-n>
-  </el-text>
+  <div class="flex flex-row flex-nowrap items-center justify-center gap-x-1">
+    <el-icon v-if="iconToShow === 'up'" size="large"><Top /></el-icon>
+    <el-icon v-if="iconToShow === 'down'" size="large"><Bottom /></el-icon>
+    <el-text size="large">
+      <i18n-n
+        tag="span"
+        :value="changeInSelectedTimeRange"
+        :format="options.numberFormat"
+        scope="global"
+      >
+        <template #unit="slotProps">
+          <span class="text-sm">{{ slotProps.unit }}</span>
+        </template>
+      </i18n-n>
+    </el-text>
+  </div>
 </template>

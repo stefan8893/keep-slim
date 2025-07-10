@@ -9,24 +9,27 @@ const props = defineProps<{
 </script>
 
 <template>
-  <el-text>{{ $t(MessageKey.weekly) }}</el-text>
-  <el-text class="avg-sign">&#x2300;</el-text>
-  <el-text size="large">
-    <i18n-n
-      tag="span"
-      :value="props.averageWeeklyChange"
-      :format="options.numberFormat"
-      scope="global"
-    >
-      <template #unit="slotProps">
-        <span class="text-sm">{{ slotProps.unit }}</span>
-      </template>
-    </i18n-n>
-  </el-text>
+  <div class="mt-2 flex flex-row flex-nowrap items-center justify-start gap-x-1">
+    <el-text>{{ $t(MessageKey.weekly) }}</el-text>
+    <el-text class="avg-sign">&#x2300;</el-text>
+    <el-text size="large">
+      <i18n-n
+        tag="span"
+        :value="props.averageWeeklyChange"
+        :format="options.numberFormat"
+        scope="global"
+      >
+        <template #unit="slotProps">
+          <span class="text-sm">{{ slotProps.unit }}</span>
+        </template>
+      </i18n-n>
+    </el-text>
+  </div>
 </template>
 
 <style scoped>
 .avg-sign {
   font-size: 20px;
+  margin-right: 4px;
 }
 </style>

@@ -35,18 +35,14 @@ const averageWeeklyChange = computed(() => props.values?.weeklyAverageChange ?? 
           <SingleWidgetProgressIndicator :value="latestValue" :options="props.options" />
         </div>
         <div class="mt-4 flex flex-col flex-nowrap items-center justify-start">
-          <div class="flex flex-row flex-nowrap items-center justify-center gap-x-1">
-            <SingleWidgetChangeInDateRangeSelection
-              :change-in-selected-time-range="changeInSelectedTimeRange"
-              :options="props.options"
-            />
-          </div>
-          <div class="mt-2 flex flex-row flex-nowrap items-center justify-start gap-x-1">
-            <SingleWidgetWeeklyAverage
-              :average-weekly-change="averageWeeklyChange"
-              :options="props.options"
-            />
-          </div>
+          <SingleWidgetChangeInDateRangeSelection
+            :change-in-selected-time-range="changeInSelectedTimeRange"
+            :options="props.options"
+          />
+          <SingleWidgetWeeklyAverage
+            :average-weekly-change="averageWeeklyChange"
+            :options="props.options"
+          />
         </div>
       </template>
     </el-card>
