@@ -17,3 +17,9 @@ const props = defineProps<{
     </i18n-n>
   </el-text>
 </template>
+
+<style scoped>
+.avg-sign {
+  font-size: 20px;
+}
+</style>

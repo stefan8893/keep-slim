@@ -63,9 +63,3 @@ const averageWeeklyChange = computed(() => props.values?.weeklyAverageChange ?? 
     </el-card>
   </div>
 </template>
-
-<style scoped>
-.avg-sign {
-  font-size: 20px;
-}
-</style>
