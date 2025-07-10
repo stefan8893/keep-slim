@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DashboardWidget, { type WidgetOptions } from '@/components/DashboardWidget.vue';
+import SingleWidget, { type WidgetOptions } from '@/components/SingleWidget.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 
 const props = defineProps<{
@@ -39,25 +39,25 @@ const waterOptions: WidgetOptions = {
 </script>
 
 <template>
-  <DashboardWidget
+  <SingleWidget
     class="xs:w-1/2 xs:pr-4 w-full pb-4 md:w-1/3 lg:w-1/4"
     :title-message-key="MessageKey.weight"
     :options="weightOptions"
     :value="props.weight"
   />
-  <DashboardWidget
+  <SingleWidget
     class="xs:w-1/2 w-full pb-4 md:w-1/3 md:pr-4 lg:w-1/4"
     :title-message-key="MessageKey.muscleMass"
     :options="muscleMassOptions"
     :value="props.muscleMass"
   />
-  <DashboardWidget
+  <SingleWidget
     class="xs:w-1/2 xs:pr-4 w-full pb-4 sm:pr-4 md:w-1/3 md:pr-0 lg:w-1/4 lg:pr-4"
     :title-message-key="MessageKey.bodyFat"
     :options="bodyFatOptions"
     :value="props.bodyFat"
   />
-  <DashboardWidget
+  <SingleWidget
     class="xs:w-1/2 w-full pb-4 md:w-1/3 md:pr-4 lg:w-1/4 lg:pr-0"
     :title-message-key="MessageKey.water"
     :options="waterOptions"

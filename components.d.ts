@@ -8,7 +8,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    DashboardWidget: typeof import('./src/components/DashboardWidget.vue')['default']
     DateRangePicker: typeof import('./src/components/infrastructure/DatePicker/DateRangePicker.vue')['default']
     DateRangeSelectionDropdown: typeof import('./src/components/infrastructure/DatePicker/DateRangeSelectionDropdown.vue')['default']
     DateRangeStringified: typeof import('./src/components/infrastructure/DatePicker/DateRangeStringified.vue')['default']
@@ -38,6 +37,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SingleDatePicker: typeof import('./src/components/infrastructure/DatePicker/SingleDatePicker.vue')['default']
+    SingleWidget: typeof import('./src/components/SingleWidget.vue')['default']
     TextCopy: typeof import('./src/components/infrastructure/TextCopy.vue')['default']
     TheFooter: typeof import('./src/components/layout/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/layout/header/TheHeader.vue')['default']
