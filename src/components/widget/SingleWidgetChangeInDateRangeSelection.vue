@@ -29,8 +29,14 @@ const iconToShow = computed((): IconToShow => {
         :format="options.numberFormat"
         scope="global"
       >
-        <template #unit="slotProps">
-          <span class="text-sm">{{ slotProps.unit }}</span>
+        <template #integer="slotProps">
+          <span class="text-lg font-semibold">{{ slotProps.integer }}</span>
+        </template>
+        <template #group="slotProps">
+          <span class="text-lg font-semibold">{{ slotProps.group }}</span>
+        </template>
+        <template #fraction="slotProps">
+          <span class="text-lg font-semibold">{{ slotProps.fraction }}</span>
         </template>
       </i18n-n>
     </el-text>
