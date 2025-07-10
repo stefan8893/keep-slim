@@ -39,7 +39,7 @@ watch(end, () => {
     />
   </div>
   <div class="mt-8 flex flex-row flex-wrap items-center justify-between">
-    <WidgetsView :weight="64.7" :muscle-mass="45.3" :body-fat="13.3" :water="60.3" />
+    <WidgetsView />
   </div>
 </template>
 

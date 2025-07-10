@@ -49,5 +49,6 @@
   "muscleMass": "Muskelmasse",
   "bodyFat": "Körperfett",
   "water": "Wasseranteil",
-  "bmi": "Body-Mass-Index"
+  "bmi": "Body-Mass-Index",
+  "kg": "kg"
 }

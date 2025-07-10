@@ -49,5 +49,6 @@
   "muscleMass": "Muscle Mass",
   "bodyFat": "Body Fat",
   "water": "Water",
-  "bmi": "Body Mass Index"
+  "bmi": "Body Mass Index",
+  "kg": "kg"
 }

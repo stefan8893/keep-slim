@@ -21,11 +21,8 @@ watch(
     );
     elPlusLocale.value = elPlusLocales.get(localeStore.language);
 
-    console.debug(
-      'Syncing language in store with i18n plugin. New Language:',
-      localeStore.language,
-    );
-    locale.value = localeStore.language;
+    console.debug('Syncing locale in store with i18n plugin. New Language:', localeStore.locale);
+    locale.value = localeStore.locale;
   },
   { immediate: true },
 );
