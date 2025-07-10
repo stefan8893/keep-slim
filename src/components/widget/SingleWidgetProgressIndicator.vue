@@ -24,14 +24,14 @@ const percentage = computed(() => {
   <el-progress
     type="dashboard"
     stroke-linecap="square"
-    :width="110"
+    :width="120"
     :show-text="true"
     :color="options.color"
     :stroke-width="16"
     :percentage="percentage"
   >
     <template #default>
-      <span class="text-xl">{{ $n(props.value, props.options.numberFormat) }}</span>
+      <span class="text-xl font-semibold">{{ $n(props.value, props.options.numberFormat) }}</span>
     </template>
   </el-progress>
 </template>
