@@ -21,6 +21,5 @@ const props = defineProps<{
 <style scoped>
 html:not(.dark) .info-icon {
   color: var(--el-color-info);
-  /* color: var(--color-stone-500); */
 }
 </style>

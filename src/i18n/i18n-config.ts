@@ -49,6 +49,7 @@ export default createI18n<[MessageSchema], 'de-AT' | 'en-US'>({
         style: 'unit',
         unit: 'kilogram',
         unitDisplay: 'short',
+        maximumFractionDigits: 1,
       },
     },
   },

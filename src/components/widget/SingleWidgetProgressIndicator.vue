@@ -14,13 +14,15 @@ const props = defineProps<{
   options: ProgressIndicatorOptions;
 }>();
 
+const clampBetweenZeroAndHundred = (x: number) => Math.min(Math.max(x, 0), 100);
+
 const percentage = computed(() => {
   if (!props.value) return 0;
 
   const range = props.options.maxValue - props.options.minValue;
   const actual = props.value - props.options.minValue;
 
-  return (actual / range) * 100;
+  return clampBetweenZeroAndHundred((actual / range) * 100);
 });
 
 const value = computed(() => {

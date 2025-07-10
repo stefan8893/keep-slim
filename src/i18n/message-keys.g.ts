@@ -56,4 +56,5 @@ export const MessageKey = {
 	bodyFat: 'bodyFat',
 	water: 'water',
 	bmi: 'bmi',
+	weekly: 'weekly',
 };

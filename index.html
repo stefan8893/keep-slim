@@ -8,6 +8,10 @@
   </head>
   <body class="font-inter bg-zinc-800 text-sm text-(--el-text-color-primary) dark:bg-zinc-950">
     <div id="app"></div>
+    <script>
+      window.process = window.process || {};
+      window.process.env = window.process.env || {};
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

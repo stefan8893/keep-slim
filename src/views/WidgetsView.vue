@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import SingleWidget, { type WidgetOptions, type WidgetValues } from '@/components/SingleWidget.vue';
+import SingleWidget, {
+  type WidgetOptions,
+  type WidgetValues,
+} from '@/components/widget/SingleWidget.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { parseISO } from 'date-fns';
 
@@ -20,7 +23,7 @@ const weightValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
   latestValue: 64.1,
   changeInSelectedTimeRange: 3,
-  weeklyAverage: 0.4,
+  weeklyAverageChange: 0.4,
 };
 
 const muscleMassOptions: WidgetOptions = {
@@ -34,7 +37,7 @@ const muscleMassValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
   latestValue: 45.2,
   changeInSelectedTimeRange: 1,
-  weeklyAverage: 0.01,
+  weeklyAverageChange: 0.01,
 };
 
 const bodyFatOptions: WidgetOptions = {
@@ -48,7 +51,7 @@ const bodyFatValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
   latestValue: 13,
   changeInSelectedTimeRange: -0.7,
-  weeklyAverage: 0.03,
+  weeklyAverageChange: 0.03,
 };
 
 const waterOptions: WidgetOptions = {
@@ -62,7 +65,7 @@ const waterValues: WidgetValues = {
   latestRecordDateTime: parseISO('2025-07-01T06:30'),
   latestValue: 60.2,
   changeInSelectedTimeRange: 0.5,
-  weeklyAverage: 0.03,
+  weeklyAverageChange: 0.03,
 };
 </script>
 
