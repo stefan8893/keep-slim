@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
 import type { BodyData } from '@/bodyData/body-data.types';
 import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
-import { getTestData } from '@/testData/body-data';
 import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
-import { type Ref, computed, onMounted, ref, watch } from 'vue';
+import { type Ref, computed, onMounted, ref, watch, watchEffect } from 'vue';
 
 useCommonChartOptions();
 
@@ -29,8 +29,8 @@ const datePickerSelction: DateRangeSelectionId[] = [
 
 const bothDatesPresent = computed(() => !!startDate.value && !!endDate.value);
 
-watch(bothDatesPresent, () => {
-  if (bothDatesPresent.value) fetchData();
+watchEffect(() => {
+  if (!!startDate.value && !!endDate.value) fetchData();
 });
 
 const fetchData = async () => {

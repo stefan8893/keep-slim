@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { WidgetValues } from '@/bodyData/aggregations/widget-values';
-import SingleWidgetChangeInDateRangeSelection from '@/components/widget/SingleWidgetChangeInDateRangeSelection.vue';
+import SingleWidgetAverageWeeklyChange from '@/components/widget/SingleWidgetAverageWeeklyChange.vue';
 import InfoIcon from '@/components/widget/SingleWidgetInfoIcon.vue';
 import SingleWidgetProgressIndicator from '@/components/widget/SingleWidgetProgressIndicator.vue';
-import SingleWidgetWeeklyAverage from '@/components/widget/SingleWidgetWeeklyAverage.vue';
+import SingleWidgetTotalChange from '@/components/widget/SingleWidgetTotalChange.vue';
 import type { WidgetOptions } from '@/components/widget/single-widget.types';
 import { computed } from 'vue';
 
@@ -14,12 +14,12 @@ const props = defineProps<{
 }>();
 
 const latestValue = computed(() => {
-  if (!props.values?.latestValue) return -1;
+  if (!props.values?.latestValue) return 0;
   else return props.values?.latestValue;
 });
 
-const changeInSelectedTimeRange = computed(() => props.values?.changeInSelectedTimeRange ?? -1);
-const averageWeeklyChange = computed(() => props.values?.weeklyAverageChange ?? -1);
+const change = computed(() => props.values?.change ?? 0);
+const averageWeeklyChange = computed(() => props.values?.averageWeeklyChange ?? 0);
 </script>
 
 <template>
@@ -36,11 +36,8 @@ const averageWeeklyChange = computed(() => props.values?.weeklyAverageChange ?? 
           <SingleWidgetProgressIndicator :value="latestValue" :options="props.options" />
         </div>
         <div class="mt-4 flex flex-col flex-nowrap items-center justify-start">
-          <SingleWidgetChangeInDateRangeSelection
-            :change-in-selected-time-range="changeInSelectedTimeRange"
-            :options="props.options"
-          />
-          <SingleWidgetWeeklyAverage
+          <SingleWidgetTotalChange :change="change" :options="props.options" />
+          <SingleWidgetAverageWeeklyChange
             :average-weekly-change="averageWeeklyChange"
             :options="props.options"
           />

@@ -10,6 +10,7 @@ export type BodyData = {
 
 export type BoundaryRecords = {
   first: BodyData;
+  firstN: BodyData[];
   last: BodyData;
 };
 
