@@ -52,9 +52,7 @@ jobs:
           node-version: '22.x'
 
       - name: Install packages
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-          npm install
+        run: npm install
 
       - name: Build for production
         run: |
