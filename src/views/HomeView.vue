@@ -39,7 +39,7 @@ watch(end, () => {
       :available-selections="datePickerSelction"
     />
   </div>
-  <div class="mt-8 flex flex-row flex-wrap items-center justify-between">
+  <div class="mt-8">
     <WidgetsView />
   </div>
   <div class="mt-8">

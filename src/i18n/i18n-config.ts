@@ -18,7 +18,7 @@ export default createI18n<[MessageSchema], 'de-AT' | 'en-US'>({
     'de-AT': {
       decimal: {
         style: 'decimal',
-        minimumFractionDigits: 1,
+        minimumFractionDigits: 0,
         maximumFractionDigits: 2,
       },
       percent: {
@@ -36,7 +36,7 @@ export default createI18n<[MessageSchema], 'de-AT' | 'en-US'>({
     'en-US': {
       decimal: {
         style: 'decimal',
-        minimumFractionDigits: 1,
+        minimumFractionDigits: 0,
         maximumFractionDigits: 2,
       },
       percent: {
