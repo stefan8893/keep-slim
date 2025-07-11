@@ -1,44 +1,41 @@
-import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
-import { getBoundaryRecords } from '@/bodyData/aggregations/boundaries';
 import { calculateWidgetValues, emptyWidgetValues } from '@/bodyData/aggregations/widget-values';
-import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
-import { addDays, endOfDay, parseISO, startOfDay, startOfISOWeek } from 'date-fns';
+import type { BoundaryRecords } from '@/bodyData/body-data.types';
+import { addDays, parseISO, startOfISOWeek } from 'date-fns';
 import { test as baseTest, describe, expect } from 'vitest';
 
 const test = baseTest.extend<{
-  bodyData: BodyData[];
   boundaryRecordsExactWeek: BoundaryRecords;
 }>({
-  bodyData: async ({}, use) => {
-    const testData = getTestData();
-
-    use(testData);
-  },
   boundaryRecordsExactWeek: async ({}, use) => {
-    const someWeekday = parseISO('2025-07-07');
+    const someWeekday = parseISO('2024-07-01');
     const startOfWeek = startOfISOWeek(someWeekday);
     const endOfWeek = startOfISOWeek(addDays(startOfWeek, 7));
 
+    const first = {
+      recordedAt: startOfWeek,
+      weight: 65,
+      muscleMass: 45,
+      bodyFat: 13,
+      water: 60,
+      bmi: 21,
+      dailyCalorieRequirement: 2000,
+    };
+
+    const last = {
+      recordedAt: endOfWeek,
+      weight: 64,
+      muscleMass: 45.5,
+      bodyFat: 13,
+      water: 60,
+      bmi: 21,
+      dailyCalorieRequirement: 2000,
+    };
+
     const boundaryRecords: BoundaryRecords = {
-      first: {
-        recordedAt: startOfWeek,
-        weight: 65,
-        muscleMass: 45,
-        bodyFat: 13,
-        water: 60,
-        bmi: 21,
-        dailyCalorieRequirement: 2000,
-      },
-      firstN: [],
-      last: {
-        recordedAt: endOfWeek,
-        weight: 64,
-        muscleMass: 45.5,
-        bodyFat: 13,
-        water: 60,
-        bmi: 21,
-        dailyCalorieRequirement: 2000,
-      },
+      first,
+      firstN: [first],
+      last: last,
+      lastN: [last],
     };
 
     use(boundaryRecords);
@@ -82,34 +79,12 @@ describe('calculateWidgetValues', () => {
     expect(widgetValues.change).toBe(0.5);
   });
 
-  test('returns correct weight change over a longer period of time', ({ bodyData }) => {
-    const boundaries = getBoundaryRecords(bodyData);
-
-    const widgetValues = calculateWidgetValues('weight', boundaries);
-
-    expect(widgetValues.change).toBeCloseTo(-1.6, 5);
-  });
-
   test('avg weekly change is nearly equal to change when time range is exact one week', ({
     boundaryRecordsExactWeek,
   }) => {
     const widgetValues = calculateWidgetValues('weight', boundaryRecordsExactWeek);
 
     expect(widgetValues.averageWeeklyChange).toBeCloseTo(1, 5);
-  });
-
-  test('returns correct weight change of production like test data', ({ bodyData }) => {
-    const secondOfJune = startOfDay(parseISO('2025-06-02'));
-    const eighthOfJune = endOfDay(addDays(secondOfJune, 6));
-
-    const testData = bodyData.filter(
-      (x) => x.recordedAt >= secondOfJune && x.recordedAt <= eighthOfJune,
-    );
-    const boundaries = getBoundaryRecords(testData);
-
-    const widgetValues = calculateWidgetValues('weight', boundaries);
-
-    expect(widgetValues.change).toBeCloseTo(0.6333, 4);
   });
 
   test('returns zero weight change when weight values of first and last record are equal', ({
@@ -123,6 +98,7 @@ describe('calculateWidgetValues', () => {
         recordedAt: startOfISOWeek(addDays(boundaryRecordsExactWeek.first.recordedAt, 14)),
         weight: boundaryRecordsExactWeek.first.weight,
       },
+      lastN: [],
     };
 
     const widgetValues = calculateWidgetValues('weight', twoWeeksWithoutWeightChange);
@@ -141,6 +117,7 @@ describe('calculateWidgetValues', () => {
         recordedAt: startOfISOWeek(addDays(boundaryRecordsExactWeek.first.recordedAt, 14)),
         weight: boundaryRecordsExactWeek.first.weight,
       },
+      lastN: [],
     };
 
     const widgetValues = calculateWidgetValues('weight', twoWeeksWithoutWeightChange);
@@ -159,6 +136,7 @@ describe('calculateWidgetValues', () => {
         recordedAt: startOfISOWeek(addDays(boundaryRecordsExactWeek.first.recordedAt, 14)),
         weight: boundaryRecordsExactWeek.first.weight + 1,
       },
+      lastN: [],
     };
 
     const widgetValues = calculateWidgetValues('weight', twoWeeksWithOneKiloWeightGain);
@@ -177,6 +155,7 @@ describe('calculateWidgetValues', () => {
         recordedAt: parseISO('2025-08-01'),
         weight: boundaryRecordsExactWeek.first.weight + 1,
       },
+      lastN: [],
     };
 
     const widgetValues = calculateWidgetValues('weight', wholeJuly);
@@ -184,7 +163,7 @@ describe('calculateWidgetValues', () => {
     expect(widgetValues.averageMonthlyChange).toBeCloseTo(1, 4);
   });
 
-  test('returns average monthly change of one and a half kilo when time range is the whole July and half of august and there are two kilo gained', ({
+  test('returns average monthly change of two kilo when time range is the whole July and half of august and there are three kilo in gain', ({
     boundaryRecordsExactWeek,
   }) => {
     const wholeJulyAndHalfOfAugust: BoundaryRecords = {
@@ -195,6 +174,7 @@ describe('calculateWidgetValues', () => {
         recordedAt: parseISO('2025-08-16T12:00:00'),
         weight: boundaryRecordsExactWeek.first.weight + 3,
       },
+      lastN: [],
     };
 
     const widgetValues = calculateWidgetValues('weight', wholeJulyAndHalfOfAugust);

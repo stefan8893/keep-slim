@@ -40,8 +40,6 @@ const fetchData = async () => {
     (x) => x.recordedAt >= startDate.value! && x.recordedAt <= endDate.value!,
   );
 };
-
-onMounted(async () => {});
 </script>
 
 <template>

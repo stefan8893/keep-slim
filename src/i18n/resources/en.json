@@ -52,5 +52,7 @@
   "bmi": "Body Mass Index",
   "week": "week",
   "month": "month",
-  "recordedAt": "Last recorded on {date} at {time}"
+  "lastRecordedAt": "Last recorded on {date} at {time}",
+  "recordedAt": "Recorded on {date} at {time}",
+  "calculationInfo": "The oldest entry for the calculation is from {date}."
 }

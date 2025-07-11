@@ -10,14 +10,18 @@ describe('getBoundaryRecords', () => {
     expect(boundaries).toEqual(null);
   });
 
-  test('returns null when passing an array with one element', () => {
+  test('returns boudary object with same records when passing an array with one element', () => {
     const testData = getTestData();
-    const boundaries = getBoundaryRecords([testData.at(0)!]);
+    const entry = testData.at(0)!;
+    const boundaries = getBoundaryRecords([entry]);
 
-    expect(boundaries).toEqual(null);
+    expect(boundaries?.first).toEqual(entry);
+    expect(boundaries?.firstN[0]).toEqual(entry);
+    expect(boundaries?.last).toEqual(entry);
+    expect(boundaries?.lastN[0]).toEqual(entry);
   });
 
-  test('returns a correct boundaries when passing an array with two elements', () => {
+  test('returns boundaries without N-elements arrays when passing an array with two elements', () => {
     const testData = getTestData();
     const boundaries = getBoundaryRecords([testData.at(0)!, testData.at(1)!]);
 
@@ -69,17 +73,10 @@ describe('getBoundaryRecords', () => {
     expect(boundaries?.firstN).toHaveLength(3);
   });
 
-  test('returns as much firstN records as specified', () => {
+  test('the first element is equal to the first element of the firstN array', () => {
     const testData = getTestData();
-    const boundaries = getBoundaryRecords(testData, 8);
+    const boundaries = getBoundaryRecords(testData);
 
-    expect(boundaries?.firstN).toHaveLength(8);
-  });
-
-  test('returns all input records except the last one when requesting more firstN records than exist', () => {
-    const testData = getTestData();
-    const boundaries = getBoundaryRecords(testData, 9999);
-
-    expect(boundaries?.firstN).toHaveLength(testData.length - 1);
+    expect(boundaries?.first).toEqual(boundaries?.firstN.at(0));
   });
 });

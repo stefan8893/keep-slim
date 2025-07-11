@@ -9,19 +9,15 @@ import { MessageKey } from '@/i18n/message-keys.g';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  values?: WidgetValues;
+  values: WidgetValues;
   titleMessageKey: string;
   options: WidgetOptions;
 }>();
 
-const latestValue = computed(() => {
-  if (!props.values?.latestValue) return 0;
-  else return props.values?.latestValue;
-});
-
-const change = computed(() => props.values?.change ?? 0);
-const averageWeeklyChange = computed(() => props.values?.averageWeeklyChange ?? 0);
-const averageMonthlyChange = computed(() => props.values?.averageMonthlyChange ?? 0);
+const latestValue = computed(() => props.values?.latestValue ?? 0);
+const change = computed(() => props.values?.change);
+const averageWeeklyChange = computed(() => props.values?.averageWeeklyChange);
+const averageMonthlyChange = computed(() => props.values?.averageMonthlyChange);
 </script>
 
 <template>
@@ -30,14 +26,14 @@ const averageMonthlyChange = computed(() => props.values?.averageMonthlyChange ?
       <template #header>
         <div class="flex flex-row flex-nowrap items-center justify-between">
           <el-text size="large">{{ $t(props.titleMessageKey) }}</el-text>
-          <InfoIcon :latest-record-date-time="props.values?.latestRecordDateTime" />
+          <InfoIcon :widget-values="props.values" />
         </div>
       </template>
       <template #default>
         <div class="flex flex-col flex-nowrap items-center justify-start">
           <SingleWidgetProgressIndicator :value="latestValue" :options="props.options" />
         </div>
-        <div class="mt-4 flex flex-col flex-nowrap items-center justify-start">
+        <div class="flex flex-col flex-nowrap items-center justify-start">
           <SingleWidgetTotalChange :change="change" :options="props.options" />
           <SingleWidgetAverageChange
             :average-change="averageWeeklyChange"

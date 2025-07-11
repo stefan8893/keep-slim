@@ -3,28 +3,37 @@ import type { NumberKeys } from '@/types/type-helpers';
 import { differenceInCalendarMonths, endOfMonth, getDaysInMonth, startOfMonth } from 'date-fns';
 
 export type WidgetValues = {
+  oldestRecordDateTime: Date;
   latestRecordDateTime: Date;
   latestValue: number;
-  change: number;
-  averageWeeklyChange: number;
-  averageMonthlyChange: number;
+  change: number | null;
+  averageWeeklyChange: number | null;
+  averageMonthlyChange: number | null;
 };
 
 export const emptyWidgetValues: WidgetValues = {
+  oldestRecordDateTime: new Date(0),
   latestRecordDateTime: new Date(0),
   latestValue: 0,
-  change: 0,
-  averageWeeklyChange: 0,
-  averageMonthlyChange: 0,
+  change: null,
+  averageWeeklyChange: null,
+  averageMonthlyChange: null,
 };
 
-function getFirstValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecords) {
-  if (boundaryRecords.firstN.length > 1) {
-    return (
-      boundaryRecords.firstN.reduce((acc, next) => acc + next[key], 0) /
-      boundaryRecords.firstN.length
-    );
-  } else return boundaryRecords.first[key];
+function average(numbers: number[]) {
+  return numbers.reduce((acc, next) => acc + next, 0) / numbers.length;
+}
+
+function getFirstValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecords): number {
+  return boundaryRecords.firstN.length === 1
+    ? boundaryRecords.firstN[0][key]
+    : average(boundaryRecords.firstN.map((x) => x[key]));
+}
+
+function getLastValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecords): number {
+  return boundaryRecords.lastN.length === 1
+    ? boundaryRecords.lastN[0][key]
+    : average(boundaryRecords.lastN.map((x) => x[key]));
 }
 
 function getExactDayDifference(start: Date, end: Date): number {
@@ -40,17 +49,17 @@ export function getExactMonthDifference(start: Date, end: Date): number {
   const endStartOfMonth = startOfMonth(end);
 
   const daysInMonthOfStartDate = getDaysInMonth(start);
-  const startToEndOfMonthInDaysExact = getExactDayDifference(start, startEndOfMonth);
+  const daysToCountInMonthOfStartDate = getExactDayDifference(start, startEndOfMonth);
 
   const wholeMonthsInBetween = differenceInCalendarMonths(endStartOfMonth, startEndOfMonth) - 1;
 
   const daysInMonthOfEndDate = getDaysInMonth(end);
-  const startOfMonthToEndInDaysExact = getExactDayDifference(endStartOfMonth, end);
+  const daysToCountInMonthOfEndDate = getExactDayDifference(endStartOfMonth, end);
 
   return (
-    startToEndOfMonthInDaysExact / daysInMonthOfStartDate +
+    daysToCountInMonthOfStartDate / daysInMonthOfStartDate +
     wholeMonthsInBetween +
-    startOfMonthToEndInDaysExact / daysInMonthOfEndDate
+    daysToCountInMonthOfEndDate / daysInMonthOfEndDate
   );
 }
 
@@ -63,7 +72,7 @@ function calculateAverageMonthlyChange(
     boundaries.last.recordedAt,
   );
 
-  const difference = boundaries.last[key] - getFirstValue(key, boundaries);
+  const difference = getLastValue(key, boundaries) - getFirstValue(key, boundaries);
 
   return Math.abs(difference / monthsInBetween);
 }
@@ -77,9 +86,9 @@ function calculateAverageWeeklyChange(
     boundaries.last.recordedAt,
   );
 
-  const difference = boundaries.last[key] - getFirstValue(key, boundaries);
+  const difference = getLastValue(key, boundaries) - getFirstValue(key, boundaries);
 
-  return Math.abs(difference / (daysInBetween / 7.0));
+  return Math.abs(difference / (daysInBetween / 7));
 }
 
 export function calculateWidgetValues(
@@ -88,12 +97,23 @@ export function calculateWidgetValues(
 ): WidgetValues {
   if (!boundaryRecords) return emptyWidgetValues;
 
-  const change = boundaryRecords.last[key] - getFirstValue(key, boundaryRecords);
+  if (boundaryRecords.first === boundaryRecords.last)
+    return {
+      oldestRecordDateTime: boundaryRecords.first.recordedAt,
+      latestRecordDateTime: boundaryRecords.last.recordedAt,
+      latestValue: boundaryRecords.last[key],
+      change: null,
+      averageWeeklyChange: null,
+      averageMonthlyChange: null,
+    };
+
+  const change = getLastValue(key, boundaryRecords) - getFirstValue(key, boundaryRecords);
   const averageWeeklyChange = calculateAverageWeeklyChange(key, boundaryRecords);
   const averageMonthlyChange = calculateAverageMonthlyChange(key, boundaryRecords);
 
   return {
-    latestRecordDateTime: boundaryRecords?.last.recordedAt,
+    oldestRecordDateTime: boundaryRecords.first.recordedAt,
+    latestRecordDateTime: boundaryRecords.last.recordedAt,
     latestValue: boundaryRecords.last[key],
     change: change,
     averageWeeklyChange: averageWeeklyChange,

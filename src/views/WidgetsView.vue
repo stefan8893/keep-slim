@@ -38,11 +38,16 @@ const muscleMassOptions: WidgetOptions = {
 
 const toPercentage = (widgetValues: WidgetValues): WidgetValues => {
   return {
+    oldestRecordDateTime: widgetValues.oldestRecordDateTime,
     latestRecordDateTime: widgetValues.latestRecordDateTime,
     latestValue: widgetValues.latestValue / 100,
-    change: widgetValues.change / 100,
-    averageWeeklyChange: widgetValues.averageWeeklyChange / 100,
-    averageMonthlyChange: widgetValues.averageMonthlyChange / 100,
+    change: !widgetValues.change ? widgetValues.change : widgetValues.change / 100,
+    averageWeeklyChange: !widgetValues.averageWeeklyChange
+      ? widgetValues.averageWeeklyChange
+      : widgetValues.averageWeeklyChange / 100,
+    averageMonthlyChange: !widgetValues.averageMonthlyChange
+      ? widgetValues.averageMonthlyChange
+      : widgetValues.averageMonthlyChange / 100,
   };
 };
 

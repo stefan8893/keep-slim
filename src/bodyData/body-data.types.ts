@@ -12,6 +12,7 @@ export type BoundaryRecords = {
   first: BodyData;
   firstN: BodyData[];
   last: BodyData;
+  lastN: BodyData[];
 };
 
 export type BodyDataChange = {

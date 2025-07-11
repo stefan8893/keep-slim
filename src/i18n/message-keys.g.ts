@@ -58,5 +58,7 @@ export const MessageKey = {
 	bmi: 'bmi',
 	week: 'week',
 	month: 'month',
+	lastRecordedAt: 'lastRecordedAt',
 	recordedAt: 'recordedAt',
+	calculationInfo: 'calculationInfo',
 };
