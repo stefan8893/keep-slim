@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import type { BodyData } from '@/bodyData/body-data.types';
+import { useColors } from '@/colors/useColors';
 import SingleWidget from '@/components/widget/SingleWidget.vue';
 import type { WidgetOptions, WidgetValues } from '@/components/widget/single-widget.types';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { parseISO } from 'date-fns';
 
-const styles = getComputedStyle(document.documentElement);
-const weigthColor = styles.getPropertyValue('--color-teal-400');
-const muscleMassColor = styles.getPropertyValue('--color-violet-400');
-const bodyFatColor = styles.getPropertyValue('--color-yellow-400');
-const waterColor = styles.getPropertyValue('--color-sky-400');
+const { weigthColor, muscleMassColor, bodyFatColor, waterColor } = useColors();
+
+const props = defineProps<{
+  bodyData: BodyData[];
+}>();
 
 const weightOptions: WidgetOptions = {
   color: weigthColor,

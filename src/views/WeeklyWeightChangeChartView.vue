@@ -1,36 +1,30 @@
 <script setup lang="ts">
+import type { BodyData } from '@/bodyData/body-data.types';
 import { themingControlKey } from '@/injection.types';
 import type { ThemingControl } from '@/plugins/theming.plugin';
+import { useLocaleStore } from '@/stores/localeStore';
 import Highcharts from 'highcharts';
-import 'highcharts/modules/accessibility';
-import 'highcharts/themes/adaptive';
-import { inject, onMounted, ref } from 'vue';
+import { inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 const { isDark } = inject(themingControlKey) as ThemingControl;
 
-Highcharts.setOptions({
-  chart: {
-    backgroundColor: 'transparent',
-    reflow: true,
-  },
-  responsive: {
-    rules: [],
-  },
-  tooltip: {
-    backgroundColor: 'var(--el-text-color-primary)',
-    style: {
-      color: 'var(--el-bg-color)',
-    },
-  },
-});
+const props = defineProps<{
+  bodyData: BodyData[];
+}>();
+
+console.log('body data change', props.bodyData);
 
 const chart = ref<Highcharts.Chart | null>(null);
+const localeStore = useLocaleStore();
 
-onMounted(() => {
+const renderChart = () => {
+  chart.value?.destroy();
   chart.value = Highcharts.chart('chart', {
+    lang: {
+      locale: localeStore.locale,
+    },
     chart: {
       type: 'bar',
-      reflow: true,
     },
     title: {
       text: '',
@@ -41,16 +35,28 @@ onMounted(() => {
     series: [
       {
         name: 'Beispielreihe',
-        data: [1, 3, 2, 4],
+        data: [1, 3.3, 2, 4],
         type: 'bar',
       },
     ],
   });
+};
+
+watch(localeStore, () => {
+  renderChart();
+});
+
+onMounted(() => {
+  renderChart();
+});
+
+onBeforeUnmount(() => {
+  chart.value?.destroy();
 });
 </script>
 
 <template>
-  <el-card class="block overflow-hidden">
+  <el-card>
     <div class="grid-container">
       <div class="block" id="chart" :class="isDark ? 'highcharts-dark' : 'highcharts-light'"></div>
     </div>

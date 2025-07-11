@@ -1,0 +1,2639 @@
+[
+  {
+    "recordedAt": "2024-09-12T05:05:00.000Z",
+    "weight": 66,
+    "muscleMass": 45.9,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2108
+  },
+  {
+    "recordedAt": "2024-09-13T06:24:00.000Z",
+    "weight": 65.7,
+    "muscleMass": 45.6,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2091
+  },
+  {
+    "recordedAt": "2024-09-14T06:36:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 45.6,
+    "bodyFat": 13.6,
+    "water": 60.5,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2024-09-15T06:03:00.000Z",
+    "weight": 66,
+    "muscleMass": 45,
+    "bodyFat": 13,
+    "water": 61.2,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2076
+  },
+  {
+    "recordedAt": "2024-09-16T05:58:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.8,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2117
+  },
+  {
+    "recordedAt": "2024-09-17T05:52:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 44.9,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2080
+  },
+  {
+    "recordedAt": "2024-09-18T05:25:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.5,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2114
+  },
+  {
+    "recordedAt": "2024-09-19T06:11:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.6,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2108
+  },
+  {
+    "recordedAt": "2024-09-20T05:59:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2121
+  },
+  {
+    "recordedAt": "2024-09-21T05:28:00.000Z",
+    "weight": 66,
+    "muscleMass": 46.1,
+    "bodyFat": 13,
+    "water": 61.2,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2024-09-22T04:58:00.000Z",
+    "weight": 65.7,
+    "muscleMass": 46.2,
+    "bodyFat": 12.6,
+    "water": 61.5,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2112
+  },
+  {
+    "recordedAt": "2024-09-23T05:17:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.3,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2114
+  },
+  {
+    "recordedAt": "2024-09-24T05:48:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.3,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2116
+  },
+  {
+    "recordedAt": "2024-09-25T05:36:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 45.2,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2089
+  },
+  {
+    "recordedAt": "2024-09-26T06:09:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 44.7,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2071
+  },
+  {
+    "recordedAt": "2024-09-27T06:36:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2134
+  },
+  {
+    "recordedAt": "2024-09-28T05:59:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 44.9,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2083
+  },
+  {
+    "recordedAt": "2024-09-29T06:32:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 45.3,
+    "bodyFat": 13.6,
+    "water": 60.5,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2089
+  },
+  {
+    "recordedAt": "2024-09-30T05:54:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.8,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2024-10-01T05:22:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 44,
+    "bodyFat": 13.3,
+    "water": 60.7,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2038
+  },
+  {
+    "recordedAt": "2024-10-02T05:32:00.000Z",
+    "weight": 65.5,
+    "muscleMass": 44.9,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2061
+  },
+  {
+    "recordedAt": "2024-10-03T05:45:00.000Z",
+    "weight": 65.4,
+    "muscleMass": 46.4,
+    "bodyFat": 12.5,
+    "water": 61.6,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2112
+  },
+  {
+    "recordedAt": "2024-10-04T07:16:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 46.3,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2123
+  },
+  {
+    "recordedAt": "2024-10-05T06:06:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.9,
+    "bodyFat": 13.2,
+    "water": 60.8,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2118
+  },
+  {
+    "recordedAt": "2024-10-06T05:30:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 46.3,
+    "bodyFat": 12.7,
+    "water": 61.4,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2136
+  },
+  {
+    "recordedAt": "2024-10-07T05:03:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.3,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2143
+  },
+  {
+    "recordedAt": "2024-10-08T04:54:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 46,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2024-10-09T05:28:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 45,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2079
+  },
+  {
+    "recordedAt": "2024-10-10T07:03:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 44.8,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2091
+  },
+  {
+    "recordedAt": "2024-10-11T06:09:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.1,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2024-10-12T06:35:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 45.2,
+    "bodyFat": 12.4,
+    "water": 61.9,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2120
+  },
+  {
+    "recordedAt": "2024-10-13T06:30:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.5,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2114
+  },
+  {
+    "recordedAt": "2024-10-14T04:45:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 45.9,
+    "bodyFat": 13,
+    "water": 61.1,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2139
+  },
+  {
+    "recordedAt": "2024-10-15T05:27:00.000Z",
+    "weight": 67,
+    "muscleMass": 45.4,
+    "bodyFat": 12.4,
+    "water": 61.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2113
+  },
+  {
+    "recordedAt": "2024-10-16T05:31:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 45.7,
+    "bodyFat": 13.5,
+    "water": 60.5,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2128
+  },
+  {
+    "recordedAt": "2024-10-17T05:57:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.4,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2123
+  },
+  {
+    "recordedAt": "2024-10-18T04:56:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.2,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2138
+  },
+  {
+    "recordedAt": "2024-10-19T05:50:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 45,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2024-10-20T05:35:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.4,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2108
+  },
+  {
+    "recordedAt": "2024-10-21T05:25:00.000Z",
+    "weight": 67,
+    "muscleMass": 45,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2101
+  },
+  {
+    "recordedAt": "2024-10-22T05:07:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 44.7,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2078
+  },
+  {
+    "recordedAt": "2024-10-23T03:38:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.8,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2110
+  },
+  {
+    "recordedAt": "2024-10-24T04:18:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 44.9,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2079
+  },
+  {
+    "recordedAt": "2024-10-25T03:59:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.2,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2103
+  },
+  {
+    "recordedAt": "2024-10-26T05:51:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.5,
+    "bodyFat": 13.6,
+    "water": 60.4,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2103
+  },
+  {
+    "recordedAt": "2024-10-27T05:50:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.6,
+    "bodyFat": 13.2,
+    "water": 60.8,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2024-10-28T05:51:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.8,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2116
+  },
+  {
+    "recordedAt": "2024-10-29T05:50:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.6,
+    "bodyFat": 13.2,
+    "water": 61,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2024-10-30T05:29:00.000Z",
+    "weight": 67.8,
+    "muscleMass": 45.8,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2125
+  },
+  {
+    "recordedAt": "2024-10-31T05:22:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 44,
+    "bodyFat": 14.2,
+    "water": 59.7,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2058
+  },
+  {
+    "recordedAt": "2024-11-01T05:54:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 46.3,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2152
+  },
+  {
+    "recordedAt": "2024-11-02T06:37:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 45.8,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2143
+  },
+  {
+    "recordedAt": "2024-11-03T06:20:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.9,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2128
+  },
+  {
+    "recordedAt": "2024-11-04T06:12:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46.2,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2024-11-05T05:46:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45.9,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2131
+  },
+  {
+    "recordedAt": "2024-11-06T06:35:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45.6,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2119
+  },
+  {
+    "recordedAt": "2024-11-07T05:46:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 45.6,
+    "bodyFat": 13.4,
+    "water": 60.7,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2112
+  },
+  {
+    "recordedAt": "2024-11-08T06:21:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 46,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2024-11-09T06:03:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 46.1,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2128
+  },
+  {
+    "recordedAt": "2024-11-10T05:40:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2137
+  },
+  {
+    "recordedAt": "2024-11-11T06:40:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 45.2,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2097
+  },
+  {
+    "recordedAt": "2024-11-12T05:41:00.000Z",
+    "weight": 67.8,
+    "muscleMass": 46.7,
+    "bodyFat": 12.3,
+    "water": 62.1,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2180
+  },
+  {
+    "recordedAt": "2024-11-13T05:52:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 45.8,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2141
+  },
+  {
+    "recordedAt": "2024-11-14T06:18:00.000Z",
+    "weight": 68.2,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.8,
+    "dailyCalorieRequirement": 2172
+  },
+  {
+    "recordedAt": "2024-11-15T06:49:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2096
+  },
+  {
+    "recordedAt": "2024-11-16T06:18:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 45.5,
+    "bodyFat": 13.7,
+    "water": 60.4,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2139
+  },
+  {
+    "recordedAt": "2024-11-17T06:12:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.5,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2088
+  },
+  {
+    "recordedAt": "2024-11-18T06:29:00.000Z",
+    "weight": 67.1,
+    "muscleMass": 44.7,
+    "bodyFat": 14.2,
+    "water": 59.7,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2100
+  },
+  {
+    "recordedAt": "2024-11-19T06:06:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.2,
+    "bodyFat": 14.2,
+    "water": 59.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2076
+  },
+  {
+    "recordedAt": "2024-11-20T06:13:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 44.9,
+    "bodyFat": 13,
+    "water": 61.2,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2112
+  },
+  {
+    "recordedAt": "2024-11-21T05:06:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.4,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2084
+  },
+  {
+    "recordedAt": "2024-11-22T05:56:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 46.4,
+    "bodyFat": 12.7,
+    "water": 61.4,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2140
+  },
+  {
+    "recordedAt": "2024-11-23T05:47:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 44.7,
+    "bodyFat": 13.4,
+    "water": 60.7,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2096
+  },
+  {
+    "recordedAt": "2024-11-24T06:20:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 45.8,
+    "bodyFat": 13,
+    "water": 61.2,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2140
+  },
+  {
+    "recordedAt": "2024-11-25T06:51:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.5,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2024-11-26T05:58:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.3,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2140
+  },
+  {
+    "recordedAt": "2024-11-27T06:27:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 46.1,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2146
+  },
+  {
+    "recordedAt": "2024-11-28T05:58:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.1,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2113
+  },
+  {
+    "recordedAt": "2024-11-29T05:35:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 43.9,
+    "bodyFat": 13.5,
+    "water": 60.6,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2057
+  },
+  {
+    "recordedAt": "2024-11-30T07:27:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 45.7,
+    "bodyFat": 12.5,
+    "water": 61.8,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2024-12-01T06:37:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46.5,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2138
+  },
+  {
+    "recordedAt": "2024-12-02T05:30:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.2,
+    "bodyFat": 12.8,
+    "water": 61.3,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2095
+  },
+  {
+    "recordedAt": "2024-12-03T05:49:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 45.2,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2089
+  },
+  {
+    "recordedAt": "2024-12-04T06:45:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 45.2,
+    "bodyFat": 13.3,
+    "water": 60.7,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2086
+  },
+  {
+    "recordedAt": "2024-12-05T06:51:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 46.5,
+    "bodyFat": 12.3,
+    "water": 61.9,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2134
+  },
+  {
+    "recordedAt": "2024-12-06T04:46:00.000Z",
+    "weight": 65.4,
+    "muscleMass": 45.6,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2081
+  },
+  {
+    "recordedAt": "2024-12-07T06:30:00.000Z",
+    "weight": 65.6,
+    "muscleMass": 46.9,
+    "bodyFat": 12.2,
+    "water": 62.1,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2134
+  },
+  {
+    "recordedAt": "2024-12-08T03:25:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 46.4,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2024-12-09T06:39:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 46.1,
+    "bodyFat": 12.4,
+    "water": 61.9,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2146
+  },
+  {
+    "recordedAt": "2024-12-10T05:53:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 44.9,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2083
+  },
+  {
+    "recordedAt": "2024-12-11T06:05:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 45.6,
+    "bodyFat": 12.2,
+    "water": 62.1,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2113
+  },
+  {
+    "recordedAt": "2024-12-12T06:04:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 45.9,
+    "bodyFat": 13,
+    "water": 61.1,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2124
+  },
+  {
+    "recordedAt": "2024-12-13T07:17:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.5,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2102
+  },
+  {
+    "recordedAt": "2024-12-14T06:13:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2131
+  },
+  {
+    "recordedAt": "2024-12-15T06:39:00.000Z",
+    "weight": 67.1,
+    "muscleMass": 46,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2138
+  },
+  {
+    "recordedAt": "2024-12-16T06:12:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.1,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2135
+  },
+  {
+    "recordedAt": "2024-12-17T06:04:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 44.4,
+    "bodyFat": 14.2,
+    "water": 59.7,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2056
+  },
+  {
+    "recordedAt": "2024-12-18T05:36:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 46.1,
+    "bodyFat": 12.4,
+    "water": 61.8,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2129
+  },
+  {
+    "recordedAt": "2024-12-19T06:32:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.7,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2120
+  },
+  {
+    "recordedAt": "2024-12-20T06:20:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 46.1,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2137
+  },
+  {
+    "recordedAt": "2024-12-21T07:22:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.1,
+    "bodyFat": 12.5,
+    "water": 61.7,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2136
+  },
+  {
+    "recordedAt": "2024-12-22T05:19:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46.4,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2135
+  },
+  {
+    "recordedAt": "2024-12-23T05:34:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46.8,
+    "bodyFat": 12.1,
+    "water": 62.2,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2149
+  },
+  {
+    "recordedAt": "2024-12-24T06:09:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 46.5,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2132
+  },
+  {
+    "recordedAt": "2024-12-25T07:27:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.4,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2145
+  },
+  {
+    "recordedAt": "2024-12-26T07:27:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 46.5,
+    "bodyFat": 12.6,
+    "water": 61.7,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2151
+  },
+  {
+    "recordedAt": "2024-12-27T06:23:00.000Z",
+    "weight": 67,
+    "muscleMass": 46,
+    "bodyFat": 13,
+    "water": 61.2,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2136
+  },
+  {
+    "recordedAt": "2024-12-28T07:07:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 44.5,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2100
+  },
+  {
+    "recordedAt": "2024-12-29T07:21:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 45.5,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2137
+  },
+  {
+    "recordedAt": "2024-12-30T06:47:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 46.2,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2151
+  },
+  {
+    "recordedAt": "2024-12-31T07:24:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46,
+    "bodyFat": 12.7,
+    "water": 61.4,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2025-01-01T07:42:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 45.9,
+    "bodyFat": 12.8,
+    "water": 61.3,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2141
+  },
+  {
+    "recordedAt": "2025-01-02T06:43:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2138
+  },
+  {
+    "recordedAt": "2025-01-03T08:24:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.9,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2128
+  },
+  {
+    "recordedAt": "2025-01-04T06:10:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 46.8,
+    "bodyFat": 12.1,
+    "water": 62.2,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2157
+  },
+  {
+    "recordedAt": "2025-01-05T07:07:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 46.4,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2136
+  },
+  {
+    "recordedAt": "2025-01-06T06:14:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.8,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2122
+  },
+  {
+    "recordedAt": "2025-01-07T05:48:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 46.2,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2137
+  },
+  {
+    "recordedAt": "2025-01-08T05:39:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 44.8,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2085
+  },
+  {
+    "recordedAt": "2025-01-09T05:46:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 44.8,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2081
+  },
+  {
+    "recordedAt": "2025-01-10T07:08:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 45.8,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2109
+  },
+  {
+    "recordedAt": "2025-01-11T06:15:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45.5,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2114
+  },
+  {
+    "recordedAt": "2025-01-12T06:58:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 46.3,
+    "bodyFat": 12.7,
+    "water": 61.4,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2118
+  },
+  {
+    "recordedAt": "2025-01-13T07:08:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 46.4,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2025-01-14T06:41:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2118
+  },
+  {
+    "recordedAt": "2025-01-15T06:49:00.000Z",
+    "weight": 66.1,
+    "muscleMass": 46.6,
+    "bodyFat": 12.4,
+    "water": 61.8,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2134
+  },
+  {
+    "recordedAt": "2025-01-16T06:29:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 46.3,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2128
+  },
+  {
+    "recordedAt": "2025-01-17T05:21:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2094
+  },
+  {
+    "recordedAt": "2025-01-18T06:46:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.6,
+    "bodyFat": 12.3,
+    "water": 61.9,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2108
+  },
+  {
+    "recordedAt": "2025-01-19T06:38:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 45.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2089
+  },
+  {
+    "recordedAt": "2025-01-20T06:14:00.000Z",
+    "weight": 67,
+    "muscleMass": 45.8,
+    "bodyFat": 13,
+    "water": 61.2,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2130
+  },
+  {
+    "recordedAt": "2025-01-21T07:33:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 45.2,
+    "bodyFat": 13.6,
+    "water": 60.5,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2097
+  },
+  {
+    "recordedAt": "2025-01-22T07:00:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45.6,
+    "bodyFat": 12.1,
+    "water": 62.2,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2119
+  },
+  {
+    "recordedAt": "2025-01-23T06:06:00.000Z",
+    "weight": 67,
+    "muscleMass": 46.3,
+    "bodyFat": 12.4,
+    "water": 61.7,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2147
+  },
+  {
+    "recordedAt": "2025-01-24T06:17:00.000Z",
+    "weight": 67,
+    "muscleMass": 45.9,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2025-01-25T06:53:00.000Z",
+    "weight": 67.1,
+    "muscleMass": 46.2,
+    "bodyFat": 12.5,
+    "water": 61.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2146
+  },
+  {
+    "recordedAt": "2025-01-26T07:27:00.000Z",
+    "weight": 67.1,
+    "muscleMass": 44.9,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2099
+  },
+  {
+    "recordedAt": "2025-01-27T07:43:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 44.9,
+    "bodyFat": 13,
+    "water": 61.1,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2025-01-28T06:08:00.000Z",
+    "weight": 67,
+    "muscleMass": 46.5,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2154
+  },
+  {
+    "recordedAt": "2025-01-29T07:03:00.000Z",
+    "weight": 67,
+    "muscleMass": 45.8,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2129
+  },
+  {
+    "recordedAt": "2025-01-30T07:01:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 46.2,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2151
+  },
+  {
+    "recordedAt": "2025-01-31T06:20:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 47,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2162
+  },
+  {
+    "recordedAt": "2025-02-01T06:35:00.000Z",
+    "weight": 67,
+    "muscleMass": 44.1,
+    "bodyFat": 13.5,
+    "water": 60.6,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2068
+  },
+  {
+    "recordedAt": "2025-02-02T07:12:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 44.5,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2075
+  },
+  {
+    "recordedAt": "2025-02-03T06:53:00.000Z",
+    "weight": 65.8,
+    "muscleMass": 47.1,
+    "bodyFat": 11.8,
+    "water": 62.6,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2146
+  },
+  {
+    "recordedAt": "2025-02-04T05:59:00.000Z",
+    "weight": 65.8,
+    "muscleMass": 46.7,
+    "bodyFat": 12.2,
+    "water": 62,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2132
+  },
+  {
+    "recordedAt": "2025-02-05T05:37:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 46.4,
+    "bodyFat": 12.4,
+    "water": 61.9,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2138
+  },
+  {
+    "recordedAt": "2025-02-06T06:18:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46.6,
+    "bodyFat": 12.3,
+    "water": 62,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2143
+  },
+  {
+    "recordedAt": "2025-02-07T06:59:00.000Z",
+    "weight": 65.7,
+    "muscleMass": 45.7,
+    "bodyFat": 12.8,
+    "water": 61.3,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2094
+  },
+  {
+    "recordedAt": "2025-02-08T06:38:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 46.5,
+    "bodyFat": 12.3,
+    "water": 62,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2139
+  },
+  {
+    "recordedAt": "2025-02-09T06:33:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 46.8,
+    "bodyFat": 12.1,
+    "water": 62.2,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2160
+  },
+  {
+    "recordedAt": "2025-02-10T06:25:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 45.5,
+    "bodyFat": 13.5,
+    "water": 60.5,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2101
+  },
+  {
+    "recordedAt": "2025-02-11T07:06:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 44.8,
+    "bodyFat": 12.5,
+    "water": 61.7,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2076
+  },
+  {
+    "recordedAt": "2025-02-12T07:27:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 46.4,
+    "bodyFat": 12.4,
+    "water": 61.9,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2158
+  },
+  {
+    "recordedAt": "2025-02-13T07:19:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 46.6,
+    "bodyFat": 12.1,
+    "water": 62.3,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2168
+  },
+  {
+    "recordedAt": "2025-02-15T06:48:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 45.4,
+    "bodyFat": 13.4,
+    "water": 60.7,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2122
+  },
+  {
+    "recordedAt": "2025-02-16T07:06:00.000Z",
+    "weight": 67.8,
+    "muscleMass": 45.1,
+    "bodyFat": 13.9,
+    "water": 60.1,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2123
+  },
+  {
+    "recordedAt": "2025-02-17T06:53:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.4,
+    "bodyFat": 13.6,
+    "water": 60.5,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2125
+  },
+  {
+    "recordedAt": "2025-02-18T07:28:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 46.1,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2025-02-19T07:36:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 45.6,
+    "bodyFat": 13.4,
+    "water": 60.7,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2134
+  },
+  {
+    "recordedAt": "2025-02-20T07:54:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.9,
+    "bodyFat": 13.6,
+    "water": 60.5,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2102
+  },
+  {
+    "recordedAt": "2025-02-21T06:42:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.7,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2094
+  },
+  {
+    "recordedAt": "2025-02-22T06:30:00.000Z",
+    "weight": 67.8,
+    "muscleMass": 46.2,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2164
+  },
+  {
+    "recordedAt": "2025-02-23T06:54:00.000Z",
+    "weight": 67,
+    "muscleMass": 44.7,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2090
+  },
+  {
+    "recordedAt": "2025-02-24T07:53:00.000Z",
+    "weight": 67,
+    "muscleMass": 44.8,
+    "bodyFat": 14.2,
+    "water": 59.8,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2093
+  },
+  {
+    "recordedAt": "2025-02-25T06:42:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 44.7,
+    "bodyFat": 13,
+    "water": 61.1,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2102
+  },
+  {
+    "recordedAt": "2025-02-26T06:52:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 44.9,
+    "bodyFat": 12.7,
+    "water": 61.5,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2025-02-27T07:40:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 46.4,
+    "bodyFat": 12.4,
+    "water": 61.9,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2158
+  },
+  {
+    "recordedAt": "2025-02-28T06:22:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 46.2,
+    "bodyFat": 12.8,
+    "water": 61.4,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2149
+  },
+  {
+    "recordedAt": "2025-03-01T08:01:00.000Z",
+    "weight": 67,
+    "muscleMass": 46.4,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2151
+  },
+  {
+    "recordedAt": "2025-03-02T08:58:00.000Z",
+    "weight": 66.6,
+    "muscleMass": 46.1,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2130
+  },
+  {
+    "recordedAt": "2025-03-03T07:33:00.000Z",
+    "weight": 67,
+    "muscleMass": 46,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2136
+  },
+  {
+    "recordedAt": "2025-03-04T09:07:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 46.2,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2154
+  },
+  {
+    "recordedAt": "2025-03-05T08:41:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 44.1,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2066
+  },
+  {
+    "recordedAt": "2025-03-06T07:19:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45.6,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2120
+  },
+  {
+    "recordedAt": "2025-03-07T06:59:00.000Z",
+    "weight": 67.1,
+    "muscleMass": 45.1,
+    "bodyFat": 12.9,
+    "water": 61.3,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2025-03-09T06:30:00.000Z",
+    "weight": 67,
+    "muscleMass": 44.7,
+    "bodyFat": 13,
+    "water": 61.1,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2090
+  },
+  {
+    "recordedAt": "2025-03-10T08:15:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 45,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2098
+  },
+  {
+    "recordedAt": "2025-03-11T10:09:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 45,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2117
+  },
+  {
+    "recordedAt": "2025-03-12T07:57:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 45.7,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2143
+  },
+  {
+    "recordedAt": "2025-03-13T07:21:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.6,
+    "bodyFat": 13.6,
+    "water": 60.5,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2132
+  },
+  {
+    "recordedAt": "2025-03-14T07:14:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 45.4,
+    "bodyFat": 13.8,
+    "water": 60.3,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2025-03-15T07:03:00.000Z",
+    "weight": 67.3,
+    "muscleMass": 45.8,
+    "bodyFat": 13.3,
+    "water": 60.7,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2137
+  },
+  {
+    "recordedAt": "2025-03-16T07:17:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.4,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2125
+  },
+  {
+    "recordedAt": "2025-03-17T07:00:00.000Z",
+    "weight": 67,
+    "muscleMass": 45.4,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2025-03-18T07:41:00.000Z",
+    "weight": 67.8,
+    "muscleMass": 44,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2083
+  },
+  {
+    "recordedAt": "2025-03-19T05:52:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 45.4,
+    "bodyFat": 13.8,
+    "water": 60.3,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2129
+  },
+  {
+    "recordedAt": "2025-03-20T07:23:00.000Z",
+    "weight": 67.1,
+    "muscleMass": 45,
+    "bodyFat": 14.2,
+    "water": 59.7,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2103
+  },
+  {
+    "recordedAt": "2025-03-21T06:29:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 45,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2105
+  },
+  {
+    "recordedAt": "2025-03-22T06:23:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 45.4,
+    "bodyFat": 13.7,
+    "water": 60.4,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2137
+  },
+  {
+    "recordedAt": "2025-03-23T07:46:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 43.7,
+    "bodyFat": 15.2,
+    "water": 58.7,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2075
+  },
+  {
+    "recordedAt": "2025-03-24T08:54:00.000Z",
+    "weight": 68.5,
+    "muscleMass": 45.1,
+    "bodyFat": 14.2,
+    "water": 59.8,
+    "bmi": 21.9,
+    "dailyCalorieRequirement": 2140
+  },
+  {
+    "recordedAt": "2025-03-25T06:25:00.000Z",
+    "weight": 68.1,
+    "muscleMass": 44.6,
+    "bodyFat": 14.6,
+    "water": 59.3,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2112
+  },
+  {
+    "recordedAt": "2025-03-26T05:53:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 45,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2025-03-27T06:14:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 44.7,
+    "bodyFat": 13.4,
+    "water": 60.7,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2111
+  },
+  {
+    "recordedAt": "2025-03-28T05:00:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 44.9,
+    "bodyFat": 14.3,
+    "water": 59.7,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2111
+  },
+  {
+    "recordedAt": "2025-03-29T05:59:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 45.1,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2126
+  },
+  {
+    "recordedAt": "2025-03-30T06:14:00.000Z",
+    "weight": 68.1,
+    "muscleMass": 45,
+    "bodyFat": 13.9,
+    "water": 60.2,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2025-03-31T06:05:00.000Z",
+    "weight": 68,
+    "muscleMass": 44.2,
+    "bodyFat": 14.9,
+    "water": 59,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2095
+  },
+  {
+    "recordedAt": "2025-04-01T06:36:00.000Z",
+    "weight": 68.2,
+    "muscleMass": 45,
+    "bodyFat": 13.9,
+    "water": 60.2,
+    "bmi": 21.8,
+    "dailyCalorieRequirement": 2129
+  },
+  {
+    "recordedAt": "2025-04-03T05:58:00.000Z",
+    "weight": 67.8,
+    "muscleMass": 45.1,
+    "bodyFat": 14.2,
+    "water": 59.8,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2123
+  },
+  {
+    "recordedAt": "2025-04-04T05:26:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 43.5,
+    "bodyFat": 15.1,
+    "water": 58.8,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2063
+  },
+  {
+    "recordedAt": "2025-04-05T05:12:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 44.8,
+    "bodyFat": 14.3,
+    "water": 59.7,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2103
+  },
+  {
+    "recordedAt": "2025-04-06T05:11:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 44.6,
+    "bodyFat": 14.4,
+    "water": 59.5,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2103
+  },
+  {
+    "recordedAt": "2025-04-07T05:43:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 45.5,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2140
+  },
+  {
+    "recordedAt": "2025-04-09T05:09:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 45.1,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2121
+  },
+  {
+    "recordedAt": "2025-04-12T05:43:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 44.1,
+    "bodyFat": 13.9,
+    "water": 60.1,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2089
+  },
+  {
+    "recordedAt": "2025-04-13T06:22:00.000Z",
+    "weight": 67,
+    "muscleMass": 44.4,
+    "bodyFat": 14.8,
+    "water": 59.1,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2079
+  },
+  {
+    "recordedAt": "2025-04-14T04:15:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 45.1,
+    "bodyFat": 14.1,
+    "water": 59.8,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2119
+  },
+  {
+    "recordedAt": "2025-04-15T04:59:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 45.2,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2122
+  },
+  {
+    "recordedAt": "2025-04-16T06:08:00.000Z",
+    "weight": 68,
+    "muscleMass": 44.8,
+    "bodyFat": 14.3,
+    "water": 59.7,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2117
+  },
+  {
+    "recordedAt": "2025-04-17T06:23:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 44.8,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2115
+  },
+  {
+    "recordedAt": "2025-04-18T04:28:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 43.9,
+    "bodyFat": 15.4,
+    "water": 58.5,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2082
+  },
+  {
+    "recordedAt": "2025-04-19T05:26:00.000Z",
+    "weight": 67.5,
+    "muscleMass": 44.3,
+    "bodyFat": 14.9,
+    "water": 59,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2087
+  },
+  {
+    "recordedAt": "2025-04-20T05:00:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.5,
+    "bodyFat": 13.7,
+    "water": 60.4,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2087
+  },
+  {
+    "recordedAt": "2025-04-21T04:32:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2110
+  },
+  {
+    "recordedAt": "2025-04-21T05:30:00.000Z",
+    "weight": 67.4,
+    "muscleMass": 45.5,
+    "bodyFat": 13.8,
+    "water": 60.3,
+    "bmi": 21.5,
+    "dailyCalorieRequirement": 2128
+  },
+  {
+    "recordedAt": "2025-04-22T05:20:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 45.1,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2121
+  },
+  {
+    "recordedAt": "2025-04-23T04:47:00.000Z",
+    "weight": 67.9,
+    "muscleMass": 45.3,
+    "bodyFat": 13.6,
+    "water": 60.4,
+    "bmi": 21.7,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2025-04-24T04:48:00.000Z",
+    "weight": 67.6,
+    "muscleMass": 44.8,
+    "bodyFat": 14.4,
+    "water": 59.6,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2108
+  },
+  {
+    "recordedAt": "2025-04-25T04:55:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 44.6,
+    "bodyFat": 14.4,
+    "water": 59.6,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2091
+  },
+  {
+    "recordedAt": "2025-04-26T04:42:00.000Z",
+    "weight": 67,
+    "muscleMass": 44.7,
+    "bodyFat": 14.8,
+    "water": 59.1,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2090
+  },
+  {
+    "recordedAt": "2025-04-27T04:37:00.000Z",
+    "weight": 67.7,
+    "muscleMass": 44.6,
+    "bodyFat": 14.6,
+    "water": 59.4,
+    "bmi": 21.6,
+    "dailyCalorieRequirement": 2103
+  },
+  {
+    "recordedAt": "2025-04-28T04:57:00.000Z",
+    "weight": 66.7,
+    "muscleMass": 45.9,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2125
+  },
+  {
+    "recordedAt": "2025-04-29T05:15:00.000Z",
+    "weight": 67.2,
+    "muscleMass": 45.6,
+    "bodyFat": 13.5,
+    "water": 60.5,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2127
+  },
+  {
+    "recordedAt": "2025-04-30T05:30:00.000Z",
+    "weight": 67,
+    "muscleMass": 45.9,
+    "bodyFat": 13.2,
+    "water": 60.9,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2133
+  },
+  {
+    "recordedAt": "2025-05-01T04:36:00.000Z",
+    "weight": 66.8,
+    "muscleMass": 45.5,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21.3,
+    "dailyCalorieRequirement": 2114
+  },
+  {
+    "recordedAt": "2025-05-02T04:19:00.000Z",
+    "weight": 66.4,
+    "muscleMass": 45.6,
+    "bodyFat": 13.6,
+    "water": 60.4,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2107
+  },
+  {
+    "recordedAt": "2025-05-03T04:44:00.000Z",
+    "weight": 66.3,
+    "muscleMass": 45.5,
+    "bodyFat": 13.3,
+    "water": 60.7,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2101
+  },
+  {
+    "recordedAt": "2025-05-04T04:06:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 44.5,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2056
+  },
+  {
+    "recordedAt": "2025-05-05T05:23:00.000Z",
+    "weight": 66.2,
+    "muscleMass": 45,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2081
+  },
+  {
+    "recordedAt": "2025-05-06T05:10:00.000Z",
+    "weight": 66,
+    "muscleMass": 44.9,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 21.1,
+    "dailyCalorieRequirement": 2073
+  },
+  {
+    "recordedAt": "2025-05-07T04:38:00.000Z",
+    "weight": 65.8,
+    "muscleMass": 45.2,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2078
+  },
+  {
+    "recordedAt": "2025-05-08T03:35:00.000Z",
+    "weight": 65.6,
+    "muscleMass": 44.5,
+    "bodyFat": 14.8,
+    "water": 59.2,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2049
+  },
+  {
+    "recordedAt": "2025-05-09T04:36:00.000Z",
+    "weight": 65.4,
+    "muscleMass": 45.2,
+    "bodyFat": 13.9,
+    "water": 60.1,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2069
+  },
+  {
+    "recordedAt": "2025-05-10T04:36:00.000Z",
+    "weight": 65.3,
+    "muscleMass": 43.7,
+    "bodyFat": 15,
+    "water": 58.9,
+    "bmi": 20.8,
+    "dailyCalorieRequirement": 2014
+  },
+  {
+    "recordedAt": "2025-05-11T05:01:00.000Z",
+    "weight": 65,
+    "muscleMass": 43.9,
+    "bodyFat": 13.9,
+    "water": 60.1,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2014
+  },
+  {
+    "recordedAt": "2025-05-12T05:12:00.000Z",
+    "weight": 65.1,
+    "muscleMass": 45.6,
+    "bodyFat": 13.5,
+    "water": 60.5,
+    "bmi": 20.8,
+    "dailyCalorieRequirement": 2075
+  },
+  {
+    "recordedAt": "2025-05-13T04:55:00.000Z",
+    "weight": 65.2,
+    "muscleMass": 44.7,
+    "bodyFat": 14.7,
+    "water": 59.2,
+    "bmi": 20.8,
+    "dailyCalorieRequirement": 2046
+  },
+  {
+    "recordedAt": "2025-05-14T04:49:00.000Z",
+    "weight": 65.2,
+    "muscleMass": 45.1,
+    "bodyFat": 14.2,
+    "water": 59.8,
+    "bmi": 20.8,
+    "dailyCalorieRequirement": 2060
+  },
+  {
+    "recordedAt": "2025-05-15T04:24:00.000Z",
+    "weight": 64.8,
+    "muscleMass": 44.7,
+    "bodyFat": 14.5,
+    "water": 59.4,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2037
+  },
+  {
+    "recordedAt": "2025-05-16T04:17:00.000Z",
+    "weight": 64.5,
+    "muscleMass": 45.3,
+    "bodyFat": 13.9,
+    "water": 60.2,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2050
+  },
+  {
+    "recordedAt": "2025-05-17T05:20:00.000Z",
+    "weight": 64.5,
+    "muscleMass": 44.3,
+    "bodyFat": 14.5,
+    "water": 59.5,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2016
+  },
+  {
+    "recordedAt": "2025-05-18T04:08:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45.2,
+    "bodyFat": 14.3,
+    "water": 59.7,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2042
+  },
+  {
+    "recordedAt": "2025-05-19T05:34:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45.1,
+    "bodyFat": 14.2,
+    "water": 59.8,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2039
+  },
+  {
+    "recordedAt": "2025-05-20T03:29:00.000Z",
+    "weight": 65.7,
+    "muscleMass": 44.8,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2062
+  },
+  {
+    "recordedAt": "2025-05-21T04:50:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 45.5,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2106
+  },
+  {
+    "recordedAt": "2025-05-22T04:19:00.000Z",
+    "weight": 66.9,
+    "muscleMass": 44.2,
+    "bodyFat": 13.7,
+    "water": 60.4,
+    "bmi": 21.4,
+    "dailyCalorieRequirement": 2069
+  },
+  {
+    "recordedAt": "2025-05-23T03:51:00.000Z",
+    "weight": 65.9,
+    "muscleMass": 44,
+    "bodyFat": 14.3,
+    "water": 59.7,
+    "bmi": 21,
+    "dailyCalorieRequirement": 2038
+  },
+  {
+    "recordedAt": "2025-05-24T04:34:00.000Z",
+    "weight": 65.5,
+    "muscleMass": 44.6,
+    "bodyFat": 15,
+    "water": 58.9,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2050
+  },
+  {
+    "recordedAt": "2025-05-25T04:34:00.000Z",
+    "weight": 65.4,
+    "muscleMass": 44.7,
+    "bodyFat": 14.8,
+    "water": 59.2,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2051
+  },
+  {
+    "recordedAt": "2025-05-26T04:19:00.000Z",
+    "weight": 65.4,
+    "muscleMass": 44.8,
+    "bodyFat": 14.6,
+    "water": 59.3,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2055
+  },
+  {
+    "recordedAt": "2025-05-28T04:59:00.000Z",
+    "weight": 66.5,
+    "muscleMass": 43.5,
+    "bodyFat": 15,
+    "water": 58.9,
+    "bmi": 21.2,
+    "dailyCalorieRequirement": 2035
+  },
+  {
+    "recordedAt": "2025-05-29T04:23:00.000Z",
+    "weight": 64.7,
+    "muscleMass": 44.9,
+    "bodyFat": 14.4,
+    "water": 59.6,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2041
+  },
+  {
+    "recordedAt": "2025-05-30T04:06:00.000Z",
+    "weight": 64.6,
+    "muscleMass": 44.5,
+    "bodyFat": 14.4,
+    "water": 59.6,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2025
+  },
+  {
+    "recordedAt": "2025-05-31T03:34:00.000Z",
+    "weight": 64.4,
+    "muscleMass": 45.2,
+    "bodyFat": 13.9,
+    "water": 60.2,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2044
+  },
+  {
+    "recordedAt": "2025-06-01T03:56:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45.5,
+    "bodyFat": 13.6,
+    "water": 60.4,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2052
+  },
+  {
+    "recordedAt": "2025-06-02T03:30:00.000Z",
+    "weight": 64,
+    "muscleMass": 45.6,
+    "bodyFat": 13.6,
+    "water": 60.4,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2048
+  },
+  {
+    "recordedAt": "2025-06-03T03:44:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45.7,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2059
+  },
+  {
+    "recordedAt": "2025-06-04T04:03:00.000Z",
+    "weight": 63.9,
+    "muscleMass": 43.5,
+    "bodyFat": 14.6,
+    "water": 59.4,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 1974
+  },
+  {
+    "recordedAt": "2025-06-06T04:01:00.000Z",
+    "weight": 64.4,
+    "muscleMass": 45.3,
+    "bodyFat": 13.9,
+    "water": 60.1,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2048
+  },
+  {
+    "recordedAt": "2025-06-07T04:01:00.000Z",
+    "weight": 64.4,
+    "muscleMass": 45.7,
+    "bodyFat": 13.4,
+    "water": 60.6,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2062
+  },
+  {
+    "recordedAt": "2025-06-08T04:21:00.000Z",
+    "weight": 64.7,
+    "muscleMass": 44.9,
+    "bodyFat": 13.9,
+    "water": 60.1,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2041
+  },
+  {
+    "recordedAt": "2025-06-09T03:24:00.000Z",
+    "weight": 64.5,
+    "muscleMass": 45.3,
+    "bodyFat": 13.7,
+    "water": 60.4,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2050
+  },
+  {
+    "recordedAt": "2025-06-10T03:22:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45.3,
+    "bodyFat": 14,
+    "water": 60,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2045
+  },
+  {
+    "recordedAt": "2025-06-11T03:32:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45.2,
+    "bodyFat": 13.7,
+    "water": 60.3,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2042
+  },
+  {
+    "recordedAt": "2025-06-12T02:50:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 45,
+    "bodyFat": 14.4,
+    "water": 59.6,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2035
+  },
+  {
+    "recordedAt": "2025-06-13T03:32:00.000Z",
+    "weight": 64.3,
+    "muscleMass": 44.5,
+    "bodyFat": 14.5,
+    "water": 59.5,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2018
+  },
+  {
+    "recordedAt": "2025-06-14T03:53:00.000Z",
+    "weight": 63.7,
+    "muscleMass": 45.2,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 20.3,
+    "dailyCalorieRequirement": 2027
+  },
+  {
+    "recordedAt": "2025-06-15T03:42:00.000Z",
+    "weight": 63.7,
+    "muscleMass": 44.2,
+    "bodyFat": 14.1,
+    "water": 60,
+    "bmi": 20.3,
+    "dailyCalorieRequirement": 1993
+  },
+  {
+    "recordedAt": "2025-06-16T03:26:00.000Z",
+    "weight": 64.6,
+    "muscleMass": 44.3,
+    "bodyFat": 13.7,
+    "water": 60.4,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2018
+  },
+  {
+    "recordedAt": "2025-06-18T03:54:00.000Z",
+    "weight": 64.8,
+    "muscleMass": 45.6,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2068
+  },
+  {
+    "recordedAt": "2025-06-19T03:28:00.000Z",
+    "weight": 64.4,
+    "muscleMass": 46.2,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2079
+  },
+  {
+    "recordedAt": "2025-06-20T03:47:00.000Z",
+    "weight": 63.3,
+    "muscleMass": 44.4,
+    "bodyFat": 14.5,
+    "water": 59.5,
+    "bmi": 20.2,
+    "dailyCalorieRequirement": 1990
+  },
+  {
+    "recordedAt": "2025-06-21T04:52:00.000Z",
+    "weight": 64,
+    "muscleMass": 45.7,
+    "bodyFat": 13.1,
+    "water": 61,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2052
+  },
+  {
+    "recordedAt": "2025-06-22T03:20:00.000Z",
+    "weight": 63.8,
+    "muscleMass": 43.9,
+    "bodyFat": 14.3,
+    "water": 59.7,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 1985
+  },
+  {
+    "recordedAt": "2025-06-23T03:54:00.000Z",
+    "weight": 63.9,
+    "muscleMass": 45.7,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2049
+  },
+  {
+    "recordedAt": "2025-06-24T03:19:00.000Z",
+    "weight": 63.9,
+    "muscleMass": 44.6,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2012
+  },
+  {
+    "recordedAt": "2025-06-25T04:47:00.000Z",
+    "weight": 64.1,
+    "muscleMass": 46,
+    "bodyFat": 13,
+    "water": 61.1,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2065
+  },
+  {
+    "recordedAt": "2025-06-26T03:39:00.000Z",
+    "weight": 64.6,
+    "muscleMass": 44.4,
+    "bodyFat": 14.1,
+    "water": 59.9,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2022
+  },
+  {
+    "recordedAt": "2025-06-27T03:19:00.000Z",
+    "weight": 64.2,
+    "muscleMass": 46,
+    "bodyFat": 12.9,
+    "water": 61.2,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2067
+  },
+  {
+    "recordedAt": "2025-06-28T04:17:00.000Z",
+    "weight": 63.8,
+    "muscleMass": 45.7,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2047
+  },
+  {
+    "recordedAt": "2025-06-29T03:40:00.000Z",
+    "weight": 63.8,
+    "muscleMass": 46.2,
+    "bodyFat": 12.6,
+    "water": 61.6,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2064
+  },
+  {
+    "recordedAt": "2025-06-30T03:29:00.000Z",
+    "weight": 64,
+    "muscleMass": 45.7,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2052
+  },
+  {
+    "recordedAt": "2025-07-01T03:52:00.000Z",
+    "weight": 63.8,
+    "muscleMass": 45.7,
+    "bodyFat": 13.3,
+    "water": 60.8,
+    "bmi": 20.4,
+    "dailyCalorieRequirement": 2047
+  },
+  {
+    "recordedAt": "2025-07-03T03:45:00.000Z",
+    "weight": 65.4,
+    "muscleMass": 45.2,
+    "bodyFat": 13.8,
+    "water": 60.2,
+    "bmi": 20.9,
+    "dailyCalorieRequirement": 2069
+  },
+  {
+    "recordedAt": "2025-07-05T03:40:00.000Z",
+    "weight": 64.7,
+    "muscleMass": 44.7,
+    "bodyFat": 14.7,
+    "water": 59.3,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2034
+  },
+  {
+    "recordedAt": "2025-07-06T04:25:00.000Z",
+    "weight": 64.1,
+    "muscleMass": 44.8,
+    "bodyFat": 14.7,
+    "water": 59.3,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2023
+  },
+  {
+    "recordedAt": "2025-07-07T03:47:00.000Z",
+    "weight": 64.1,
+    "muscleMass": 45.2,
+    "bodyFat": 13.8,
+    "water": 60.3,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 2037
+  },
+  {
+    "recordedAt": "2025-07-08T03:17:00.000Z",
+    "weight": 64.4,
+    "muscleMass": 45.2,
+    "bodyFat": 13.8,
+    "water": 60.3,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2044
+  },
+  {
+    "recordedAt": "2025-07-09T03:40:00.000Z",
+    "weight": 64.7,
+    "muscleMass": 45.7,
+    "bodyFat": 13.3,
+    "water": 60.9,
+    "bmi": 20.7,
+    "dailyCalorieRequirement": 2069
+  },
+  {
+    "recordedAt": "2025-07-10T04:20:00.000Z",
+    "weight": 64.1,
+    "muscleMass": 44,
+    "bodyFat": 14.2,
+    "water": 59.9,
+    "bmi": 20.5,
+    "dailyCalorieRequirement": 1996
+  },
+  {
+    "recordedAt": "2025-07-11T03:48:00.000Z",
+    "weight": 64.4,
+    "muscleMass": 45.1,
+    "bodyFat": 14.1,
+    "water": 60.1,
+    "bmi": 20.6,
+    "dailyCalorieRequirement": 2041
+  }
+]

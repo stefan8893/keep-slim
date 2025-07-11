@@ -1,11 +1,10 @@
-// fonts are handled by tailwindcss, see body-tag in index.html and styles.css
+// fonts are handled by tailwindcss, see body tag in index.html and styles.css
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $popover: (
     'border-radius': 10px,
   ),
   $card: (
     'border-radius': 6px,
-    //'padding': 0,
   )
 );
 

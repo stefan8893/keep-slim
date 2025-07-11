@@ -31,8 +31,9 @@ export class BodyDataRepository {
 
   async query(options: QueryOptions) {
     console.log(options);
-    // const filter = this.toFilter(options);
-    // const iterator = this.bodyDataTableClient.listEntities({ queryOptions: { filter } });
-    //return (await Array.fromAsync(iterator)).map(this.toBodyData);
+    const filter = this.toFilter(options);
+    const iterator = this.bodyDataTableClient.listEntities({ queryOptions: { filter } });
+
+    return (await Array.fromAsync(iterator)).map(this.toBodyData);
   }
 }

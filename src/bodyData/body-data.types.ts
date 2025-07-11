@@ -7,3 +7,9 @@ export type BodyData = {
   bmi: number;
   dailyCalorieRequirement: number;
 };
+
+export type BodyDataChange = {
+  start: Date;
+  end: Date;
+  change: number;
+};

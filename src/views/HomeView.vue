@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import type { BodyData } from '@/bodyData/body-data.types';
+import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
-import WeeklyWeightChartView from '@/views/WeeklyWeightChartView.vue';
+import { getTestData } from '@/testData/body-data';
+import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
-import { ref, watch } from 'vue';
+import { type Ref, onMounted, ref, watch } from 'vue';
+
+useCommonChartOptions();
 
 const start = ref<Date>();
 const end = ref<Date>();
@@ -28,6 +33,12 @@ watch(start, () => {
 watch(end, () => {
   console.log('DateRange updated in HomeView', end.value);
 });
+
+const bodyData: Ref<BodyData[]> = ref(getTestData());
+
+console.log(bodyData.value);
+
+onMounted(async () => {});
 </script>
 
 <template>
@@ -40,10 +51,10 @@ watch(end, () => {
     />
   </div>
   <div class="mt-8">
-    <WidgetsView />
+    <WidgetsView :body-data="bodyData" />
   </div>
   <div class="mt-8">
-    <WeeklyWeightChartView />
+    <WeeklyWeightChangeChartView :body-data="bodyData" />
   </div>
 </template>
 
