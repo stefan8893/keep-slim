@@ -6,7 +6,7 @@ import TheHeader from '@/components/layout/header/TheHeader.vue';
 <template>
   <div class="layout-container">
     <header class="h-center items-center">
-      <TheHeader class="app-strip min-h-16">
+      <TheHeader class="app-strip">
         <template #headerRight> <slot name="headerRight"></slot></template>
       </TheHeader>
     </header>
