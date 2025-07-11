@@ -34,6 +34,8 @@ export class BodyDataRepository {
     const filter = this.toFilter(options);
     const iterator = this.bodyDataTableClient.listEntities({ queryOptions: { filter } });
 
+    //TODO: ensure sorted result
+
     return (await Array.fromAsync(iterator)).map(this.toBodyData);
   }
 }

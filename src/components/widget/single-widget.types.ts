@@ -6,10 +6,3 @@ export type WidgetOptions = {
   minValue: number;
   maxValue: number;
 };
-
-export type WidgetValues = {
-  latestRecordDateTime: Date;
-  latestValue: number;
-  changeInSelectedTimeRange: number;
-  weeklyAverageChange: number;
-};

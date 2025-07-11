@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { WidgetValues } from '@/bodyData/aggregations/widget-values';
 import SingleWidgetChangeInDateRangeSelection from '@/components/widget/SingleWidgetChangeInDateRangeSelection.vue';
 import InfoIcon from '@/components/widget/SingleWidgetInfoIcon.vue';
 import SingleWidgetProgressIndicator from '@/components/widget/SingleWidgetProgressIndicator.vue';
 import SingleWidgetWeeklyAverage from '@/components/widget/SingleWidgetWeeklyAverage.vue';
-import type { WidgetOptions, WidgetValues } from '@/components/widget/single-widget.types';
+import type { WidgetOptions } from '@/components/widget/single-widget.types';
 import { computed } from 'vue';
 
 const props = defineProps<{

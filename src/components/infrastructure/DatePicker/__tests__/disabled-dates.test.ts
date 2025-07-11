@@ -8,7 +8,7 @@ import { describe, expect, test } from 'vitest';
 const minDate = parseISO('2025-07-01');
 const maxDate = parseISO('2025-07-31');
 
-describe('DateRangePicker disabled start date', () => {
+describe('isStartDateDisabled', () => {
   test('date is not disabled when it is between min and max date', () => {
     const result = isStartDateDisabled(parseISO('2025-07-07'), minDate, maxDate);
     expect(result).toBe(false);
@@ -47,7 +47,7 @@ describe('DateRangePicker disabled start date', () => {
   });
 });
 
-describe('DateRangePicker disabled end date', () => {
+describe('isEndDateDisabled', () => {
   test('date is not disabled when it is between min and max date', () => {
     const result = isEndDateDisabled(parseISO('2025-07-07'), minDate, maxDate);
     expect(result).toBe(false);

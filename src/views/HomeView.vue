@@ -6,12 +6,13 @@ import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicke
 import { getTestData } from '@/testData/body-data';
 import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
-import { type Ref, onMounted, ref, watch } from 'vue';
+import { type Ref, computed, onMounted, ref, watch } from 'vue';
 
 useCommonChartOptions();
 
-const start = ref<Date>();
-const end = ref<Date>();
+const startDate = ref<Date>();
+const endDate = ref<Date>();
+const bodyData: Ref<BodyData[]> = ref([]);
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -26,17 +27,19 @@ const datePickerSelction: DateRangeSelectionId[] = [
   'CUSTOM',
 ];
 
-watch(start, () => {
-  console.log('DateRange updated in HomeView', start.value);
+const bothDatesPresent = computed(() => !!startDate.value && !!endDate.value);
+
+watch(bothDatesPresent, () => {
+  if (bothDatesPresent.value) fetchData();
 });
 
-watch(end, () => {
-  console.log('DateRange updated in HomeView', end.value);
-});
+const fetchData = async () => {
+  if (!bothDatesPresent.value) return;
 
-const bodyData: Ref<BodyData[]> = ref(getTestData());
-
-console.log(bodyData.value);
+  bodyData.value = getTestData().filter(
+    (x) => x.recordedAt >= startDate.value! && x.recordedAt <= endDate.value!,
+  );
+};
 
 onMounted(async () => {});
 </script>
@@ -44,8 +47,8 @@ onMounted(async () => {});
 <template>
   <div>
     <DateRangePicker
-      v-model:start="start"
-      v-model:end="end"
+      v-model:start="startDate"
+      v-model:end="endDate"
       :initialSelection="'L6M'"
       :available-selections="datePickerSelction"
     />

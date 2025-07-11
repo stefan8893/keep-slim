@@ -8,6 +8,11 @@ export type BodyData = {
   dailyCalorieRequirement: number;
 };
 
+export type BoundaryRecords = {
+  first: BodyData;
+  last: BodyData;
+};
+
 export type BodyDataChange = {
   start: Date;
   end: Date;

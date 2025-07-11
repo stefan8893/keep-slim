@@ -1,16 +1,46 @@
 <script setup lang="ts">
+import type { WidgetValues } from '@/bodyData/aggregations/widget-values';
 import type { BodyData } from '@/bodyData/body-data.types';
 import { useColors } from '@/colors/useColors';
 import SingleWidget from '@/components/widget/SingleWidget.vue';
-import type { WidgetOptions, WidgetValues } from '@/components/widget/single-widget.types';
+import type { WidgetOptions } from '@/components/widget/single-widget.types';
 import { MessageKey } from '@/i18n/message-keys.g';
+import type { NumberKeys } from '@/types/type-helpers';
 import { parseISO } from 'date-fns';
+import { computed } from 'vue';
 
 const { weigthColor, muscleMassColor, bodyFatColor, waterColor } = useColors();
 
 const props = defineProps<{
   bodyData: BodyData[];
 }>();
+
+const boundaryRecords = computed(() => {
+  const bodyData = props.bodyData;
+
+  if (bodyData.length === 0) return null;
+
+  return {
+    first: bodyData.at(0),
+    last: bodyData.at(-1),
+  };
+});
+
+const calculateWidgetValues = (
+  key: NumberKeys<BodyData>,
+  boundaryRecords: { first: BodyData; last: BodyData } | undefined,
+) => {
+  if (!boundaryRecords) return null;
+
+  const change = boundaryRecords.last[key] - boundaryRecords.first[key];
+
+  return {
+    latestRecordDateTime: boundaryRecords?.last.recordedAt,
+    latestValue: boundaryRecords.last[key],
+    changeInSelectedTimeRange: change,
+    weeklyAverageChange: 0.4,
+  };
+};
 
 const weightOptions: WidgetOptions = {
   color: weigthColor,
@@ -24,6 +54,7 @@ const weightValues: WidgetValues = {
   latestValue: 64.1,
   changeInSelectedTimeRange: 3,
   weeklyAverageChange: 0.4,
+  monthlyAverageChange: 0.2 / 100,
 };
 
 const muscleMassOptions: WidgetOptions = {
@@ -38,6 +69,7 @@ const muscleMassValues: WidgetValues = {
   latestValue: 45.2 / 100,
   changeInSelectedTimeRange: 1 / 100,
   weeklyAverageChange: 0.01 / 100,
+  monthlyAverageChange: 0.2 / 100,
 };
 
 const bodyFatOptions: WidgetOptions = {
@@ -52,6 +84,7 @@ const bodyFatValues: WidgetValues = {
   latestValue: 13 / 100,
   changeInSelectedTimeRange: -0.7 / 100,
   weeklyAverageChange: 0.3 / 100,
+  monthlyAverageChange: 0.2 / 100,
 };
 
 const waterOptions: WidgetOptions = {
@@ -66,6 +99,7 @@ const waterValues: WidgetValues = {
   latestValue: 60.2 / 100,
   changeInSelectedTimeRange: 0.5 / 100,
   weeklyAverageChange: 0.03 / 100,
+  monthlyAverageChange: 0.2 / 100,
 };
 </script>
 
