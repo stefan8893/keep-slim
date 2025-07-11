@@ -56,6 +56,7 @@ export const MessageKey = {
 	bodyFat: 'bodyFat',
 	water: 'water',
 	bmi: 'bmi',
-	weekly: 'weekly',
+	week: 'week',
+	month: 'month',
 	recordedAt: 'recordedAt',
 };

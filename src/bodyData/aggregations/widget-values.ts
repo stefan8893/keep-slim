@@ -1,6 +1,6 @@
 import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
-import { addMonths, differenceInCalendarMonths, getDaysInMonth } from 'date-fns';
+import { differenceInCalendarMonths, endOfMonth, getDaysInMonth, startOfMonth } from 'date-fns';
 
 export type WidgetValues = {
   latestRecordDateTime: Date;
@@ -27,27 +27,31 @@ function getFirstValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecor
   } else return boundaryRecords.first[key];
 }
 
-export function getExactMonthDifference(start: Date, end: Date): number {
-  if (start.getTime() === end.getTime()) return 0;
-
-  const isNegative = end < start;
-  if (isNegative) return -getExactMonthDifference(end, start);
-
-  const fullMonths = differenceInCalendarMonths(end, start);
-  const anchor = addMonths(start, fullMonths);
-
-  const remainingMs = end.getTime() - anchor.getTime();
-  const hoursDiff = remainingMs / (1000 * 60 * 60);
-
-  const hoursInMonth = getDaysInMonth(anchor) * 24;
-
-  const fractionalMonth = hoursDiff / hoursInMonth;
-
-  return fullMonths + fractionalMonth;
-}
-
 function getExactDayDifference(start: Date, end: Date): number {
   return (end.getTime() - start.getTime()) / (24 * 60 * 60 * 1000);
+}
+
+export function getExactMonthDifference(start: Date, end: Date): number {
+  if (start === end) return 0;
+
+  if (end < start) return getExactMonthDifference(end, start);
+
+  const startEndOfMonth = endOfMonth(start);
+  const endStartOfMonth = startOfMonth(end);
+
+  const daysInMonthOfStartDate = getDaysInMonth(start);
+  const startToEndOfMonthInDaysExact = getExactDayDifference(start, startEndOfMonth);
+
+  const wholeMonthsInBetween = differenceInCalendarMonths(endStartOfMonth, startEndOfMonth) - 1;
+
+  const daysInMonthOfEndDate = getDaysInMonth(end);
+  const startOfMonthToEndInDaysExact = getExactDayDifference(endStartOfMonth, end);
+
+  return (
+    startToEndOfMonthInDaysExact / daysInMonthOfStartDate +
+    wholeMonthsInBetween +
+    startOfMonthToEndInDaysExact / daysInMonthOfEndDate
+  );
 }
 
 function calculateAverageMonthlyChange(

@@ -2,7 +2,7 @@ import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-dat
 import { getBoundaryRecords } from '@/bodyData/aggregations/boundaries';
 import { calculateWidgetValues, emptyWidgetValues } from '@/bodyData/aggregations/widget-values';
 import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
-import { addDays, addMonths, endOfDay, parseISO, startOfDay, startOfISOWeek } from 'date-fns';
+import { addDays, endOfDay, parseISO, startOfDay, startOfISOWeek } from 'date-fns';
 import { test as baseTest, describe, expect } from 'vitest';
 
 const test = baseTest.extend<{
@@ -192,13 +192,13 @@ describe('calculateWidgetValues', () => {
       firstN: [],
       last: {
         ...boundaryRecordsExactWeek.first,
-        recordedAt: parseISO('2025-08-15T12:00:00'),
-        weight: boundaryRecordsExactWeek.first.weight + 2,
+        recordedAt: parseISO('2025-08-16T12:00:00'),
+        weight: boundaryRecordsExactWeek.first.weight + 3,
       },
     };
 
     const widgetValues = calculateWidgetValues('weight', wholeJulyAndHalfOfAugust);
 
-    expect(widgetValues.averageMonthlyChange).toBeCloseTo(1.5, 4);
+    expect(widgetValues.averageMonthlyChange).toBeCloseTo(2, 4);
   });
 });

@@ -81,6 +81,7 @@ const disabledEndDates = (date: Date) =>
           v-model="end"
           :disabled-date="disabledEndDates"
           :placeholder="$t(MessageKey.endDate)"
+          :set-time-to-end-of-day="true"
         />
       </div>
     </div>
