@@ -37,15 +37,22 @@ const muscleMassOptions: WidgetOptions = {
 };
 
 const toPercentage = (widgetValues: WidgetValues): WidgetValues => {
-  return {
-    oldestRecordDateTime: widgetValues.oldestRecordDateTime,
-    latestRecordDateTime: widgetValues.latestRecordDateTime,
-    isSameDay: widgetValues.isSameDay,
-    latestValue: widgetValues.latestValue / 100,
-    change: widgetValues.change / 100,
-    averageWeeklyChange: widgetValues.averageWeeklyChange / 100,
-    averageMonthlyChange: widgetValues.averageMonthlyChange / 100,
-  };
+  if (widgetValues.state === 'empty') return widgetValues;
+
+  if (widgetValues.state === 'singleDay') {
+    return {
+      ...widgetValues,
+      value: widgetValues.value / 100,
+    };
+  } else if (widgetValues.state === 'range') {
+    return {
+      ...widgetValues,
+      latestValue: widgetValues.latestValue / 100,
+      change: widgetValues.change / 100,
+      averageWeeklyChange: widgetValues.averageWeeklyChange / 100,
+      averageMonthlyChange: widgetValues.averageMonthlyChange / 100,
+    };
+  } else return widgetValues;
 };
 
 const muscleMassValues = computed(() =>

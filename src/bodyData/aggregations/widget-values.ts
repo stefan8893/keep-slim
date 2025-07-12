@@ -8,25 +8,27 @@ import {
   startOfMonth,
 } from 'date-fns';
 
-export type WidgetValues = {
+export type Empty = {
+  state: 'empty';
+};
+
+export type SingleDay = {
+  state: 'singleDay';
+  recordedAt: Date;
+  value: number;
+};
+
+export type Range = {
+  state: 'range';
   oldestRecordDateTime: Date;
   latestRecordDateTime: Date;
-  isSameDay: boolean;
   latestValue: number;
   change: number;
   averageWeeklyChange: number;
   averageMonthlyChange: number;
 };
 
-export const emptyWidgetValues: WidgetValues = {
-  oldestRecordDateTime: new Date(0),
-  latestRecordDateTime: new Date(0),
-  isSameDay: true,
-  latestValue: 0,
-  change: 0,
-  averageWeeklyChange: 0,
-  averageMonthlyChange: 0,
-};
+export type WidgetValues = Empty | SingleDay | Range;
 
 function average(numbers: number[]) {
   return numbers.reduce((acc, next) => acc + next, 0) / numbers.length;
@@ -103,17 +105,13 @@ export function calculateWidgetValues(
   key: NumberKeys<BodyData>,
   boundaryRecords?: BoundaryRecords | null,
 ): WidgetValues {
-  if (!boundaryRecords) return emptyWidgetValues;
+  if (!boundaryRecords) return { state: 'empty' };
 
   if (compareAsc(boundaryRecords.first.recordedAt, boundaryRecords.last.recordedAt) === 0)
     return {
-      oldestRecordDateTime: boundaryRecords.first.recordedAt,
-      latestRecordDateTime: boundaryRecords.last.recordedAt,
-      isSameDay: true,
-      latestValue: boundaryRecords.last[key],
-      change: 0,
-      averageWeeklyChange: 0,
-      averageMonthlyChange: 0,
+      state: 'singleDay',
+      recordedAt: boundaryRecords.last.recordedAt,
+      value: boundaryRecords.last[key],
     };
 
   const change = getLastValue(key, boundaryRecords) - getFirstValue(key, boundaryRecords);
@@ -121,9 +119,9 @@ export function calculateWidgetValues(
   const averageMonthlyChange = calculateAverageMonthlyChange(key, boundaryRecords);
 
   return {
+    state: 'range',
     oldestRecordDateTime: boundaryRecords.first.recordedAt,
     latestRecordDateTime: boundaryRecords.last.recordedAt,
-    isSameDay: false,
     latestValue: boundaryRecords.last[key],
     change: change,
     averageWeeklyChange: averageWeeklyChange,

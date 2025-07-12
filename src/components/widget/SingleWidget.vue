@@ -14,10 +14,28 @@ const props = defineProps<{
   options: WidgetOptions;
 }>();
 
-const latestValue = computed(() => props.values.latestValue);
-const change = computed(() => props.values.change);
-const averageWeeklyChange = computed(() => props.values.averageWeeklyChange);
-const averageMonthlyChange = computed(() => props.values.averageMonthlyChange);
+const latestValue = computed(() =>
+  props.values.state === 'range'
+    ? props.values.latestValue
+    : props.values.state === 'singleDay'
+      ? props.values.value
+      : 0,
+);
+const change = computed(() =>
+  props.values.state === 'singleDay'
+    ? props.values.value
+    : props.values.state === 'range'
+      ? props.values.change
+      : 0,
+);
+const averageWeeklyChange = computed(() =>
+  props.values.state === 'range' ? props.values.averageWeeklyChange : 0,
+);
+const averageMonthlyChange = computed(() =>
+  props.values.state === 'range' ? props.values.averageMonthlyChange : 0,
+);
+
+const showSatistics = computed(() => props.values.state === 'range');
 </script>
 
 <template>
@@ -25,17 +43,14 @@ const averageMonthlyChange = computed(() => props.values.averageMonthlyChange);
     <template #header>
       <div class="flex flex-row flex-nowrap items-center justify-between">
         <el-text size="large">{{ $t(props.titleMessageKey) }}</el-text>
-        <InfoIcon :widget-values="props.values" />
+        <InfoIcon :values="props.values" />
       </div>
     </template>
     <template #default>
       <div class="flex flex-col flex-nowrap items-center justify-start">
         <SingleWidgetProgressIndicator :value="latestValue" :options="props.options" />
       </div>
-      <div
-        v-if="!props.values.isSameDay"
-        class="mt-4 flex flex-col flex-nowrap items-center justify-start"
-      >
+      <div v-if="showSatistics" class="mt-4 flex flex-col flex-nowrap items-center justify-start">
         <SingleWidgetTotalChange :change="change" :options="props.options" />
         <SingleWidgetAverageChange
           :average-change="averageWeeklyChange"

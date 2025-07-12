@@ -1,4 +1,4 @@
-import { calculateWidgetValues, emptyWidgetValues } from '@/bodyData/aggregations/widget-values';
+import { calculateWidgetValues } from '@/bodyData/aggregations/widget-values';
 import type { BoundaryRecords } from '@/bodyData/body-data.types';
 import { addDays, parseISO, startOfISOWeek } from 'date-fns';
 import { test as baseTest, describe, expect } from 'vitest';

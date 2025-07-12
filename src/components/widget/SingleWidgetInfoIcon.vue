@@ -3,36 +3,43 @@ import type { WidgetValues } from '@/bodyData/aggregations/widget-values';
 import { formatDate, formatTime } from '@/i18n/date-utils';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { InfoFilled } from '@element-plus/icons-vue';
-import { compareAsc } from 'date-fns';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  widgetValues: WidgetValues;
+  values: WidgetValues;
 }>();
 
-const minDate = new Date(0);
+const latestRecordDateTime = computed(() =>
+  props.values.state === 'range'
+    ? props.values.latestRecordDateTime
+    : props.values.state === 'singleDay'
+      ? props.values.recordedAt
+      : new Date(0),
+);
 
-const latestRecordDateTime = computed(() => props.widgetValues.latestRecordDateTime);
+const oldestRecordDateTime = computed(() =>
+  props.values.state === 'range' ? props.values.oldestRecordDateTime : new Date(0),
+);
 
-const isSameDay = computed(() => props.widgetValues.isSameDay);
-const show = computed(() => compareAsc(props.widgetValues.latestRecordDateTime, minDate) !== 0);
+const isSingleDay = computed(() => props.values.state === 'singleDay');
+const isEmpty = computed(() => props.values.state === 'empty');
 </script>
 
 <template>
-  <el-tooltip v-if="show" placement="top">
+  <el-tooltip v-if="!isEmpty" placement="top">
     <el-icon class="info-icon cursor-pointer" size="20"><InfoFilled /></el-icon>
     <template #content>
       <div class="flex max-w-52 flex-col flex-nowrap items-center justify-start">
         <span>{{
-          $t(isSameDay ? MessageKey.recordedAt : MessageKey.lastRecordedAt, {
+          $t(isSingleDay ? MessageKey.recordedAt : MessageKey.lastRecordedAt, {
             date: formatDate(latestRecordDateTime, 'PP'),
             time: formatTime(latestRecordDateTime),
           })
         }}</span>
-        <span v-show="!isSameDay" class="mt-4">
+        <span v-show="!isSingleDay" class="mt-4">
           {{
             $t(MessageKey.calculationInfo, {
-              date: formatDate(props.widgetValues.oldestRecordDateTime, 'PP'),
+              date: formatDate(oldestRecordDateTime, 'PP'),
             })
           }}
         </span>
