@@ -1,23 +1,31 @@
 import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
-import { differenceInCalendarMonths, endOfMonth, getDaysInMonth, startOfMonth } from 'date-fns';
+import {
+  compareAsc,
+  differenceInCalendarMonths,
+  endOfMonth,
+  getDaysInMonth,
+  startOfMonth,
+} from 'date-fns';
 
 export type WidgetValues = {
   oldestRecordDateTime: Date;
   latestRecordDateTime: Date;
+  isSameDay: boolean;
   latestValue: number;
-  change: number | null;
-  averageWeeklyChange: number | null;
-  averageMonthlyChange: number | null;
+  change: number;
+  averageWeeklyChange: number;
+  averageMonthlyChange: number;
 };
 
 export const emptyWidgetValues: WidgetValues = {
   oldestRecordDateTime: new Date(0),
   latestRecordDateTime: new Date(0),
+  isSameDay: true,
   latestValue: 0,
-  change: null,
-  averageWeeklyChange: null,
-  averageMonthlyChange: null,
+  change: 0,
+  averageWeeklyChange: 0,
+  averageMonthlyChange: 0,
 };
 
 function average(numbers: number[]) {
@@ -97,14 +105,15 @@ export function calculateWidgetValues(
 ): WidgetValues {
   if (!boundaryRecords) return emptyWidgetValues;
 
-  if (boundaryRecords.first === boundaryRecords.last)
+  if (compareAsc(boundaryRecords.first.recordedAt, boundaryRecords.last.recordedAt) === 0)
     return {
       oldestRecordDateTime: boundaryRecords.first.recordedAt,
       latestRecordDateTime: boundaryRecords.last.recordedAt,
+      isSameDay: true,
       latestValue: boundaryRecords.last[key],
-      change: null,
-      averageWeeklyChange: null,
-      averageMonthlyChange: null,
+      change: 0,
+      averageWeeklyChange: 0,
+      averageMonthlyChange: 0,
     };
 
   const change = getLastValue(key, boundaryRecords) - getFirstValue(key, boundaryRecords);
@@ -114,6 +123,7 @@ export function calculateWidgetValues(
   return {
     oldestRecordDateTime: boundaryRecords.first.recordedAt,
     latestRecordDateTime: boundaryRecords.last.recordedAt,
+    isSameDay: false,
     latestValue: boundaryRecords.last[key],
     change: change,
     averageWeeklyChange: averageWeeklyChange,

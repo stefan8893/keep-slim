@@ -144,7 +144,7 @@ describe('calculateWidgetValues', () => {
     expect(widgetValues.averageWeeklyChange).toBeCloseTo(0.5, 4);
   });
 
-  test('returns average monthly change of one kilo when time range whole July one month and there is one kilo gained', ({
+  test('returns average monthly change of one kilo when time range is whole July and there is one kilo in gain', ({
     boundaryRecordsExactWeek,
   }) => {
     const wholeJuly: BoundaryRecords = {

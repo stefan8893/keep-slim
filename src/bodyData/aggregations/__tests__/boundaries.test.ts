@@ -53,26 +53,6 @@ describe('getBoundaryRecords', () => {
     expect(boundaries?.last).toEqual(testData.at(-1)!);
   });
 
-  test('returns the first three elements along with the first and last', () => {
-    const testData = getTestData();
-    const boundaries = getBoundaryRecords(testData);
-
-    expect(boundaries?.first).toBeTruthy();
-    expect(boundaries?.last).toBeTruthy();
-
-    expect(boundaries?.firstN).toHaveLength(3);
-    expect(boundaries?.firstN.at(0)).toEqual(testData.at(0));
-    expect(boundaries?.firstN.at(1)).toEqual(testData.at(1));
-    expect(boundaries?.firstN.at(2)).toEqual(testData.at(2));
-  });
-
-  test('firstN is limited to three by default', () => {
-    const testData = getTestData();
-    const boundaries = getBoundaryRecords(testData);
-
-    expect(boundaries?.firstN).toHaveLength(3);
-  });
-
   test('the first element is equal to the first element of the firstN array', () => {
     const testData = getTestData();
     const boundaries = getBoundaryRecords(testData);

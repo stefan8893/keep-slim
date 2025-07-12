@@ -14,39 +14,40 @@ const props = defineProps<{
   options: WidgetOptions;
 }>();
 
-const latestValue = computed(() => props.values?.latestValue ?? 0);
-const change = computed(() => props.values?.change);
-const averageWeeklyChange = computed(() => props.values?.averageWeeklyChange);
-const averageMonthlyChange = computed(() => props.values?.averageMonthlyChange);
+const latestValue = computed(() => props.values.latestValue);
+const change = computed(() => props.values.change);
+const averageWeeklyChange = computed(() => props.values.averageWeeklyChange);
+const averageMonthlyChange = computed(() => props.values.averageMonthlyChange);
 </script>
 
 <template>
-  <div>
-    <el-card>
-      <template #header>
-        <div class="flex flex-row flex-nowrap items-center justify-between">
-          <el-text size="large">{{ $t(props.titleMessageKey) }}</el-text>
-          <InfoIcon :widget-values="props.values" />
-        </div>
-      </template>
-      <template #default>
-        <div class="flex flex-col flex-nowrap items-center justify-start">
-          <SingleWidgetProgressIndicator :value="latestValue" :options="props.options" />
-        </div>
-        <div class="flex flex-col flex-nowrap items-center justify-start">
-          <SingleWidgetTotalChange :change="change" :options="props.options" />
-          <SingleWidgetAverageChange
-            :average-change="averageWeeklyChange"
-            :options="props.options"
-            :message-key="MessageKey.week"
-          />
-          <SingleWidgetAverageChange
-            :average-change="averageMonthlyChange"
-            :options="props.options"
-            :message-key="MessageKey.month"
-          />
-        </div>
-      </template>
-    </el-card>
-  </div>
+  <el-card>
+    <template #header>
+      <div class="flex flex-row flex-nowrap items-center justify-between">
+        <el-text size="large">{{ $t(props.titleMessageKey) }}</el-text>
+        <InfoIcon :widget-values="props.values" />
+      </div>
+    </template>
+    <template #default>
+      <div class="flex flex-col flex-nowrap items-center justify-start">
+        <SingleWidgetProgressIndicator :value="latestValue" :options="props.options" />
+      </div>
+      <div
+        v-if="!props.values.isSameDay"
+        class="mt-4 flex flex-col flex-nowrap items-center justify-start"
+      >
+        <SingleWidgetTotalChange :change="change" :options="props.options" />
+        <SingleWidgetAverageChange
+          :average-change="averageWeeklyChange"
+          :options="props.options"
+          :message-key="MessageKey.week"
+        />
+        <SingleWidgetAverageChange
+          :average-change="averageMonthlyChange"
+          :options="props.options"
+          :message-key="MessageKey.month"
+        />
+      </div>
+    </template>
+  </el-card>
 </template>

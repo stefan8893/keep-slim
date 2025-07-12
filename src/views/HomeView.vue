@@ -6,7 +6,7 @@ import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePic
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
 import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
-import { type Ref, computed, onMounted, ref, watchEffect } from 'vue';
+import { type Ref, computed, ref, watchEffect } from 'vue';
 
 useCommonChartOptions();
 

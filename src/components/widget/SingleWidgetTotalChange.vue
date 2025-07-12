@@ -4,11 +4,11 @@ import { Bottom, Top } from '@element-plus/icons-vue';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  change?: number | null;
+  change: number;
   options: WidgetOptions;
 }>();
 
-const change = computed(() => (!props.change ? props.change : Math.abs(props?.change ?? 0)));
+const change = computed(() => Math.abs(props.change));
 
 type IconToShow = 'none' | 'up' | 'down';
 
@@ -19,14 +19,11 @@ const iconToShow = computed((): IconToShow => {
 </script>
 
 <template>
-  <div
-    v-if="change !== null && change != undefined"
-    class="mt-4 flex flex-row flex-nowrap items-center justify-center gap-x-1"
-  >
+  <div class="flex flex-row flex-nowrap items-center justify-center gap-x-1">
     <el-icon v-if="iconToShow === 'up'" size="large"><Top /></el-icon>
     <el-icon v-if="iconToShow === 'down'" size="large"><Bottom /></el-icon>
     <el-text size="large">
-      <i18n-n tag="span" :value="change!" :format="options.numberFormat" scope="global">
+      <i18n-n tag="span" :value="change" :format="options.numberFormat" scope="global">
         <template #integer="slotProps">
           <span class="text-lg font-semibold">{{ slotProps.integer }}</span>
         </template>
