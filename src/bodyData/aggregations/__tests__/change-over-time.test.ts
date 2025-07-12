@@ -35,6 +35,29 @@ describe('calculateChangeOverTime', function () {
     expect(change[0].value).toBeCloseTo(1, 4);
   });
 
+  test('returns the correct change of a begun week', function () {
+    const sundayNoon = createBodyDataRecord(parseISO('2025-07-06T12:00:00'), 'weight', 66);
+    const mondayNoon = createBodyDataRecord(parseISO('2025-07-07T12:00:00'), 'weight', 67);
+
+    const sundayNoonNextWeek = createBodyDataRecord(
+      addWeeks(sundayNoon.recordedAt, 1),
+      'weight',
+      67,
+    );
+    const mondayNoonNextweek = createBodyDataRecord(
+      addWeeks(mondayNoon.recordedAt, 1),
+      'weight',
+      68,
+    );
+
+    const bodyDataRecords = [sundayNoon, mondayNoon, sundayNoonNextWeek, mondayNoonNextweek];
+
+    const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
+
+    expect(change).toHaveLength(2);
+    expect(change[1].value).toBeCloseTo(0.5, 4);
+  });
+
   test('returns the correct change of an exact month', function () {
     const endOfJune = createBodyDataRecord(parseISO('2025-06-30T12:00:00'), 'weight', 66);
     const startOfJuly = createBodyDataRecord(parseISO('2025-07-01T12:00:00'), 'weight', 67);
@@ -48,6 +71,21 @@ describe('calculateChangeOverTime', function () {
 
     expect(change).toHaveLength(2);
     expect(change[0].value).toBeCloseTo(1, 4);
+  });
+
+  test('returns the correct change of a begun month', function () {
+    const endOfJune = createBodyDataRecord(parseISO('2025-06-30T12:00:00'), 'weight', 66);
+    const startOfJuly = createBodyDataRecord(parseISO('2025-07-01T12:00:00'), 'weight', 67);
+
+    const endOfJuly = createBodyDataRecord(parseISO('2025-07-31T12:00:00'), 'weight', 67);
+    const startOfAugust = createBodyDataRecord(parseISO('2025-08-01T12:00:00'), 'weight', 68);
+
+    const bodyDataRecords = [endOfJune, startOfJuly, endOfJuly, startOfAugust];
+
+    const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
+
+    expect(change).toHaveLength(2);
+    expect(change[1].value).toBeCloseTo(0.5, 4);
   });
 
   test('returns the correct change of an exact month when weight were loss', function () {
