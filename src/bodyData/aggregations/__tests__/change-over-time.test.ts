@@ -88,7 +88,7 @@ describe('calculateChangeOverTime', function () {
     expect(change[1].value).toBeCloseTo(0.5, 4);
   });
 
-  test('returns the correct change of an exact month when weight were loss', function () {
+  test('returns the correct change of an exact month when weight were loss -> negative change', function () {
     const endOfJune = createBodyDataRecord(parseISO('2025-06-30T12:00:00'), 'weight', 66);
     const startOfJuly = createBodyDataRecord(parseISO('2025-07-01T12:00:00'), 'weight', 67);
 

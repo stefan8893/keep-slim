@@ -1,7 +1,6 @@
 import type { BodyData } from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
-import { compareAsc, format } from 'date-fns';
-import { de } from 'date-fns/locale';
+import { compareAsc } from 'date-fns';
 
 export type InterpolatedValue = {
   recordedAt: Date;
@@ -88,10 +87,6 @@ export class BodyDataDataInterpolation {
     }
 
     const interpolated = this.interpolate(key, recordedAt, previous, next);
-
-    console.debug(
-      `Interpolated '${key}' at ${format(recordedAt, 'Ppp', { locale: de })} -> ${interpolated}`,
-    );
 
     return {
       recordedAt: recordedAt,
