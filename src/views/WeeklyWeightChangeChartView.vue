@@ -8,10 +8,15 @@ import { useLocaleStore } from '@/stores/localeStore';
 import { differenceInCalendarMonths, getISOWeek } from 'date-fns';
 import Highcharts from 'highcharts';
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const { isDark } = inject(themingControlKey) as ThemingControl;
+const { n } = useI18n();
 
 const useMonthlyChangesForMoreThanNMonths = 6;
+
+const chart = ref<Highcharts.Chart | null>(null);
+const localeStore = useLocaleStore();
 
 const props = defineProps<{
   bodyData: BodyData[];
@@ -25,22 +30,19 @@ const useMonthlyChanges = computed(
     ) > useMonthlyChangesForMoreThanNMonths,
 );
 
-const changeOverWeeks = computed(() =>
+const changesOverWeeks = computed(() =>
   useMonthlyChanges.value
     ? calculateChangeOverTime('monthlyExact', 'weight', props.bodyData)
     : calculateChangeOverTime('weeklyExact', 'weight', props.bodyData),
 );
 
 const categories = computed(() => {
-  return changeOverWeeks.value.map((d) => {
+  return changesOverWeeks.value.map((d) => {
     return d.interval === 'weeklyExact'
       ? `KW ${getISOWeek(d.start)}`
-      : formatDate(d.start, 'MM.yyyy');
+      : formatDate(d.start, 'MMM yyyy');
   });
 });
-
-const chart = ref<Highcharts.Chart | null>(null);
-const localeStore = useLocaleStore();
 
 const renderChart = () => {
   chart.value?.destroy();
@@ -54,16 +56,27 @@ const renderChart = () => {
     title: {
       text: '',
     },
+    plotOptions: {
+      column: {
+        dataLabels: {
+          enabled: true,
+          formatter: function () {
+            return typeof this.y === 'number' ? n(this.y, 'weight') : this.y;
+          },
+        },
+      },
+    },
     xAxis: {
       categories: categories.value,
       title: {
         text: 'FooBar',
       },
     },
+    yAxis: {},
     series: [
       {
         name: 'Gewicht',
-        data: changeOverWeeks.value.map((x) => x.value),
+        data: changesOverWeeks.value.map((x) => x.value),
         type: 'column',
       },
     ],
@@ -74,7 +87,7 @@ watch(localeStore, () => {
   renderChart();
 });
 
-watch(changeOverWeeks, () => {
+watch(changesOverWeeks, () => {
   renderChart();
 });
 
@@ -90,7 +103,7 @@ onBeforeUnmount(() => {
 <template>
   <el-card>
     <div class="grid-container">
-      <div class="block" id="chart" :class="isDark ? 'highcharts-dark' : 'highcharts-light'"></div>
+      <div id="chart" :class="isDark ? 'highcharts-dark' : 'highcharts-light'"></div>
     </div>
   </el-card>
 </template>
