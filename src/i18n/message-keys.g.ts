@@ -61,4 +61,6 @@ export const MessageKey = {
 	lastRecordedAt: 'lastRecordedAt',
 	recordedAt: 'recordedAt',
 	calculationInfo: 'calculationInfo',
+	change: 'change',
+	calendarWeekShort: 'calendarWeekShort',
 };

@@ -54,5 +54,7 @@
   "month": "month",
   "lastRecordedAt": "Last recorded on {date} at {time}",
   "recordedAt": "Recorded on {date} at {time}",
-  "calculationInfo": "The oldest entry for the calculation is from {date}."
+  "calculationInfo": "The oldest entry for the calculation is from {date}.",
+  "change": "Change",
+  "calendarWeekShort": "Week"
 }
