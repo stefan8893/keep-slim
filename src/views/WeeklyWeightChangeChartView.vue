@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { calculateChangeOverTime } from '@/bodyData/aggregations/change-over-time';
 import type { BodyData } from '@/bodyData/body-data.types';
+import { formatDate } from '@/i18n/date-utils';
 import { themingControlKey } from '@/injection.types';
 import type { ThemingControl } from '@/plugins/theming.plugin';
 import { useLocaleStore } from '@/stores/localeStore';
-import { differenceInCalendarMonths } from 'date-fns';
+import { differenceInCalendarMonths, getISOWeek } from 'date-fns';
 import Highcharts from 'highcharts';
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
@@ -30,8 +31,12 @@ const changeOverWeeks = computed(() =>
     : calculateChangeOverTime('weeklyExact', 'weight', props.bodyData),
 );
 
-watch(changeOverWeeks, () => {
-  console.log(changeOverWeeks.value);
+const categories = computed(() => {
+  return changeOverWeeks.value.map((d) => {
+    return d.interval === 'weeklyExact'
+      ? `KW ${getISOWeek(d.start)}`
+      : formatDate(d.start, 'MM.yyyy');
+  });
 });
 
 const chart = ref<Highcharts.Chart | null>(null);
@@ -44,25 +49,32 @@ const renderChart = () => {
       locale: localeStore.locale,
     },
     chart: {
-      type: 'bar',
+      type: 'column',
     },
     title: {
       text: '',
     },
     xAxis: {
-      categories: ['Jan', 'Feb', 'März', 'Apr'],
+      categories: categories.value,
+      title: {
+        text: 'FooBar',
+      },
     },
     series: [
       {
-        name: 'Beispielreihe',
-        data: [1, 3.3, 2, 4],
-        type: 'bar',
+        name: 'Gewicht',
+        data: changeOverWeeks.value.map((x) => x.value),
+        type: 'column',
       },
     ],
   });
 };
 
 watch(localeStore, () => {
+  renderChart();
+});
+
+watch(changeOverWeeks, () => {
   renderChart();
 });
 
