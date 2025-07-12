@@ -2,7 +2,7 @@ import { createBodyDataRecord } from '@/bodyData/aggregations/__tests__/test-inf
 import { calculateChangeOverTime } from '@/bodyData/aggregations/change-over-time';
 import type { BodyData } from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
-import { addWeeks, endOfDay, endOfISOWeek, parseISO } from 'date-fns';
+import { addWeeks, endOfDay, endOfISOWeek, endOfMonth, parseISO } from 'date-fns';
 import { describe, expect, test } from 'vitest';
 
 import { getTestData } from './testData/body-data';
@@ -191,6 +191,9 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(10);
+    // assert random entry
+    expect(change[4].start).toEqual(parseISO('2025-02-01'));
+    expect(change[4].end).toEqual(endOfMonth(parseISO('2025-02-01')));
   });
 
   test('works for plenty of data as well for exact weekly changes', function () {
@@ -199,5 +202,8 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(43);
+    // assert random entry
+    expect(change[28].start).toEqual(parseISO('2025-03-31'));
+    expect(change[28].end).toEqual(endOfDay(parseISO('2025-04-06')));
   });
 });
