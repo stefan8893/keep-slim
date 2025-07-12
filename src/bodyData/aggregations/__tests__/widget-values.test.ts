@@ -1,60 +1,16 @@
 import {
+  endOfAugustWith,
+  endOfJulyWith,
+  midAugustWith,
+  startOfJulyWith,
+  toBoundaryRecords,
+} from '@/bodyData/aggregations/__tests__/test-infrastructure';
+import {
   type Range,
   type SingleDay,
   calculateWidgetValues,
 } from '@/bodyData/aggregations/widget-values';
-import type { BodyData } from '@/bodyData/body-data.types';
-import type { NumberKeys } from '@/types/type-helpers';
-import { endOfMonth, parseISO } from 'date-fns';
 import { describe, expect, test } from 'vitest';
-
-import { getBoundaryRecords } from '../boundaries';
-
-const bodyDataTemplate: BodyData = {
-  recordedAt: parseISO('2025-01-01'),
-  weight: 65,
-  muscleMass: 45,
-  bodyFat: 13,
-  water: 50,
-  bmi: 21,
-  dailyCalorieRequirement: 2100,
-};
-
-function startOfJulyWith(key: NumberKeys<BodyData>, value: number): BodyData {
-  return {
-    ...bodyDataTemplate,
-    recordedAt: parseISO('2025-07-01'),
-    [key]: value,
-  };
-}
-
-function endOfJulyWith(key: NumberKeys<BodyData>, value: number): BodyData {
-  return {
-    ...bodyDataTemplate,
-    recordedAt: endOfMonth(parseISO('2025-07-01')),
-    [key]: value,
-  };
-}
-
-function midAugustWith(key: NumberKeys<BodyData>, value: number): BodyData {
-  return {
-    ...bodyDataTemplate,
-    recordedAt: parseISO('2025-08-16T12:00:00'),
-    [key]: value,
-  };
-}
-
-function endOfAugustWith(key: NumberKeys<BodyData>, value: number): BodyData {
-  return {
-    ...bodyDataTemplate,
-    recordedAt: endOfMonth(parseISO('2025-08-01')),
-    [key]: value,
-  };
-}
-
-function toBoundaryRecords(head: BodyData, ...tail: BodyData[]) {
-  return getBoundaryRecords([head, ...tail]);
-}
 
 describe('calculateWidgetValues', () => {
   test('returns the correct average monthly weight change', () => {

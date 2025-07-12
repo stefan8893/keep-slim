@@ -1,3 +1,5 @@
+import type { NumberKeys } from '@/types/type-helpers';
+
 export type BodyData = {
   recordedAt: Date;
   weight: number;
@@ -18,5 +20,6 @@ export type BoundaryRecords = {
 export type BodyDataChange = {
   start: Date;
   end: Date;
-  change: number;
+  property: NumberKeys<BodyData>;
+  value: number;
 };

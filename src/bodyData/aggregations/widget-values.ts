@@ -74,7 +74,7 @@ export function getExactMonthDifference(start: Date, end: Date): number {
 }
 
 function calculateAverageMonthlyChange(
-  key: NumberKeys<BodyData>,
+  property: NumberKeys<BodyData>,
   boundaries: BoundaryRecords,
 ): number {
   const monthsInBetween = getExactMonthDifference(
@@ -82,13 +82,13 @@ function calculateAverageMonthlyChange(
     boundaries.last.recordedAt,
   );
 
-  const difference = getLastValue(key, boundaries) - getFirstValue(key, boundaries);
+  const difference = getLastValue(property, boundaries) - getFirstValue(property, boundaries);
 
   return Math.abs(difference / monthsInBetween);
 }
 
 function calculateAverageWeeklyChange(
-  key: NumberKeys<BodyData>,
+  property: NumberKeys<BodyData>,
   boundaries: BoundaryRecords,
 ): number {
   const daysInBetween = getExactDayDifference(
@@ -96,13 +96,13 @@ function calculateAverageWeeklyChange(
     boundaries.last.recordedAt,
   );
 
-  const difference = getLastValue(key, boundaries) - getFirstValue(key, boundaries);
+  const difference = getLastValue(property, boundaries) - getFirstValue(property, boundaries);
 
   return Math.abs(difference / (daysInBetween / 7));
 }
 
 export function calculateWidgetValues(
-  key: NumberKeys<BodyData>,
+  property: NumberKeys<BodyData>,
   boundaryRecords?: BoundaryRecords | null,
 ): WidgetValues {
   if (!boundaryRecords) return { state: 'empty' };
@@ -111,18 +111,18 @@ export function calculateWidgetValues(
     return {
       state: 'singleDay',
       recordedAt: boundaryRecords.last.recordedAt,
-      value: boundaryRecords.last[key],
+      value: boundaryRecords.last[property],
     };
 
-  const change = getLastValue(key, boundaryRecords) - getFirstValue(key, boundaryRecords);
-  const averageWeeklyChange = calculateAverageWeeklyChange(key, boundaryRecords);
-  const averageMonthlyChange = calculateAverageMonthlyChange(key, boundaryRecords);
+  const change = getLastValue(property, boundaryRecords) - getFirstValue(property, boundaryRecords);
+  const averageWeeklyChange = calculateAverageWeeklyChange(property, boundaryRecords);
+  const averageMonthlyChange = calculateAverageMonthlyChange(property, boundaryRecords);
 
   return {
     state: 'range',
     oldestRecordDateTime: boundaryRecords.first.recordedAt,
     latestRecordDateTime: boundaryRecords.last.recordedAt,
-    latestValue: boundaryRecords.last[key],
+    latestValue: boundaryRecords.last[property],
     change: change,
     averageWeeklyChange: averageWeeklyChange,
     averageMonthlyChange: averageMonthlyChange,

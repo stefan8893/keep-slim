@@ -1,7 +1,6 @@
+import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
 import { getBoundaryRecords } from '@/bodyData/aggregations/boundaries';
 import { describe, expect, test } from 'vitest';
-
-import { getTestData } from './testData/body-data';
 
 describe('getBoundaryRecords', () => {
   test('returns null when there are no body data records', () => {
