@@ -19,6 +19,6 @@ export function getBoundaryRecords(bodyData: BodyData[]): BoundaryRecords | null
     first: bodyData.at(0)!,
     firstN: bodyData.slice(0, takeFirstN),
     last: bodyData.at(-1)!,
-    lastN: bodyData.slice(-takeLastN),
+    lastN: bodyData.slice(-takeLastN).reverse(),
   };
 }
