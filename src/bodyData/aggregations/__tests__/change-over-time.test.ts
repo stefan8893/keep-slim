@@ -14,6 +14,16 @@ describe('calculateChangeOverTime', function () {
     expect(change).toHaveLength(0);
   });
 
+  test('returns an empty array when passing one body data records', function () {
+    const sundayNoon = createBodyDataRecord(parseISO('2025-07-06T12:00:00'), 'weight', 66);
+
+    const bodyDataRecords = [sundayNoon];
+
+    const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
+
+    expect(change).toHaveLength(0);
+  });
+
   test('returns the correct change of an exact week', function () {
     const sundayNoon = createBodyDataRecord(parseISO('2025-07-06T12:00:00'), 'weight', 66);
     const mondayNoon = createBodyDataRecord(parseISO('2025-07-07T12:00:00'), 'weight', 67);
@@ -167,6 +177,28 @@ describe('calculateChangeOverTime', function () {
     const property: NumberKeys<BodyData> = 'muscleMass';
     expect(change).toHaveLength(2);
     expect(change[0].property).toEqual(property);
+  });
+
+  test('returns an empty array when the records are all within one week interval', function () {
+    const sundayNoon = createBodyDataRecord(parseISO('2025-07-07T10:00:00'), 'muscleMass', 45);
+    const mondayNoon = createBodyDataRecord(parseISO('2025-07-08T12:00:00'), 'muscleMass', 46);
+
+    const bodyDataRecords = [sundayNoon, mondayNoon];
+
+    const change = calculateChangeOverTime('weeklyExact', 'muscleMass', bodyDataRecords);
+
+    expect(change).toHaveLength(0);
+  });
+
+  test('returns an empty array when the records are all within one month interval', function () {
+    const sundayNoon = createBodyDataRecord(parseISO('2025-07-07T10:00:00'), 'muscleMass', 45);
+    const mondayNoon = createBodyDataRecord(parseISO('2025-07-31T12:00:00'), 'muscleMass', 46);
+
+    const bodyDataRecords = [sundayNoon, mondayNoon];
+
+    const change = calculateChangeOverTime('monthlyExact', 'muscleMass', bodyDataRecords);
+
+    expect(change).toHaveLength(0);
   });
 
   test('works for turn of the year', function () {

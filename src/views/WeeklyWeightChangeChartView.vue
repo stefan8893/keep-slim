@@ -14,7 +14,7 @@ import { useI18n } from 'vue-i18n';
 const { isDark } = inject(themingControlKey) as ThemingControl;
 const { n, t } = useI18n();
 
-const useMonthlyChangesForMoreThanNMonths = 6;
+const useMonthlyChangesForMoreThanNMonths = 5;
 
 const chart = ref<Highcharts.Chart | null>(null);
 const localeStore = useLocaleStore();

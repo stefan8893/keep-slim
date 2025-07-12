@@ -44,6 +44,8 @@ function determineTimePeriods(intervalUtis: IntervalUtils, bodyData: BodyData[])
   const startPoint = intervalUtis.getStartOfNextInterval(firstRecord.recordedAt);
   const endPoint = bodyData.at(-1)!.recordedAt;
 
+  if (startPoint > endPoint) return [];
+
   const pointsInBetween = intervalUtis.differenceInInterval(endPoint, startPoint);
 
   const flatInterpolationPoints = Array.from(Array(pointsInBetween).keys())
@@ -69,7 +71,7 @@ export function calculateChangeOverTime(
   property: NumberKeys<BodyData>,
   bodyData: BodyData[],
 ): BodyDataChange[] {
-  if (bodyData.length < 1) return [];
+  if (bodyData.length < 2) return [];
 
   const intervalUtils =
     interval === 'weeklyExact' ? new WeeklyExactIntervalUtils() : new MonthlyExactIntervalUtils();
