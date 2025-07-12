@@ -5,6 +5,8 @@ import type { NumberKeys } from '@/types/type-helpers';
 import { addWeeks, endOfDay, endOfISOWeek, parseISO } from 'date-fns';
 import { describe, expect, test } from 'vitest';
 
+import { getTestData } from './testData/body-data';
+
 describe('calculateChangeOverTime', function () {
   test('returns an empty array when passing no body data records', function () {
     const change = calculateChangeOverTime('weeklyExact', 'weight', []);
@@ -165,5 +167,37 @@ describe('calculateChangeOverTime', function () {
     const property: NumberKeys<BodyData> = 'muscleMass';
     expect(change).toHaveLength(2);
     expect(change[0].property).toEqual(property);
+  });
+
+  test('works for turn of the year', function () {
+    const endOfNovember = createBodyDataRecord(parseISO('2024-11-30T12:00:00'), 'weight', 66);
+    const startODecember = createBodyDataRecord(parseISO('2024-12-01T12:00:00'), 'weight', 67);
+
+    const endOfDecember = createBodyDataRecord(parseISO('2024-12-31T12:00:00'), 'weight', 67);
+    const startOfJanuary = createBodyDataRecord(parseISO('2025-01-01T12:00:00'), 'weight', 68);
+
+    const bodyDataRecords = [endOfNovember, startODecember, endOfDecember, startOfJanuary];
+
+    const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
+
+    expect(change).toHaveLength(2);
+    expect(change[0].start).toEqual(parseISO('2024-12-01T00:00:00'));
+    expect(change[0].end).toEqual(endOfDay(parseISO('2024-12-31T00:00:00')));
+  });
+
+  test('works for plenty of data as well for exact monthly changes', function () {
+    const bodyDataRecords = getTestData();
+
+    const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
+
+    expect(change).toHaveLength(10);
+  });
+
+  test('works for plenty of data as well for exact weekly changes', function () {
+    const bodyDataRecords = getTestData();
+
+    const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
+
+    expect(change).toHaveLength(43);
   });
 });

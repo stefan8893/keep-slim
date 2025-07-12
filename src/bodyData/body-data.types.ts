@@ -1,5 +1,7 @@
 import type { NumberKeys } from '@/types/type-helpers';
 
+export type Interval = 'weeklyExact' | 'monthlyExact';
+
 export type BodyData = {
   recordedAt: Date;
   weight: number;
@@ -19,6 +21,7 @@ export type BoundaryRecords = {
 
 export type BodyDataChange = {
   start: Date;
+  interval: Interval;
   end: Date;
   property: NumberKeys<BodyData>;
   value: number;

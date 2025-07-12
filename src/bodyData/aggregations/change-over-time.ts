@@ -1,9 +1,11 @@
-import type { BodyData, BodyDataChange } from '@/bodyData/body-data.types';
+import { BodyDataInterpolation } from '@/bodyData/aggregations/body-data-interpolation';
+import type { BodyData, BodyDataChange, Interval } from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
 import { identity } from '@vueuse/core';
 import {
   addMonths,
   addWeeks,
+  compareAsc,
   differenceInCalendarISOWeeks,
   differenceInCalendarMonths,
   endOfISOWeek,
@@ -13,10 +15,6 @@ import {
   startOfISOWeek,
   startOfMonth,
 } from 'date-fns';
-
-import { BodyDataDataInterpolation as BodyDataInterpolation } from './body-data-interpolation';
-
-export type Interval = 'weeklyExact' | 'monthlyExact';
 
 type TimeRange = {
   start: Date;
@@ -78,17 +76,17 @@ function determineTimePeriods(interval: Interval, bodyData: BodyData[]): Period[
     .map((x) => {
       if (interval === 'weeklyExact')
         return [addWeeks(endOfISOWeek(startPoint), x), addWeeks(startPoint, x + 1)];
-      else return [addWeeks(endOfMonth(startPoint), x), addMonths(startPoint, x + 1)];
+      else return [addMonths(endOfMonth(startPoint), x), addMonths(startPoint, x + 1)];
     })
     .flatMap(identity);
 
   const periods = Object.groupBy([startPoint, ...flatInterpolationPoints, endPoint], (x) =>
-    interval === 'weeklyExact' ? getISOWeek(x) : getMonth(x),
+    interval === 'weeklyExact' ? getISOWeek(x) : getMonth(x) + 1,
   );
 
-  return Object.keys(periods).map((key: string) =>
-    createPeriod(interval, key, periods[Number(key)]!),
-  );
+  return Object.keys(periods)
+    .map((key: string) => createPeriod(interval, key, periods[Number(key)]!))
+    .sort((a, b) => compareAsc(a.range.start, b.range.start));
 }
 
 export function calculateChangeOverTime(
@@ -110,6 +108,7 @@ export function calculateChangeOverTime(
     return {
       start: x.range.start,
       end: x.range.end,
+      interval: interval,
       property: property,
       value: valueAtEnd - valueAtStart,
     };

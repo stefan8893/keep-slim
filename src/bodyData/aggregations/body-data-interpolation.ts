@@ -9,7 +9,7 @@ export type InterpolatedValue = {
 
 type SearchMode = 'previous-if-no-exact-match' | 'next-if-no-exact-match';
 
-export class BodyDataDataInterpolation {
+export class BodyDataInterpolation {
   private data: BodyData[];
 
   constructor(data: BodyData[]) {

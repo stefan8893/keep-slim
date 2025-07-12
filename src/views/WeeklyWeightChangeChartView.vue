@@ -1,18 +1,38 @@
 <script setup lang="ts">
+import { calculateChangeOverTime } from '@/bodyData/aggregations/change-over-time';
 import type { BodyData } from '@/bodyData/body-data.types';
 import { themingControlKey } from '@/injection.types';
 import type { ThemingControl } from '@/plugins/theming.plugin';
 import { useLocaleStore } from '@/stores/localeStore';
+import { differenceInCalendarMonths } from 'date-fns';
 import Highcharts from 'highcharts';
-import { inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 const { isDark } = inject(themingControlKey) as ThemingControl;
+
+const useMonthlyChangesForMoreThanNMonths = 6;
 
 const props = defineProps<{
   bodyData: BodyData[];
 }>();
 
-console.log('body data change', props.bodyData);
+const useMonthlyChanges = computed(
+  () =>
+    props.bodyData.length > 1 &&
+    Math.abs(
+      differenceInCalendarMonths(props.bodyData[0].recordedAt, props.bodyData.at(-1)!.recordedAt),
+    ) > useMonthlyChangesForMoreThanNMonths,
+);
+
+const changeOverWeeks = computed(() =>
+  useMonthlyChanges.value
+    ? calculateChangeOverTime('monthlyExact', 'weight', props.bodyData)
+    : calculateChangeOverTime('weeklyExact', 'weight', props.bodyData),
+);
+
+watch(changeOverWeeks, () => {
+  console.log(changeOverWeeks.value);
+});
 
 const chart = ref<Highcharts.Chart | null>(null);
 const localeStore = useLocaleStore();
