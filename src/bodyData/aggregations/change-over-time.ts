@@ -1,29 +1,15 @@
 import { BodyDataInterpolation } from '@/bodyData/aggregations/body-data-interpolation';
-import type { BodyData, BodyDataChange, Interval } from '@/bodyData/body-data.types';
+import type {
+  BodyData,
+  BodyDataChange,
+  IntervalChangeOverTime as ChangeOverTimeInterval,
+  Period,
+} from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
 import { identity } from '@vueuse/core';
 import { compareAsc } from 'date-fns';
 
 import { MonthlyExactIntervalUtils, WeeklyExactIntervalUtils } from './interval-utils';
-
-type TimeRange = {
-  start: Date;
-  end: Date;
-};
-
-type MonthlyPeriod = {
-  type: 'weeklyExact';
-  isoWeek: string;
-  range: TimeRange;
-};
-
-type WeeklyPeriod = {
-  type: 'monthlyExact';
-  month: string;
-  range: TimeRange;
-};
-
-export type Period = WeeklyPeriod | MonthlyPeriod;
 
 export interface IntervalUtils {
   getStartOfNextInterval(date: Date): Date;
@@ -67,7 +53,7 @@ function determineTimePeriods(intervalUtis: IntervalUtils, bodyData: BodyData[])
 }
 
 export function calculateChangeOverTime(
-  interval: Interval,
+  interval: ChangeOverTimeInterval,
   property: NumberKeys<BodyData>,
   bodyData: BodyData[],
 ): BodyDataChange[] {

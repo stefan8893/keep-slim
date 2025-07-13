@@ -1,4 +1,5 @@
-import type { IntervalUtils, Period } from '@/bodyData/aggregations/change-over-time';
+import type { IntervalUtils } from '@/bodyData/aggregations/change-over-time';
+import type { Period } from '@/bodyData/body-data.types';
 import {
   addMonths,
   addWeeks,

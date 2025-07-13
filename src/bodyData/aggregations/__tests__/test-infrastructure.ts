@@ -45,14 +45,21 @@ export function endOfAugustWith(property: NumberKeys<BodyData>, value: number): 
   };
 }
 
+export function createBodyDataRecordWith(record: Partial<BodyData>) {
+  return {
+    ...bodyDataTemplate,
+    ...record,
+  };
+}
+
 export function createBodyDataRecord(
-  recrodedAt: Date,
+  recordedAt: Date,
   property: NumberKeys<BodyData>,
   value: number,
 ) {
   return {
     ...bodyDataTemplate,
-    recordedAt: recrodedAt,
+    recordedAt: recordedAt,
     [property]: value,
   };
 }

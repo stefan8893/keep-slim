@@ -1,6 +1,6 @@
 import type { NumberKeys } from '@/types/type-helpers';
 
-export type Interval = 'weeklyExact' | 'monthlyExact';
+export type IntervalChangeOverTime = 'weeklyExact' | 'monthlyExact';
 
 export type BodyData = {
   recordedAt: Date;
@@ -19,10 +19,58 @@ export type BoundaryRecords = {
   lastN: BodyData[];
 };
 
-export type BodyDataChange = {
+export type TimeRange = {
   start: Date;
-  interval: Interval;
   end: Date;
+};
+
+export type BodyDataChange = {
+  interval: IntervalChangeOverTime;
   property: NumberKeys<BodyData>;
   value: number;
+} & TimeRange;
+
+export type MonthlyPeriod = {
+  type: 'weeklyExact';
+  isoWeek: string;
+  range: TimeRange;
 };
+
+export type WeeklyPeriod = {
+  type: 'monthlyExact';
+  month: string;
+  range: TimeRange;
+};
+
+export type Period = WeeklyPeriod | MonthlyPeriod;
+
+export type Summarized<T, K extends keyof T> = {
+  [P in K]: {
+    value: T[P];
+    count: number;
+  };
+};
+
+export type SummarizedBodyDataProperty = 'weight' | 'muscleMass' | 'bodyFat' | 'water';
+
+export type SingleBodyDataSummarizedByDay = {
+  day: Date;
+  values: Summarized<BodyData, SummarizedBodyDataProperty>;
+};
+
+export type SingleBodyDataSummarizedByWeek = {
+  firstDayOfWeek: Date;
+  values: Summarized<BodyData, SummarizedBodyDataProperty>;
+};
+
+export type BodyDataSummarizedByDay = {
+  type: 'summarizedByDay';
+  result: SingleBodyDataSummarizedByDay[];
+};
+
+export type BodyDataSummarizedByWeek = {
+  type: 'summarizedByWeek';
+  result: SingleBodyDataSummarizedByWeek[];
+};
+
+export type SummarizedBodyData = BodyDataSummarizedByDay | BodyDataSummarizedByWeek;

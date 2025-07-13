@@ -6,7 +6,9 @@ import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePic
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
 import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
-import { type Ref, computed, ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
+
+import BodyDataChartView from './BodyDataChartView.vue';
 
 useCommonChartOptions();
 
@@ -56,6 +58,9 @@ const fetchData = async () => {
   </div>
   <div class="mt-8">
     <WeeklyWeightChangeChartView :body-data="bodyData" />
+  </div>
+  <div class="mt-8">
+    <BodyDataChartView :body-data="bodyData" />
   </div>
 </template>
 

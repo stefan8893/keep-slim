@@ -9,7 +9,7 @@ import type { ThemingControl } from '@/plugins/theming.plugin';
 import { useLocaleStore } from '@/stores/localeStore';
 import { differenceInCalendarMonths, endOfISOWeek, getISOWeek } from 'date-fns';
 import Highcharts from 'highcharts';
-import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, inject, onBeforeUnmount, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const useMonthlyChangesForMoreThanNMonths = 5;
@@ -38,7 +38,7 @@ const changesOverTime = computed(() =>
     : calculateChangeOverTime('weeklyExact', 'weight', props.bodyData),
 );
 
-const chartCategories = computed(() => {
+const categories = computed(() => {
   return changesOverTime.value.map((d) => {
     return d.interval === 'weeklyExact'
       ? `${t(MessageKey.calendarWeekShort)} ${getISOWeek(d.start)}`
@@ -48,7 +48,7 @@ const chartCategories = computed(() => {
 
 const renderChart = () => {
   chart.value?.destroy();
-  chart.value = Highcharts.chart('chart', {
+  chart.value = Highcharts.chart('weekly-weight-change-chart', {
     lang: {
       locale: localeStore.locale,
     },
@@ -89,12 +89,12 @@ const renderChart = () => {
           ${timeRangeInfo}
           <span><span style="color:${color}">\u25CF</span>&nbsp;${name}: <b>${formatted}</b></span>
         </div>
-
         `;
       },
     },
     xAxis: {
-      categories: chartCategories.value,
+      categories: [...categories.value],
+      type: 'category',
       title: {},
     },
     yAxis: {
@@ -105,7 +105,7 @@ const renderChart = () => {
     series: [
       {
         name: t(MessageKey.weight),
-        data: changesOverTime.value.map((x) => x.value),
+        data: [...changesOverTime.value.map((x) => x.value)],
         type: 'column',
         color: weigthColor,
       },
@@ -121,10 +121,6 @@ watch(changesOverTime, () => {
   renderChart();
 });
 
-onMounted(() => {
-  renderChart();
-});
-
 onBeforeUnmount(() => {
   chart.value?.destroy();
 });
@@ -133,7 +129,10 @@ onBeforeUnmount(() => {
 <template>
   <el-card>
     <div class="grid-container">
-      <div id="chart" :class="isDark ? 'highcharts-dark' : 'highcharts-light'"></div>
+      <div
+        id="weekly-weight-change-chart"
+        :class="isDark ? 'highcharts-dark' : 'highcharts-light'"
+      ></div>
     </div>
   </el-card>
 </template>
@@ -143,5 +142,9 @@ onBeforeUnmount(() => {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
+}
+
+#weekly-weight-change-chart {
+  height: 440px;
 }
 </style>

@@ -1,7 +1,8 @@
 import '@/auth/useAuth';
 import { useAuth } from '@/auth/useAuth';
-import BodyDataView from '@/views/BodyDataView.vue';
+import BodyDataTableView from '@/views/BodyDataView.vue';
 import HomeView from '@/views/HomeView.vue';
+import UserSettingsView from '@/views/UserSettingsView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -29,7 +30,11 @@ const router = createRouter({
         },
         {
           path: 'body-data',
-          component: BodyDataView,
+          component: BodyDataTableView,
+        },
+        {
+          path: 'user-settings',
+          component: UserSettingsView,
         },
       ],
     },

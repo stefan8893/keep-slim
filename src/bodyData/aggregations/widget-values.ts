@@ -1,3 +1,4 @@
+import { average } from '@/bodyData/aggregations/math-utils';
 import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
 import type { NumberKeys } from '@/types/type-helpers';
 import {
@@ -29,10 +30,6 @@ export type Range = {
 };
 
 export type WidgetValues = Empty | SingleDay | Range;
-
-function average(numbers: number[]) {
-  return numbers.reduce((acc, next) => acc + next, 0) / numbers.length;
-}
 
 function getFirstValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecords): number {
   return boundaryRecords.firstN.length === 1

@@ -217,7 +217,7 @@ describe('calculateChangeOverTime', function () {
     expect(change[0].end).toEqual(endOfDay(parseISO('2024-12-31T00:00:00')));
   });
 
-  test('works for plenty of data as well for exact monthly changes', function () {
+  test('works for plenty of data for exact monthly changes', function () {
     const bodyDataRecords = getTestData();
 
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
@@ -228,7 +228,7 @@ describe('calculateChangeOverTime', function () {
     expect(change[4].end).toEqual(endOfMonth(parseISO('2025-02-01')));
   });
 
-  test('works for plenty of data as well for exact weekly changes', function () {
+  test('works for plenty of data for exact weekly changes', function () {
     const bodyDataRecords = getTestData();
 
     const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
