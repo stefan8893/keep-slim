@@ -12,7 +12,7 @@ useCommonChartOptions();
 
 const startDate = ref<Date>();
 const endDate = ref<Date>();
-const bodyData: Ref<BodyData[]> = ref([]);
+const bodyData = ref<BodyData[]>([]);
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -47,7 +47,7 @@ const fetchData = async () => {
     <DateRangePicker
       v-model:start="startDate"
       v-model:end="endDate"
-      :initialSelection="'L6M'"
+      :initial-selection="'L6M'"
       :available-selections="datePickerSelction"
     />
   </div>

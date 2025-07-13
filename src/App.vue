@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { useElementPlusLocales } from '@/i18n/useLocales';
+import { useLocaleStore } from '@/stores/localeStore';
 import { dayjs } from 'element-plus';
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { RouterView } from 'vue-router';
-
-import { useLocaleStore } from './stores/localeStore';
 
 const { locale } = useI18n();
 

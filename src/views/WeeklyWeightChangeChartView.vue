@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { calculateChangeOverTime } from '@/bodyData/aggregations/change-over-time';
 import type { BodyData } from '@/bodyData/body-data.types';
+import { useColors } from '@/colors/useColors';
 import { formatDate } from '@/i18n/date-utils';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { themingControlKey } from '@/injection.types';
@@ -11,13 +12,13 @@ import Highcharts from 'highcharts';
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { isDark } = inject(themingControlKey) as ThemingControl;
-const { n, t } = useI18n();
-
 const useMonthlyChangesForMoreThanNMonths = 5;
 
+const { isDark } = inject(themingControlKey) as ThemingControl;
+const { n, t } = useI18n();
 const chart = ref<Highcharts.Chart | null>(null);
 const localeStore = useLocaleStore();
+const { weigthColor } = useColors();
 
 const props = defineProps<{
   bodyData: BodyData[];
@@ -106,6 +107,7 @@ const renderChart = () => {
         name: t(MessageKey.weight),
         data: changesOverTime.value.map((x) => x.value),
         type: 'column',
+        color: weigthColor,
       },
     ],
   });
