@@ -99,7 +99,13 @@ const renderChart = () => {
     },
     yAxis: {
       title: {
-        text: t(MessageKey.change),
+        text: t(MessageKey.weightChange),
+      },
+      labels: {
+        //format: '{value} kg',
+        formatter: function () {
+          return typeof this.value === 'number' ? n(this.value, 'weight') : this.value;
+        },
       },
     },
     series: [
@@ -108,6 +114,7 @@ const renderChart = () => {
         data: [...changesOverTime.value.map((x) => x.value)],
         type: 'column',
         color: weigthColor,
+        yAxis: 0,
       },
     ],
   });

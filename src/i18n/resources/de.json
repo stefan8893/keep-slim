@@ -55,6 +55,6 @@
   "lastRecordedAt": "Zuletzt erfasst am {date} um {time} Uhr.",
   "recordedAt": "Erfasst am {date} um {time} Uhr.",
   "calculationInfo": "Der älteste Eintrag für die Berechnung stammt vom {date}.",
-  "change": "Veränderung",
+  "weightChange": "Gewichtsveränderung",
   "calendarWeekShort": "KW"
 }
