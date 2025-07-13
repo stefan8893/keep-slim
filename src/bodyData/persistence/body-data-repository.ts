@@ -1,13 +1,13 @@
 import type { BodyData } from '@/bodyData/body-data.types';
+import type {
+  BodyDataRepository,
+  QueryOptions,
+} from '@/bodyData/persistence/body-data-repository.types';
+import type {} from '@/bodyData/persistence/useBodyDataRepository';
 import { type TableClient, type TableEntityResult } from '@azure/data-tables';
 import { compareAsc, format } from 'date-fns';
 
-export type QueryOptions = {
-  start: Date;
-  end: Date;
-};
-
-export class BodyDataRepository {
+export class AzureTablesBodyDataRepository implements BodyDataRepository {
   constructor(private readonly bodyDataTableClient: TableClient) {}
 
   private toFilter(options: QueryOptions) {
@@ -30,14 +30,10 @@ export class BodyDataRepository {
   }
 
   async query(options: QueryOptions) {
-    console.log(options);
     const filter = this.toFilter(options);
     const iterator = this.bodyDataTableClient.listEntities({ queryOptions: { filter } });
 
     const result = (await Array.fromAsync(iterator)).map(this.toBodyData);
-
-    const sorted = result.sort((a, b) => compareAsc(a.recordedAt, b.recordedAt));
-
-    return sorted;
+    return result.sort((a, b) => compareAsc(a.recordedAt, b.recordedAt));
   }
 }

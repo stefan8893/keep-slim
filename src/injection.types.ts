@@ -1,4 +1,4 @@
-import type { BodyDataRepository } from '@/bodyData/persistence/body-data.repository';
+import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
 import type { ThemingControl } from '@/plugins/theming.plugin';
 import type { PublicClientApplication } from '@azure/msal-browser';
 import type { InjectionKey } from 'vue';

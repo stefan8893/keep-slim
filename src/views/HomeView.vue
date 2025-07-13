@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import type { BodyData } from '@/bodyData/body-data.types';
-import type { BodyDataRepository } from '@/bodyData/persistence/body-data.repository';
+import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
 import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
 import { bodyDataRepositoryKey } from '@/injection.types';
+import BodyDataChartView from '@/views/BodyDataChartView.vue';
 import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
 import { computed, inject, ref, watchEffect } from 'vue';
-
-import BodyDataChartView from './BodyDataChartView.vue';
 
 useCommonChartOptions();
 

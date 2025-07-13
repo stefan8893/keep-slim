@@ -1,5 +1,6 @@
 import type { AcquireAccessTokenFn } from '@/auth/auth.types';
-import { BodyDataRepository } from '@/bodyData/persistence/body-data.repository';
+import { AzureTablesBodyDataRepository } from '@/bodyData/persistence/body-data-repository';
+import { BodyDataRepositoryProxy } from '@/bodyData/persistence/body-data-repository-proxy';
 import type { AccessToken, TokenCredential } from '@azure/core-auth';
 import { TableClient } from '@azure/data-tables';
 
@@ -21,5 +22,5 @@ export function useBodyDataRepository(acquireAccessToken: AcquireAccessTokenFn) 
     tokenAdapter,
   );
 
-  return new BodyDataRepository(tableClient);
+  return new BodyDataRepositoryProxy(new AzureTablesBodyDataRepository(tableClient));
 }
