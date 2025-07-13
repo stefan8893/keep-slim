@@ -2,6 +2,7 @@
 import { prepareBodyDataForChart } from '@/bodyData/aggregations/body-data-chart-preparation';
 import type {
   BodyData,
+  SingleBodyDataSummarizedByDay,
   SingleBodyDataSummarizedByWeek,
   SummarizedBodyDataProperty,
 } from '@/bodyData/body-data.types';
@@ -57,19 +58,48 @@ const bodyDataPropertyBySeriesIndex: Map<number, SummarizedBodyDataProperty> = n
 
 const isSummarizedByWeek = computed(() => preparedBodyData.value.type === 'summarizedByWeek');
 
-const getSummarizedByWeek = (index: number, seriesIndex: number) => {
-  if (!isSummarizedByWeek.value) return null;
-
-  const summarizedByWeek = preparedBodyData.value.result.at(
-    index,
-  ) as SingleBodyDataSummarizedByWeek;
+const getSummarizedBodyDataValues = (index: number, seriesIndex: number) => {
+  const summarizedBodyData = preparedBodyData.value.result.at(index);
   const bodyDataProperty = bodyDataPropertyBySeriesIndex.get(seriesIndex);
   if (!bodyDataProperty) return null;
 
-  return {
-    firstDayOfWeek: summarizedByWeek.firstDayOfWeek,
-    value: summarizedByWeek.values[bodyDataProperty],
-  };
+  return summarizedBodyData?.values[bodyDataProperty];
+};
+
+const getTooltip = (
+  value: undefined | number,
+  index: number,
+  seriesIndex: number,
+  name: string,
+  color: unknown,
+) => {
+  const format = (value: number) =>
+    seriesIndex === 0 ? n(value, 'weight') : n(value / 100, 'percent');
+  const formatted = typeof value === 'number' ? format(value) : value;
+
+  const isSummarizedByDay = preparedBodyData.value.type === 'summarizedByDay';
+  const summarizedBodyData = getSummarizedBodyDataValues(index, seriesIndex);
+  if (!summarizedBodyData) return '';
+
+  const countInfo = !isSummarizedByDay ? `&nbsp;<span>(${summarizedBodyData.count})</span>` : ``;
+
+  const time = isSummarizedByDay
+    ? (preparedBodyData.value.result.at(index) as SingleBodyDataSummarizedByDay).day
+    : (preparedBodyData.value.result.at(index) as SingleBodyDataSummarizedByWeek).firstDayOfWeek;
+
+  const timeInfo = !isSummarizedByDay
+    ? `<span>${t(MessageKey.calendarWeekShort)} ${getISOWeek(time)}</span><span>${formatDate(time)} - ${formatDate(endOfISOWeek(time))}</span>`
+    : `<span>${formatDateTime(time)}</span>`;
+
+  return `
+        <div class="flex flex-col flex-nowrap items-start justify-center gap-y-1">
+          ${timeInfo}
+          <span>
+            <span style="color:${color}">\u25CF</span>&nbsp;${name}: <b>${formatted}</b>
+            ${countInfo}
+          </span>
+        </div>
+        `;
 };
 
 const renderChart = () => {
@@ -97,30 +127,7 @@ const renderChart = () => {
     tooltip: {
       useHTML: true,
       formatter: function () {
-        const name = this.series.name;
-        const category = this.category;
-        const color = this.color;
-        const format = (value: number) =>
-          this.series.index === 0 ? n(value, 'weight') : n(value / 100, 'percent');
-        const formatted = typeof this.y === 'number' ? format(this.y) : this.y;
-
-        const summarizedByWeek = getSummarizedByWeek(this.index, this.series.index);
-
-        const countInfomation = !!summarizedByWeek
-          ? `&nbsp;<span>(${summarizedByWeek.value.count})</span>`
-          : ``;
-
-        const firstDayOfWeek = summarizedByWeek?.firstDayOfWeek;
-        const timeRangeInfo = !!firstDayOfWeek
-          ? `<span>${t(MessageKey.calendarWeekShort)} ${getISOWeek(firstDayOfWeek)}</span><span>${formatDate(firstDayOfWeek)} - ${formatDate(endOfISOWeek(firstDayOfWeek))}</span>`
-          : `<span>${category}</span>`;
-
-        return `
-        <div class="flex flex-col flex-nowrap items-start justify-center gap-y-1">
-          ${timeRangeInfo}
-          <span><span style="color:${color}">\u25CF</span>&nbsp;${name}: <b>${formatted}</b>${countInfomation}</span>
-        </div>
-        `;
+        return getTooltip(this.y, this.index, this.series.index, this.series.name, this.color);
       },
     },
     xAxis: {
@@ -132,7 +139,12 @@ const renderChart = () => {
               locale: dateLocales.getCurrentLocale(),
             });
             return getISOWeek(parsed).toString();
-          } else return this.value.toString();
+          } else {
+            const parsed = parse(this.value.toString(), 'Pp', new Date(), {
+              locale: dateLocales.getCurrentLocale(),
+            });
+            return formatDate(parsed);
+          }
         },
       },
     },
@@ -173,7 +185,7 @@ const renderChart = () => {
         yAxis: 1,
       },
       {
-        name: t(MessageKey.bodyData),
+        name: t(MessageKey.bodyFat),
         data: bodyFatSeries.value,
         type: 'line',
         color: bodyFatColor,
