@@ -4,7 +4,9 @@ import { BodyDataRepositoryProxy } from '@/bodyData/persistence/body-data-reposi
 import type { AccessToken, TokenCredential } from '@azure/core-auth';
 import { TableClient } from '@azure/data-tables';
 
-export function useBodyDataRepository(acquireAccessToken: AcquireAccessTokenFn) {
+export function useBodyDataRepository(
+  acquireAccessToken: AcquireAccessTokenFn,
+): BodyDataRepositoryProxy {
   const tokenAdapter: TokenCredential = {
     getToken: async (): Promise<AccessToken | null> => {
       const accessTokenResult = await acquireAccessToken();
