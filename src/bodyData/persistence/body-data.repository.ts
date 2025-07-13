@@ -1,6 +1,6 @@
 import type { BodyData } from '@/bodyData/body-data.types';
 import { type TableClient, type TableEntityResult } from '@azure/data-tables';
-import { format } from 'date-fns';
+import { compareAsc, format } from 'date-fns';
 
 export type QueryOptions = {
   start: Date;
@@ -34,8 +34,10 @@ export class BodyDataRepository {
     const filter = this.toFilter(options);
     const iterator = this.bodyDataTableClient.listEntities({ queryOptions: { filter } });
 
-    //TODO: ensure sorted result
+    const result = (await Array.fromAsync(iterator)).map(this.toBodyData);
 
-    return (await Array.fromAsync(iterator)).map(this.toBodyData);
+    const sorted = result.sort((a, b) => compareAsc(a.recordedAt, b.recordedAt));
+
+    return sorted;
   }
 }

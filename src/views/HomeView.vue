@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
 import type { BodyData } from '@/bodyData/body-data.types';
+import type { BodyDataRepository } from '@/bodyData/persistence/body-data.repository';
 import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import { bodyDataRepositoryKey } from '@/injection.types';
 import WeeklyWeightChangeChartView from '@/views/WeeklyWeightChangeChartView.vue';
 import WidgetsView from '@/views/WidgetsView.vue';
-import { computed, ref, watchEffect } from 'vue';
+import { computed, inject, ref, watchEffect } from 'vue';
 
 import BodyDataChartView from './BodyDataChartView.vue';
 
 useCommonChartOptions();
+
+const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 
 const startDate = ref<Date>();
 const endDate = ref<Date>();
@@ -38,9 +41,12 @@ watchEffect(() => {
 const fetchData = async () => {
   if (!bothDatesPresent.value) return;
 
-  bodyData.value = getTestData().filter(
-    (x) => x.recordedAt >= startDate.value! && x.recordedAt <= endDate.value!,
-  );
+  const queriedBodyData = await bodyDataRepository.query({
+    start: startDate.value!,
+    end: endDate.value!,
+  });
+
+  bodyData.value = queriedBodyData;
 };
 </script>
 
