@@ -56,5 +56,6 @@
   "recordedAt": "Recorded on {date} at {time}",
   "calculationInfo": "The oldest entry for the calculation is from {date}.",
   "weightChange": "Weight Change",
-  "calendarWeekShort": "Week"
+  "calendarWeekShort": "Week",
+  "recorded": "Recorded"
 }

@@ -2,16 +2,11 @@
 import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
 import type { BodyData } from '@/bodyData/body-data.types';
 import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
-import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
-import BodyDataChart from '@/components/BodyDataChart.vue';
-import BodyDataWidgets from '@/components/BodyDataWidgets.vue';
-import BodyDatatWeeklyWeightChangeChart from '@/components/BodyDatatWeeklyWeightChangeChart.vue';
+import BodyDataTable from '@/components/BodyDataTable.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
 import { bodyDataRepositoryKey } from '@/injection.types';
 import { computed, inject, ref, watchEffect } from 'vue';
-
-useCommonChartOptions();
 
 const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 
@@ -25,8 +20,6 @@ const datePickerSelction: DateRangeSelectionId[] = [
   'L30D',
   'L2M',
   'L3M',
-  'L6M',
-  'L12M',
   'CURR_YEAR',
   'PREV_YEAR',
   'CUSTOM',
@@ -46,7 +39,7 @@ const fetchData = async () => {
   //   end: endDate.value!,
   // });
 
-  //bodyData.value = queriedBodyData;
+  // bodyData.value = queriedBodyData;
 
   bodyData.value = getTestData().filter(
     (x) => x.recordedAt >= startDate.value! && x.recordedAt <= endDate.value!,
@@ -58,12 +51,8 @@ const fetchData = async () => {
   <DateRangePicker
     v-model:start="startDate"
     v-model:end="endDate"
-    :initial-selection="'L6M'"
+    :initial-selection="'L7D'"
     :available-selections="datePickerSelction"
   />
-  <BodyDataWidgets class="mt-8" :body-data="bodyData" />
-  <BodyDatatWeeklyWeightChangeChart class="mt-8" :body-data="bodyData" />
-  <BodyDataChart class="mt-8" :body-data="bodyData" />
+  <BodyDataTable class="mt-8" :body-data="bodyData" />
 </template>
-
-<style scope></style>

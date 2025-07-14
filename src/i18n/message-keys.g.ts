@@ -63,4 +63,5 @@ export const MessageKey = {
 	calculationInfo: 'calculationInfo',
 	weightChange: 'weightChange',
 	calendarWeekShort: 'calendarWeekShort',
+	recorded: 'recorded',
 };

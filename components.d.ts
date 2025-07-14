@@ -8,6 +8,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BodyDataChart: typeof import('./src/components/BodyDataChart.vue')['default']
+    BodyDataTable: typeof import('./src/components/BodyDataTable.vue')['default']
+    BodyDatatWeeklyWeightChangeChart: typeof import('./src/components/BodyDatatWeeklyWeightChangeChart.vue')['default']
+    BodyDataWidgets: typeof import('./src/components/BodyDataWidgets.vue')['default']
     DateRangePicker: typeof import('./src/components/infrastructure/DatePicker/DateRangePicker.vue')['default']
     DateRangeSelectionDropdown: typeof import('./src/components/infrastructure/DatePicker/DateRangeSelectionDropdown.vue')['default']
     DateRangeStringified: typeof import('./src/components/infrastructure/DatePicker/DateRangeStringified.vue')['default']
@@ -30,6 +34,8 @@ declare module 'vue' {
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElResult: typeof import('element-plus/es')['ElResult']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElText: typeof import('element-plus/es')['ElText']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     KeepSlimCard: typeof import('./src/components/KeepSlimCard.vue')['default']

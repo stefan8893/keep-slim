@@ -1,8 +1,5 @@
 import '@/auth/useAuth';
 import { useAuth } from '@/auth/useAuth';
-import BodyDataTableView from '@/views/BodyDataView.vue';
-import HomeView from '@/views/HomeView.vue';
-import UserSettingsView from '@/views/UserSettingsView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -26,15 +23,15 @@ const router = createRouter({
       children: [
         {
           path: 'home',
-          component: HomeView,
+          component: () => import('@/views/HomeView.vue'),
         },
         {
           path: 'body-data',
-          component: BodyDataTableView,
+          component: () => import('@/views/BodyDataTableView.vue'),
         },
         {
           path: 'user-settings',
-          component: UserSettingsView,
+          component: () => import('@/views/UserSettingsView.vue'),
         },
       ],
     },
