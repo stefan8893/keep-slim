@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
 import type { BodyData } from '@/bodyData/body-data.types';
 import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
 import BodyDataTable from '@/components/BodyDataTable.vue';
@@ -13,6 +12,7 @@ const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 const startDate = ref<Date>();
 const endDate = ref<Date>();
 const bodyData = ref<BodyData[]>([]);
+const isLoading = ref(true);
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -34,16 +34,25 @@ watchEffect(() => {
 const fetchData = async () => {
   if (!bothDatesPresent.value) return;
 
-  // const queriedBodyData = await bodyDataRepository.query({
-  //   start: startDate.value!,
-  //   end: endDate.value!,
-  // });
+  try {
+    isLoading.value = true;
 
-  // bodyData.value = queriedBodyData;
+    const queriedBodyData = await bodyDataRepository.query({
+      start: startDate.value!,
+      end: endDate.value!,
+    });
 
-  bodyData.value = getTestData().filter(
-    (x) => x.recordedAt >= startDate.value! && x.recordedAt <= endDate.value!,
-  );
+    bodyData.value = queriedBodyData;
+  } catch (error) {
+    console.error(error);
+    console.error('TOOD: handle error');
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+const refreshData = () => {
+  fetchData();
 };
 </script>
 
@@ -51,8 +60,13 @@ const fetchData = async () => {
   <DateRangePicker
     v-model:start="startDate"
     v-model:end="endDate"
-    :initial-selection="'L7D'"
+    :initial-selection="'L14D'"
     :available-selections="datePickerSelction"
   />
-  <BodyDataTable class="mt-8" :body-data="bodyData" />
+  <BodyDataTable
+    class="mt-8"
+    :body-data="bodyData"
+    :loading="isLoading"
+    @refresh-data="refreshData"
+  />
 </template>

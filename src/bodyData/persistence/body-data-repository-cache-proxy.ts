@@ -10,6 +10,10 @@ import { endOfDay, startOfDay } from 'date-fns';
 export class BodyDataRepositoryCacheProxy implements BodyDataRepository {
   private cache: BodyData[] = [];
   constructor(private readonly realRepository: AzureTablesBodyDataRepository) {}
+  async delete(recordedAt: Date): Promise<void> {
+    await this.realRepository.delete(recordedAt);
+    this.clearCache();
+  }
 
   private getBoundariesOfCachedData() {
     if (this.cache.length < 2) return null;

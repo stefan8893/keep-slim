@@ -64,4 +64,6 @@ export const MessageKey = {
 	weightChange: 'weightChange',
 	calendarWeekShort: 'calendarWeekShort',
 	recorded: 'recorded',
+	actions: 'actions',
+	delete: 'delete',
 };

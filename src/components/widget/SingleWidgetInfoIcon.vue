@@ -29,14 +29,14 @@ const isEmpty = computed(() => props.values.state === 'empty');
   <el-tooltip v-if="!isEmpty" placement="top">
     <el-icon class="info-icon cursor-pointer" size="22"><InfoFilled /></el-icon>
     <template #content>
-      <div class="flex max-w-52 flex-col flex-nowrap items-center justify-start">
+      <div class="flex max-w-48 flex-col flex-nowrap items-center justify-start break-keep">
         <span>{{
           $t(isSingleDay ? MessageKey.recordedAt : MessageKey.lastRecordedAt, {
             date: formatDate(latestRecordDateTime, 'PP'),
             time: formatTime(latestRecordDateTime),
           })
         }}</span>
-        <span v-show="!isSingleDay" class="mt-4">
+        <span v-show="!isSingleDay" class="mt-4 break-keep">
           {{
             $t(MessageKey.calculationInfo, {
               date: formatDate(oldestRecordDateTime, 'PP'),

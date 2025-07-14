@@ -1,12 +1,14 @@
 import type { AcquireAccessTokenFn } from '@/auth/auth.types';
 import { AzureTablesBodyDataRepository } from '@/bodyData/persistence/body-data-repository';
 import { BodyDataRepositoryCacheProxy } from '@/bodyData/persistence/body-data-repository-cache-proxy';
+import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
+import { BodyDataTestDataRepository } from '@/bodyData/persistence/body-data-test-data-repository';
 import type { AccessToken, TokenCredential } from '@azure/core-auth';
 import { TableClient } from '@azure/data-tables';
 
 export function useBodyDataRepository(
   acquireAccessToken: AcquireAccessTokenFn,
-): BodyDataRepositoryCacheProxy {
+): BodyDataRepository {
   const tokenAdapter: TokenCredential = {
     getToken: async (): Promise<AccessToken | null> => {
       const accessTokenResult = await acquireAccessToken();
@@ -24,5 +26,8 @@ export function useBodyDataRepository(
     tokenAdapter,
   );
 
-  return new BodyDataRepositoryCacheProxy(new AzureTablesBodyDataRepository(tableClient));
+  const environment = import.meta.env.MODE;
+
+  if (environment === 'development') return new BodyDataTestDataRepository();
+  else return new BodyDataRepositoryCacheProxy(new AzureTablesBodyDataRepository(tableClient));
 }

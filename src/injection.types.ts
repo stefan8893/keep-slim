@@ -1,4 +1,3 @@
-import type { BodyDataRepositoryCacheProxy } from '@/bodyData/persistence/body-data-repository-cache-proxy';
 import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
 import type { ThemingControl } from '@/plugins/theming.plugin';
 import type { PublicClientApplication } from '@azure/msal-browser';
@@ -9,6 +8,3 @@ export const themingControlKey = Symbol() as InjectionKey<ThemingControl>;
 export const msalInstanceKey = Symbol() as InjectionKey<PublicClientApplication>;
 
 export const bodyDataRepositoryKey = Symbol() as InjectionKey<BodyDataRepository>;
-
-export const bodyDataRepositoryCacheProxyKey =
-  Symbol() as InjectionKey<BodyDataRepositoryCacheProxy>;

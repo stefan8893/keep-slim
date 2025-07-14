@@ -57,5 +57,7 @@
   "calculationInfo": "The oldest entry for the calculation is from {date}.",
   "weightChange": "Weight Change",
   "calendarWeekShort": "Week",
-  "recorded": "Recorded"
+  "recorded": "Recorded",
+  "actions": "Actions",
+  "delete": "Delete"
 }

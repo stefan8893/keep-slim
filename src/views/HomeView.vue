@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
 import type { BodyData } from '@/bodyData/body-data.types';
 import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
 import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
@@ -41,16 +40,12 @@ watchEffect(() => {
 const fetchData = async () => {
   if (!bothDatesPresent.value) return;
 
-  // const queriedBodyData = await bodyDataRepository.query({
-  //   start: startDate.value!,
-  //   end: endDate.value!,
-  // });
+  const queriedBodyData = await bodyDataRepository.query({
+    start: startDate.value!,
+    end: endDate.value!,
+  });
 
-  //bodyData.value = queriedBodyData;
-
-  bodyData.value = getTestData().filter(
-    (x) => x.recordedAt >= startDate.value! && x.recordedAt <= endDate.value!,
-  );
+  bodyData.value = queriedBodyData;
 };
 </script>
 

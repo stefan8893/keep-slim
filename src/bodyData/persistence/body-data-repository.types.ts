@@ -7,4 +7,5 @@ export type QueryOptions = {
 
 export interface BodyDataRepository {
   query(options: QueryOptions): Promise<BodyData[]>;
+  delete(recordedAt: Date): Promise<void>;
 }

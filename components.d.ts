@@ -29,6 +29,7 @@ declare module 'vue' {
     ElLink: typeof import('element-plus/es')['ElLink']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElProgress: typeof import('element-plus/es')['ElProgress']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
@@ -58,5 +59,8 @@ declare module 'vue' {
     ThemeDropdown: typeof import('./src/components/ThemeDropdown.vue')['default']
     ThemeSwitch: typeof import('./src/components/ThemeSwitch.vue')['default']
     TheNavBar: typeof import('./src/components/layout/TheNavBar.vue')['default']
+  }
+  export interface GlobalDirectives {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

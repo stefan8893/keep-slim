@@ -10,9 +10,13 @@ import { compareAsc, format } from 'date-fns';
 export class AzureTablesBodyDataRepository implements BodyDataRepository {
   constructor(private readonly bodyDataTableClient: TableClient) {}
 
+  private formatToRowKey(date: Date) {
+    return format(date, `yyyy-MM-dd'T'HH:mm:ss`);
+  }
+
   private toFilter(options: QueryOptions) {
-    const start = format(options.start, `yyyy-MM-dd'T'HH:mm:ss`);
-    const end = format(options.end, `yyyy-MM-dd'T'HH:mm:ss`);
+    const start = this.formatToRowKey(options.start);
+    const end = this.formatToRowKey(options.end);
 
     return `PartitionKey eq 'body_data' and RowKey ge '${start}' and RowKey le '${end}'`;
   }
@@ -35,5 +39,9 @@ export class AzureTablesBodyDataRepository implements BodyDataRepository {
 
     const result = (await Array.fromAsync(iterator)).map(this.toBodyData);
     return result.sort((a, b) => compareAsc(a.recordedAt, b.recordedAt));
+  }
+
+  async delete(recordedAt: Date): Promise<void> {
+    await this.bodyDataTableClient.deleteEntity('body_data', this.formatToRowKey(recordedAt));
   }
 }
