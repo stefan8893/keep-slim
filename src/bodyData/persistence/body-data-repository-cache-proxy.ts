@@ -7,7 +7,7 @@ import type {
 import type {} from '@/bodyData/persistence/useBodyDataRepository';
 import { endOfDay, startOfDay } from 'date-fns';
 
-export class BodyDataRepositoryProxy implements BodyDataRepository {
+export class BodyDataRepositoryCacheProxy implements BodyDataRepository {
   private cache: BodyData[] = [];
   constructor(private readonly realRepository: AzureTablesBodyDataRepository) {}
 
