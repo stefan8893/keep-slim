@@ -23,11 +23,12 @@ export class AzureFunctionsBodyDataRepository implements BodyDataRepository {
     return format(date, `yyyy-MM-dd`);
   }
 
-  private toQueryString(options: QueryOptions) {
-    return new URLSearchParams({
-      startDate: this.formatToQueryDate(options.start),
-      endDate: this.formatToQueryDate(options.end),
-    }).toString();
+  private formatToRowKey(date: Date) {
+    return format(date, `yyyy-MM-dd'T'HH:mm:ss`);
+  }
+
+  private toQueryString(params: Record<string, string>) {
+    return new URLSearchParams(params).toString();
   }
 
   private parseBodyDataResponse(raw: RawBodyData[]): BodyData[] {
@@ -42,18 +43,24 @@ export class AzureFunctionsBodyDataRepository implements BodyDataRepository {
     }));
   }
 
-  private async fetch(url: string) {
+  private async fetch(url: string, options?: RequestInit) {
     const accessToken = await this.acquireToken();
 
-    return await fetch(url, {
+    const init: RequestInit = {
+      ...options,
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-    });
+    };
+
+    return await fetch(url, init);
   }
 
   async query(options: QueryOptions): Promise<BodyData[]> {
-    const url = `${this.baseUrl}/body-data?${this.toQueryString(options)}`;
+    const url = `${this.baseUrl}/body-data?${this.toQueryString({
+      startDate: this.formatToQueryDate(options.start),
+      endDate: this.formatToQueryDate(options.end),
+    })}`;
 
     const response = await this.fetch(url).then((r) => r.json());
 
@@ -61,6 +68,12 @@ export class AzureFunctionsBodyDataRepository implements BodyDataRepository {
   }
 
   async delete(recordedAt: Date): Promise<void> {
-    console.log('not yet implemented', recordedAt);
+    const url = `${this.baseUrl}/body-data?${this.toQueryString({
+      recordedAt: this.formatToRowKey(recordedAt),
+    })}`;
+
+    await this.fetch(url, {
+      method: 'DELETE',
+    });
   }
 }
