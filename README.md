@@ -20,13 +20,9 @@ Some while ago I was obese and needed to lose weight. Therefore I started a stri
 - **Azure Tables** for storing body data
 - **Azure Functions** serving as the backend for data processing and API handling
 
-The frontend authenticates users through EntraID and communicates with the Azure Functions backend, which accesses and updates data in Azure Tables.
-
-## Data Input
-
-Body data is collected from a **SÖHNLE Shape Sense** scale.
+The frontend authenticates users through EntraID and communicates with the Azure Functions backend, that accesses and updates data in Azure Tables.
+The data itself comes from a **SÖHNLE Shape Sense** scale as CSV exports.
 
 ## Azure Functions Repository
 
-The backend source code is maintained in a separate repository:  
-[Azure Functions Backend Repo](https://github.com/stefan8893/keep-slim-functions)
+The backend source code is maintained in a separate repository: [Azure Functions Backend Repo](https://github.com/stefan8893/keep-slim-functions)
