@@ -1,5 +1,5 @@
-import { loginScopes, storageAccountScopes } from '@/auth/auth.config';
-import type { AccessTokenResult, AuthContext } from '@/auth/auth.types';
+import { azFunctionAppScope, loginScopes } from '@/auth/auth.config';
+import type { AuthContext } from '@/auth/auth.types';
 import { msalInstanceKey } from '@/injection.types';
 import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
 import { inject } from 'vue';
@@ -23,24 +23,21 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
   }
 };
 
-export const acquireAccessToken = async (
+export const acquireAzureFunctionAppAccessToken = async (
   msalInstance: PublicClientApplication,
-): Promise<AccessTokenResult> => {
+): Promise<string> => {
   try {
     const authResult = await msalInstance.acquireTokenSilent({
-      scopes: storageAccountScopes,
+      scopes: azFunctionAppScope,
     });
 
-    return {
-      accessToken: authResult.accessToken,
-      expiresOn: authResult.expiresOn,
-    };
+    return authResult.accessToken;
   } catch (error) {
     console.error(error);
 
     if (error instanceof InteractionRequiredAuthError) {
       msalInstance.acquireTokenRedirect({
-        scopes: storageAccountScopes,
+        scopes: azFunctionAppScope,
       });
     }
 

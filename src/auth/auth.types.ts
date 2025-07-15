@@ -1,9 +1,4 @@
-export type AccessTokenResult = {
-  accessToken: string;
-  expiresOn: Date | null;
-};
-
-export type AcquireAccessTokenFn = () => Promise<AccessTokenResult>;
+export type AcquireAccessTokenFn = () => Promise<string>;
 
 export type AuthContext = {
   isAuthenticated: () => boolean;

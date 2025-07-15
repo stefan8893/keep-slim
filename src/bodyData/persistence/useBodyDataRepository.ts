@@ -1,33 +1,17 @@
 import type { AcquireAccessTokenFn } from '@/auth/auth.types';
-import { AzureTablesBodyDataRepository } from '@/bodyData/persistence/body-data-repository';
+import { AzureFunctionsBodyDataRepository } from '@/bodyData/persistence/body-data-repository-az-func';
 import { BodyDataRepositoryCacheProxy } from '@/bodyData/persistence/body-data-repository-cache-proxy';
 import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
-import { BodyDataTestDataRepository } from '@/bodyData/persistence/body-data-test-data-repository';
-import type { AccessToken, TokenCredential } from '@azure/core-auth';
-import { TableClient } from '@azure/data-tables';
 
 export function useBodyDataRepository(
   acquireAccessToken: AcquireAccessTokenFn,
 ): BodyDataRepository {
-  const tokenAdapter: TokenCredential = {
-    getToken: async (): Promise<AccessToken | null> => {
-      const accessTokenResult = await acquireAccessToken();
+  const functionsAppBaseUrl: string = import.meta.env.VITE_KEEP_SLIM_FUNCTION_APP_BASE_URL;
 
-      return {
-        token: accessTokenResult.accessToken,
-        expiresOnTimestamp: accessTokenResult.expiresOn?.getTime() ?? Date.now() + 60 * 60 * 1000,
-      };
-    },
-  };
-
-  const tableClient = new TableClient(
-    import.meta.env.VITE_KEEP_SLIM_STORAGE_ACCOUNT_URL,
-    import.meta.env.VITE_KEEP_SLIM_STORAGE_ACCOUNT_TABLE_NAME,
-    tokenAdapter,
+  const azureFunctionAppBodyDataRepository = new AzureFunctionsBodyDataRepository(
+    functionsAppBaseUrl,
+    acquireAccessToken,
   );
 
-  const environment = import.meta.env.MODE;
-
-  if (environment === 'development') return new BodyDataTestDataRepository();
-  else return new BodyDataRepositoryCacheProxy(new AzureTablesBodyDataRepository(tableClient));
+  return new BodyDataRepositoryCacheProxy(azureFunctionAppBodyDataRepository);
 }

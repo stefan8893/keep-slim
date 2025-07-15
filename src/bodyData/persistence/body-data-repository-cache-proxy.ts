@@ -1,5 +1,5 @@
 import type { BodyData } from '@/bodyData/body-data.types';
-import type { AzureTablesBodyDataRepository } from '@/bodyData/persistence/body-data-repository';
+import type { AzureFunctionsBodyDataRepository } from '@/bodyData/persistence/body-data-repository-az-func';
 import type {
   BodyDataRepository,
   QueryOptions,
@@ -9,7 +9,7 @@ import { endOfDay, startOfDay } from 'date-fns';
 
 export class BodyDataRepositoryCacheProxy implements BodyDataRepository {
   private cache: BodyData[] = [];
-  constructor(private readonly realRepository: AzureTablesBodyDataRepository) {}
+  constructor(private readonly realRepository: AzureFunctionsBodyDataRepository) {}
   async delete(recordedAt: Date): Promise<void> {
     await this.realRepository.delete(recordedAt);
     this.clearCache();
