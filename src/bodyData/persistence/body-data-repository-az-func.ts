@@ -30,7 +30,7 @@ export class AzureFunctionsBodyDataRepository implements BodyDataRepository {
     }).toString();
   }
 
-  private parseBodyDataArray(raw: RawBodyData[]): BodyData[] {
+  private parseBodyDataResponse(raw: RawBodyData[]): BodyData[] {
     return raw.map((entry) => ({
       recordedAt: new Date(entry.recordedAt),
       weight: Number(entry.weight),
@@ -57,7 +57,7 @@ export class AzureFunctionsBodyDataRepository implements BodyDataRepository {
 
     const response = await this.fetch(url).then((r) => r.json());
 
-    return this.parseBodyDataArray(response);
+    return this.parseBodyDataResponse(response);
   }
 
   async delete(recordedAt: Date): Promise<void> {
