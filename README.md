@@ -1,8 +1,8 @@
 # Keep Slim
 
-## What it is
+## Overview
 
-A simple app to track and analyze body data, such as:
+**Keep Slim** is an application designed to track and analyze body data over time, including:
 
 - Weight
 - Body Fat
@@ -11,20 +11,22 @@ A simple app to track and analyze body data, such as:
 - BMI
 - Daily Calorie Requirement
 
-Some while ago, I was obese and needed to lose weight.  
-So I started a strict diet and lifting weights.  
-In order to see the progress, not only in the mirror, I created this app.
+Some while ago I was obese and needed to lose weight. Therefore I started a strict diet and lifting weights. In order to see the progress not only in the mirror I created this app.
 
 ## Infrastructure
 
-This app runs entirely in Azure and uses the following resources:
+- **EntraID** (OAuth2.1 + OpenID Connect) for secure authentication
+- **Azure Blob Storage** hosting the frontend as a static website
+- **Azure Tables** for storing body data
+- **Azure Functions** serving as the backend for data processing and API handling
 
-- EntraID (OAuth2.1 + OpenID Connect)
-- Azure Blob Storage (static web site hosting)
-- Azure Tables (storage for the body data)
+The frontend authenticates users through EntraID and communicates with the Azure Functions backend, which accesses and updates data in Azure Tables.
 
-There is no backend, the app gets served from the blob storage that is configured to host a static web site.  
-After authenticating against EntraID, tokens get issued that can be used to query Azure Tables that contain the actual body data.
+## Data Input
 
-The data itself comes from a SÖHNLE Shape Sense scale.  
-A csv export of the scale's data gets uploaded to the app(client-side) and parsed there before finally stored in Azure Tables.
+Body data is collected from a **SÖHNLE Shape Sense** scale. Users export data from the scale as a CSV file, upload it client-side, and the app sends the data to the Azure Functions backend for parsing and storage.
+
+## Azure Functions Repository
+
+The backend source code is maintained in a separate repository:  
+[Azure Functions Backend Repo](https://github.com/stefan8893/keep-slim-functions)
