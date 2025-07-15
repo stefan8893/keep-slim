@@ -24,7 +24,7 @@ The frontend authenticates users through EntraID and communicates with the Azure
 
 ## Data Input
 
-Body data is collected from a **SÖHNLE Shape Sense** scale. Users export data from the scale as a CSV file, upload it client-side, and the app sends the data to the Azure Functions backend for parsing and storage.
+Body data is collected from a **SÖHNLE Shape Sense** scale.
 
 ## Azure Functions Repository
 
