@@ -44,7 +44,10 @@ jobs:
       Version: ${{ needs.has_next_version.outputs.Version }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CI_PAT }}
 
       - name: Setup node 22.x
         uses: actions/setup-node@v4
