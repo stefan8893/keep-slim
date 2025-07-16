@@ -1,3 +1,5 @@
+import type { MessageKey } from '@/i18n/message-keys.g';
+
 export type DateRange = {
   start?: Date;
   end?: Date;
@@ -17,6 +19,6 @@ export type DateRangeSelectionId =
   | 'CUSTOM';
 
 export type DateRangeSelection = {
-  messageKey: string;
+  messageKey: MessageKey;
   range: () => DateRange;
 };

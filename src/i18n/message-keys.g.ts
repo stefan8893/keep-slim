@@ -66,4 +66,6 @@ export const MessageKey = {
 	recorded: 'recorded',
 	actions: 'actions',
 	delete: 'delete',
-};
+} as const;
+
+export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];

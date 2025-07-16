@@ -58,7 +58,10 @@ export async function generateI18nMessageKeys(): Promise<void> {
 // </auto-generated>
 //----------------------
 
-export const MessageKey = {\n\t${properties}\n};`;
+export const MessageKey = {\n\t${properties}\n} as const;
+
+export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];
+`;
 
   console.log(`Write message keys to file: ${targetFile}`);
   await fs.writeFile(targetFile, messageKeys);
