@@ -1,9 +1,6 @@
 import { getTestData } from '@/bodyData/aggregations/__tests__/testData/body-data';
+import type { BodyDataRepository, QueryOptions } from '@/bodyData/body-data-persistence.types';
 import type { BodyData } from '@/bodyData/body-data.types';
-import type {
-  BodyDataRepository,
-  QueryOptions,
-} from '@/bodyData/persistence/body-data-repository.types';
 import { compareAsc } from 'date-fns';
 
 export class BodyDataTestDataRepository implements BodyDataRepository {

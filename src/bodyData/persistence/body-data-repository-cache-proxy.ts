@@ -1,19 +1,11 @@
+import type { BodyDataRepository, QueryOptions } from '@/bodyData/body-data-persistence.types';
 import type { BodyData } from '@/bodyData/body-data.types';
 import type { AzureFunctionsBodyDataRepository } from '@/bodyData/persistence/body-data-repository-az-func';
-import type {
-  BodyDataRepository,
-  QueryOptions,
-} from '@/bodyData/persistence/body-data-repository.types';
-import type {} from '@/bodyData/persistence/useBodyDataRepository';
 import { endOfDay, startOfDay } from 'date-fns';
 
 export class BodyDataRepositoryCacheProxy implements BodyDataRepository {
   private cache: BodyData[] = [];
   constructor(private readonly realRepository: AzureFunctionsBodyDataRepository) {}
-  async delete(recordedAt: Date): Promise<void> {
-    await this.realRepository.delete(recordedAt);
-    this.clearCache();
-  }
 
   private getBoundariesOfCachedData() {
     if (this.cache.length < 2) return null;
@@ -50,5 +42,10 @@ export class BodyDataRepositoryCacheProxy implements BodyDataRepository {
     const result = await this.realRepository.query(options);
 
     return (this.cache = result);
+  }
+
+  async delete(recordedAt: Date): Promise<void> {
+    await this.realRepository.delete(recordedAt);
+    this.clearCache();
   }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { BodyDataRepository } from '@/bodyData/body-data-persistence.types';
 import type { BodyData } from '@/bodyData/body-data.types';
-import type { BodyDataRepository } from '@/bodyData/persistence/body-data-repository.types';
 import BodyDataTable from '@/components/BodyDataTable.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
@@ -12,7 +12,7 @@ const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 const startDate = ref<Date>();
 const endDate = ref<Date>();
 const bodyData = ref<BodyData[]>([]);
-const isLoading = ref(true);
+const isLoading = ref(false);
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -37,12 +37,10 @@ const fetchData = async () => {
   try {
     isLoading.value = true;
 
-    const queriedBodyData = await bodyDataRepository.query({
+    bodyData.value = await bodyDataRepository.query({
       start: startDate.value!,
       end: endDate.value!,
     });
-
-    bodyData.value = queriedBodyData;
   } catch (error) {
     console.error(error);
     console.error('TOOD: handle error');
@@ -51,7 +49,20 @@ const fetchData = async () => {
   }
 };
 
-const refreshData = () => {
+const deleteRecord = async (recordedAt: Date) => {
+  console.log('delete record on', recordedAt);
+
+  try {
+    isLoading.value = true;
+
+    await bodyDataRepository.delete(recordedAt);
+  } catch (error) {
+    console.error(error);
+    console.error('TOOD: handle error');
+  } finally {
+    isLoading.value = false;
+  }
+
   fetchData();
 };
 </script>
@@ -63,10 +74,7 @@ const refreshData = () => {
     :initial-selection="'L14D'"
     :available-selections="datePickerSelction"
   />
-  <BodyDataTable
-    class="mt-8"
-    :body-data="bodyData"
-    :loading="isLoading"
-    @refresh-data="refreshData"
-  />
+  <el-card class="mt-8" v-loading="isLoading">
+    <BodyDataTable :body-data="bodyData" @delete-record="deleteRecord" />
+  </el-card>
 </template>

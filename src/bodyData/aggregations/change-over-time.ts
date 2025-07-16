@@ -5,7 +5,7 @@ import type {
   IntervalChangeOverTime as ChangeOverTimeInterval,
   Period,
 } from '@/bodyData/body-data.types';
-import type { NumberKeys } from '@/types/type-helpers';
+import type { NumberKeys } from '@/types/helpers.types';
 import { identity } from '@vueuse/core';
 import { compareAsc } from 'date-fns';
 

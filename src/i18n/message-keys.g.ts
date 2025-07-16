@@ -56,6 +56,7 @@ export const MessageKey = {
 	bodyFat: 'bodyFat',
 	water: 'water',
 	bmi: 'bmi',
+	bmiShort: 'bmiShort',
 	week: 'week',
 	month: 'month',
 	lastRecordedAt: 'lastRecordedAt',
@@ -66,6 +67,16 @@ export const MessageKey = {
 	recorded: 'recorded',
 	actions: 'actions',
 	delete: 'delete',
+	importCsvFile: 'importCsvFile',
+	cancel: 'cancel',
+	back: 'back',
+	next: 'next',
+	import: 'import',
+	dailyCalorieRequirement: 'dailyCalorieRequirement',
+	calories: 'calories',
+	calorieUnit: 'calorieUnit',
+	importComplete: 'importComplete',
+	csvImportSuccess: 'csvImportSuccess',
 } as const;
 
 export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];

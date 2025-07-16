@@ -1,5 +1,5 @@
 import type { BodyData } from '@/bodyData/body-data.types';
-import type { NumberKeys } from '@/types/type-helpers';
+import type { NumberKeys } from '@/types/helpers.types';
 import { compareAsc } from 'date-fns';
 
 export type InterpolatedValue = {

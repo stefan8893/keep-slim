@@ -26,7 +26,7 @@ const isEmpty = computed(() => props.values.state === 'empty');
 </script>
 
 <template>
-  <el-tooltip v-if="!isEmpty" placement="top">
+  <el-tooltip v-if="!isEmpty" placement="top" :show-after="100">
     <el-icon class="info-icon cursor-pointer" size="22"><InfoFilled /></el-icon>
     <template #content>
       <div class="flex max-w-48 flex-col flex-nowrap items-center justify-start break-keep">
