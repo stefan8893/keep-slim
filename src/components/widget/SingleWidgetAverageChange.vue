@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="mt-2 flex flex-row flex-nowrap items-center justify-start gap-x-1">
+  <div class="flex flex-row flex-nowrap items-center justify-start gap-x-1">
     <el-text class="avg-sign">&#x2300;</el-text>
     <el-text>/&nbsp;{{ $t(props.messageKey) }}</el-text>
     <el-text class="average-value" size="large">

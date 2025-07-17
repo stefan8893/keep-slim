@@ -53,11 +53,13 @@ const showSatistics = computed(() => props.values.state === 'range');
       <div v-if="showSatistics" class="mt-4 flex flex-col flex-nowrap items-center justify-start">
         <SingleWidgetTotalChange :change="change" :options="props.options" />
         <SingleWidgetAverageChange
+          class="mt-2"
           :average-change="averageWeeklyChange"
           :options="props.options"
           :message-key="MessageKey.week"
         />
         <SingleWidgetAverageChange
+          class="mt-2"
           :average-change="averageMonthlyChange"
           :options="props.options"
           :message-key="MessageKey.month"
