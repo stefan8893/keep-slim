@@ -37,7 +37,7 @@ function determineTimePeriods(intervalUtis: IntervalUtils, bodyData: BodyData[])
   const flatInterpolationPoints = Array.from(Array(pointsInBetween).keys())
     .map((x) => {
       return [
-        intervalUtis.addInterval(intervalUtis.endOfInterval(startPoint), x),
+        intervalUtis.endOfInterval(intervalUtis.addInterval(startPoint, x)),
         intervalUtis.addInterval(startPoint, x + 1),
       ];
     })
