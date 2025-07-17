@@ -6,7 +6,7 @@ import type {
   Summarized,
   SummarizedBodyData,
 } from '@/bodyData/body-data.types';
-import { addWeeks, formatISO, isSameDay, parseISO, startOfDay, startOfISOWeek } from 'date-fns';
+import { formatISO, parseISO, startOfDay, startOfISOWeek } from 'date-fns';
 
 function averageDate(dates: Date[]): Date {
   if (dates.length < 1) return new Date(0);
@@ -67,15 +67,7 @@ export function prepareBodyDataForChart(bodyData: BodyData[]): SummarizedBodyDat
 
   const groupedByDay = Map.groupBy(bodyData, (x) => formatISO(startOfDay(x.recordedAt)));
   const groupByWeek = () => {
-    const firstRecord = bodyData[0];
-    const startOfFirstWeek = startOfISOWeek(firstRecord.recordedAt);
-    const startOfSecondWeek = addWeeks(startOfFirstWeek, 1);
-
-    const startFromMondaysOnly = isSameDay(firstRecord.recordedAt, startOfFirstWeek)
-      ? bodyData
-      : bodyData.filter((x) => x.recordedAt >= startOfSecondWeek);
-
-    return Map.groupBy(startFromMondaysOnly, (x) => formatISO(startOfISOWeek(x.recordedAt)));
+    return Map.groupBy(bodyData, (x) => formatISO(startOfISOWeek(x.recordedAt)));
   };
 
   if (groupedByDay.size > summarizeByDayThresholdInDays) return summarizeByWeek(groupByWeek());

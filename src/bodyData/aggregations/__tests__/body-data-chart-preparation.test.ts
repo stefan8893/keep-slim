@@ -121,7 +121,7 @@ describe('prepareBodyDataForChart', () => {
   test('returns summarized items by week when having plenty of data', () => {
     const preparedForChart = prepareBodyDataForChart(getTestData());
 
-    expect(preparedForChart.result).toHaveLength(43);
+    expect(preparedForChart.result).toHaveLength(44);
     expect(preparedForChart.type).toBe('summarizedByWeek');
   });
 
