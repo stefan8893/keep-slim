@@ -50,8 +50,6 @@ const fetchData = async () => {
 };
 
 const deleteRecord = async (recordedAt: Date) => {
-  console.log('delete record on', recordedAt);
-
   try {
     isLoading.value = true;
 
