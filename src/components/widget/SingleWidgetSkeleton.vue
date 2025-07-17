@@ -12,24 +12,24 @@ const props = defineProps<{
       </div>
     </template>
     <template #default>
-      <div class="flex flex-col items-center justify-start">
-        <div>
-          <el-skeleton style="--el-skeleton-circle-size: 115px" animated>
-            <template #template>
-              <el-skeleton-item variant="circle" />
-              <el-skeleton-item class="single-skeleton-widget mt-4" />
-              <el-skeleton-item class="single-skeleton-widget mt-4" />
-              <el-skeleton-item class="single-skeleton-widget mt-4" />
-            </template>
-          </el-skeleton>
-        </div>
-      </div>
+      <el-skeleton
+        style="--el-skeleton-circle-size: 115px"
+        animated
+        class="flex w-40 flex-col flex-nowrap items-center justify-start"
+      >
+        <template #template>
+          <el-skeleton-item variant="circle" />
+          <el-skeleton-item class="single-skeleton-widget mt-4" />
+          <el-skeleton-item class="single-skeleton-widget mt-4" />
+          <el-skeleton-item class="single-skeleton-widget mt-4" />
+        </template>
+      </el-skeleton>
     </template>
   </el-card>
 </template>
 
 <style scoped>
 .single-skeleton-widget {
-  height: 20px;
+  height: 27px;
 }
 </style>

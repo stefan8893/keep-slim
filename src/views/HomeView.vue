@@ -26,7 +26,7 @@ const endDate = ref<Date>();
 const bodyData = ref<BodyData[]>([]);
 const { run, isLoading } = useLoader({
   initialLoading: true,
-  defaultStartDelay: 300,
+  defaultStartDelay: 200,
   skipDelayOnFirstRun: true,
 });
 
