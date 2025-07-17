@@ -9,13 +9,21 @@ export function delay(milliseconds: number) {
 type LoaderOptions = {
   defaultStartDelay?: number;
   initialLoading?: boolean;
+  skipDelayOnFirstRun?: boolean;
+  onlyOnce?: boolean;
 };
 
 export function useLoader(options: LoaderOptions = {}) {
-  const { defaultStartDelay = 0, initialLoading = false } = options;
+  const {
+    defaultStartDelay = 0,
+    initialLoading = false,
+    skipDelayOnFirstRun = false,
+    onlyOnce = false,
+  } = options;
 
   const isLoading = ref(initialLoading);
   let delayHandle: ReturnType<typeof setTimeout> | null = null;
+  let hasRun = false;
 
   const stopLoading = () => {
     isLoading.value = false;
@@ -25,20 +33,27 @@ export function useLoader(options: LoaderOptions = {}) {
     }
   };
 
+  const startLoading = () => {
+    if (onlyOnce && hasRun) return;
+
+    isLoading.value = true;
+  };
+
   const run = async <R>(action: () => R | Promise<R>, startDelay?: number): Promise<R> => {
-    const delay = startDelay ?? defaultStartDelay;
+    const delay = !hasRun && skipDelayOnFirstRun ? 0 : (startDelay ?? defaultStartDelay ?? 0);
 
     if (delay > 0) {
       delayHandle = setTimeout(() => {
-        isLoading.value = true;
+        startLoading();
       }, delay);
     } else {
-      isLoading.value = true;
+      startLoading();
     }
 
     try {
       return await action();
     } finally {
+      hasRun = true;
       stopLoading();
     }
   };

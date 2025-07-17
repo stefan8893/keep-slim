@@ -7,8 +7,8 @@ import BodyDatatWeeklyWeightChangeChart from '@/components/BodyDatatWeeklyWeight
 import CsvImport from '@/components/csv-import/CsvImport.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import BodyDataWidgetSkeletons from '@/components/widget/BodyDataWidgetSkeletons.vue';
 import BodyDataWidgets from '@/components/widget/BodyDataWidgets.vue';
-import BodyDataWidgetsSkeletons from '@/components/widget/BodyDataWidgetsSkeletons.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { bodyDataRepositoryKey } from '@/injection.types';
 import { useLoader } from '@/utils';
@@ -24,7 +24,11 @@ const { t } = useI18n();
 const startDate = ref<Date>();
 const endDate = ref<Date>();
 const bodyData = ref<BodyData[]>([]);
-const { run, isLoading } = useLoader();
+const { run, isLoading } = useLoader({
+  initialLoading: true,
+  defaultStartDelay: 300,
+  skipDelayOnFirstRun: true,
+});
 
 const csvImportDialogVisible = ref(false);
 
@@ -77,7 +81,7 @@ const openCsvImportDialog = () => {
       <el-button type="primary" :icon="Plus" @click="openCsvImportDialog" />
     </el-tooltip>
   </div>
-  <BodyDataWidgetsSkeletons v-if="isLoading" class="mt-8" />
+  <BodyDataWidgetSkeletons v-if="isLoading" class="mt-8" />
   <BodyDataWidgets v-else class="mt-8" :body-data="bodyData" />
   <BodyDatatWeeklyWeightChangeChart v-loading="isLoading" class="mt-8" :body-data="bodyData" />
   <BodyDataChart v-loading="isLoading" class="mt-8" :body-data="bodyData" />
