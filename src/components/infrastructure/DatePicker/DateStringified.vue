@@ -12,7 +12,7 @@ const localeStore = useLocaleStore();
 const { t } = useI18n();
 
 const props = defineProps<{
-  date?: Date;
+  date?: Date | null | undefined;
   placeholder?: string;
   formatString?: string;
 }>();

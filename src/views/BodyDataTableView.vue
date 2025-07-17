@@ -3,16 +3,22 @@ import type { BodyDataRepository } from '@/bodyData/body-data-persistence.types'
 import type { BodyData } from '@/bodyData/body-data.types';
 import BodyDataTable from '@/components/BodyDataTable.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
-import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import {
+  type DateRange,
+  type DateRangeSelectionId,
+  emptyDateRange,
+} from '@/components/infrastructure/DatePicker/date-range.types';
 import { bodyDataRepositoryKey } from '@/injection.types';
-import { computed, inject, ref, watchEffect } from 'vue';
+import { isDate, useLoader } from '@/utils';
+import { inject, ref, watch } from 'vue';
 
 const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 
-const startDate = ref<Date>();
-const endDate = ref<Date>();
+const dateRange = ref<DateRange>(emptyDateRange);
 const bodyData = ref<BodyData[]>([]);
-const isLoading = ref(false);
+const { run, isLoading } = useLoader({
+  initialLoading: true,
+});
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -25,50 +31,38 @@ const datePickerSelction: DateRangeSelectionId[] = [
   'CUSTOM',
 ];
 
-const bothDatesPresent = computed(() => !!startDate.value && !!endDate.value);
-
-watchEffect(() => {
-  if (!!startDate.value && !!endDate.value) fetchData();
-});
+watch(dateRange, () => fetchData(), { deep: true });
 
 const fetchData = async () => {
-  if (!bothDatesPresent.value) return;
+  if (!isDate(dateRange.value.start) || !isDate(dateRange.value.end)) return;
+
+  const start = dateRange.value.start;
+  const end = dateRange.value.end;
 
   try {
-    isLoading.value = true;
-
-    bodyData.value = await bodyDataRepository.query({
-      start: startDate.value!,
-      end: endDate.value!,
-    });
+    bodyData.value = await run(() => bodyDataRepository.query({ start, end }));
   } catch (error) {
     console.error(error);
     console.error('TOOD: handle error');
-  } finally {
-    isLoading.value = false;
   }
 };
 
 const deleteRecord = async (recordedAt: Date) => {
   try {
-    isLoading.value = true;
-
-    await bodyDataRepository.delete(recordedAt);
+    await run(async () => {
+      await bodyDataRepository.delete(recordedAt);
+      await fetchData();
+    });
   } catch (error) {
     console.error(error);
     console.error('TOOD: handle error');
-  } finally {
-    isLoading.value = false;
   }
-
-  fetchData();
 };
 </script>
 
 <template>
   <DateRangePicker
-    v-model:start="startDate"
-    v-model:end="endDate"
+    v-model:date-range="dateRange"
     :initial-selection="'L14D'"
     :available-selections="datePickerSelction"
   />

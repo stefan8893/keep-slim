@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { dateRangeSelections } from '@/components/infrastructure/DatePicker/date-range-selection';
-import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import {
+  type DateRange,
+  type DateRangeSelectionId,
+  emptyDateRange,
+} from '@/components/infrastructure/DatePicker/date-range.types';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { addDays, endOfDay } from 'date-fns';
 import { computed, ref, watch } from 'vue';
@@ -20,8 +24,9 @@ const props = defineProps<{
 const minDate = computed(() => props.minDate ?? new Date(2000, 0));
 const maxDate = computed(() => props.maxDate ?? endOfDay(addDays(new Date(), 2)));
 
-const start = defineModel<Date | undefined>('start');
-const end = defineModel<Date | undefined>('end');
+const dateRange = defineModel<DateRange>('dateRange', {
+  default: emptyDateRange,
+});
 
 const currentSelectionId = ref(
   props.initialSelection ??
@@ -30,23 +35,25 @@ const currentSelectionId = ref(
 
 const currentSelection = computed(() => dateRangeSelections.get(currentSelectionId.value)!);
 
+const initialRange = dateRangeSelections.get(currentSelectionId.value)?.range();
+[dateRange.value.start, dateRange.value.end] = [initialRange?.start, initialRange?.end];
+
 watch(
   currentSelection,
   () => {
     if (currentSelectionId.value !== 'CUSTOM') {
       const range = currentSelection.value.range();
-      start.value = range.start;
-      end.value = range.end;
+      [dateRange.value.start, dateRange.value.end] = [range?.start, range?.end];
     }
   },
-  { immediate: true },
+  { immediate: false },
 );
 
 const disabledStartDates = (date: Date) =>
-  isStartDateDisabled(date, minDate.value, maxDate.value, end.value);
+  isStartDateDisabled(date, minDate.value, maxDate.value, dateRange.value.end);
 
 const disabledEndDates = (date: Date) =>
-  isEndDateDisabled(date, minDate.value, maxDate.value, start.value);
+  isEndDateDisabled(date, minDate.value, maxDate.value, dateRange.value.start);
 </script>
 
 <template>
@@ -60,7 +67,7 @@ const disabledEndDates = (date: Date) =>
       />
 
       <div v-if="currentSelectionId !== 'CUSTOM'" class="date-range-picker-stringified">
-        <DateRangeStringified :start="start" :end="end" />
+        <DateRangeStringified :start="dateRange.start" :end="dateRange.end" />
       </div>
 
       <div
@@ -68,7 +75,7 @@ const disabledEndDates = (date: Date) =>
         class="date-range-picker-custom-start single-date-picker"
       >
         <SingleDatePicker
-          v-model="start"
+          v-model="dateRange.start"
           :disabled-date="disabledStartDates"
           :placeholder="$t(MessageKey.startDate)"
         />
@@ -78,7 +85,7 @@ const disabledEndDates = (date: Date) =>
         class="date-range-picker-custom-end single-date-picker"
       >
         <SingleDatePicker
-          v-model="end"
+          v-model="dateRange.end"
           :disabled-date="disabledEndDates"
           :placeholder="$t(MessageKey.endDate)"
           :set-time-to-end-of-day="true"

@@ -1,8 +1,13 @@
 import type { MessageKey } from '@/i18n/message-keys.g';
 
 export type DateRange = {
-  start?: Date;
-  end?: Date;
+  start: Date | undefined | null;
+  end: Date | undefined | null;
+};
+
+export const emptyDateRange: DateRange = {
+  start: null,
+  end: null,
 };
 
 export type DateRangeSelectionId =
@@ -13,8 +18,8 @@ export type DateRangeSelectionId =
   | 'L3M'
   | 'L6M'
   | 'L12M'
-  | 'CURR_YEAR' // current year
-  | 'PREV_YEAR' // previous year
+  | 'CURR_YEAR'
+  | 'PREV_YEAR'
   | 'L2Y'
   | 'CUSTOM';
 

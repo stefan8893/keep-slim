@@ -17,7 +17,7 @@ const props = defineProps({
   },
 });
 
-const model = defineModel<Date | undefined>();
+const model = defineModel<Date | undefined | null>();
 
 const dateInternal = ref(model.value);
 

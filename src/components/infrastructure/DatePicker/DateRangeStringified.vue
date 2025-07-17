@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DateStringified from '@/components/infrastructure/DatePicker/DateStringified.vue';
+import type { DateRange } from '@/components/infrastructure/DatePicker/date-range.types.ts';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { isSameDay, isToday } from 'date-fns';
 import { computed } from 'vue';
@@ -7,10 +8,7 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const props = defineProps<{
-  start?: Date;
-  end?: Date;
-}>();
+const props = defineProps<DateRange>();
 
 const prefix = computed(() => {
   if (!props.start || !props.end) return '';

@@ -6,14 +6,18 @@ import BodyDataChart from '@/components/BodyDataChart.vue';
 import BodyDatatWeeklyWeightChangeChart from '@/components/BodyDatatWeeklyWeightChangeChart.vue';
 import CsvImport from '@/components/csv-import/CsvImport.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
-import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import {
+  type DateRange,
+  type DateRangeSelectionId,
+  emptyDateRange,
+} from '@/components/infrastructure/DatePicker/date-range.types';
 import BodyDataWidgetSkeletons from '@/components/widget/BodyDataWidgetSkeletons.vue';
 import BodyDataWidgets from '@/components/widget/BodyDataWidgets.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { bodyDataRepositoryKey } from '@/injection.types';
-import { useLoader } from '@/utils';
+import { isDate, useLoader } from '@/utils';
 import { Plus } from '@element-plus/icons-vue';
-import { computed, inject, ref, watchEffect } from 'vue';
+import { inject, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 useCommonChartOptions();
@@ -21,8 +25,7 @@ useCommonChartOptions();
 const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 const { t } = useI18n();
 
-const startDate = ref<Date>();
-const endDate = ref<Date>();
+const dateRange = ref<DateRange>(emptyDateRange);
 const bodyData = ref<BodyData[]>([]);
 const { run, isLoading } = useLoader({
   initialLoading: true,
@@ -45,20 +48,16 @@ const datePickerSelction: DateRangeSelectionId[] = [
   'CUSTOM',
 ];
 
-const bothDatesPresent = computed(() => !!startDate.value && !!endDate.value);
-
-watchEffect(() => {
-  if (!!startDate.value && !!endDate.value) fetchData();
-});
+watch(dateRange, () => fetchData(), { deep: true });
 
 const fetchData = async () => {
-  if (!bothDatesPresent.value) return;
+  if (!isDate(dateRange.value.start) || !isDate(dateRange.value.end)) return;
+
+  const start = dateRange.value.start;
+  const end = dateRange.value.end;
 
   bodyData.value = await run(() => {
-    return bodyDataRepository.query({
-      start: startDate.value!,
-      end: endDate.value!,
-    });
+    return bodyDataRepository.query({ start, end });
   });
 };
 
@@ -71,8 +70,7 @@ const openCsvImportDialog = () => {
   <div class="flex flex-row flex-nowrap items-start justify-between">
     <DateRangePicker
       class="w-full"
-      v-model:start="startDate"
-      v-model:end="endDate"
+      v-model:date-range="dateRange"
       :initial-selection="'L6M'"
       :available-selections="datePickerSelction"
     />
