@@ -3,13 +3,15 @@ import type { BodyDataRepository } from '@/bodyData/body-data-persistence.types'
 import type { BodyData } from '@/bodyData/body-data.types';
 import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
 import BodyDataChart from '@/components/BodyDataChart.vue';
-import BodyDataWidgets from '@/components/BodyDataWidgets.vue';
 import BodyDatatWeeklyWeightChangeChart from '@/components/BodyDatatWeeklyWeightChangeChart.vue';
 import CsvImport from '@/components/csv-import/CsvImport.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import type { DateRangeSelectionId } from '@/components/infrastructure/DatePicker/date-range.types';
+import BodyDataWidgets from '@/components/widget/BodyDataWidgets.vue';
+import BodyDataWidgetsSkeletons from '@/components/widget/BodyDataWidgetsSkeletons.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { bodyDataRepositoryKey } from '@/injection.types';
+import { useLoader } from '@/utils';
 import { Plus } from '@element-plus/icons-vue';
 import { computed, inject, ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -22,6 +24,7 @@ const { t } = useI18n();
 const startDate = ref<Date>();
 const endDate = ref<Date>();
 const bodyData = ref<BodyData[]>([]);
+const { run, isLoading } = useLoader();
 
 const csvImportDialogVisible = ref(false);
 
@@ -47,9 +50,11 @@ watchEffect(() => {
 const fetchData = async () => {
   if (!bothDatesPresent.value) return;
 
-  bodyData.value = await bodyDataRepository.query({
-    start: startDate.value!,
-    end: endDate.value!,
+  bodyData.value = await run(() => {
+    return bodyDataRepository.query({
+      start: startDate.value!,
+      end: endDate.value!,
+    });
   });
 };
 
@@ -72,9 +77,10 @@ const openCsvImportDialog = () => {
       <el-button type="primary" :icon="Plus" @click="openCsvImportDialog" />
     </el-tooltip>
   </div>
-  <BodyDataWidgets class="mt-8" :body-data="bodyData" />
-  <BodyDatatWeeklyWeightChangeChart class="mt-8" :body-data="bodyData" />
-  <BodyDataChart class="mt-8" :body-data="bodyData" />
+  <BodyDataWidgetsSkeletons v-if="isLoading" class="mt-8" />
+  <BodyDataWidgets v-else class="mt-8" :body-data="bodyData" />
+  <BodyDatatWeeklyWeightChangeChart v-loading="isLoading" class="mt-8" :body-data="bodyData" />
+  <BodyDataChart v-loading="isLoading" class="mt-8" :body-data="bodyData" />
   <CsvImport v-model:visible="csvImportDialogVisible" @refresh="fetchData" />
 </template>
 
