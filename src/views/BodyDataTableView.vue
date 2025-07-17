@@ -17,7 +17,7 @@ const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 const dateRange = ref<DateRange>(emptyDateRange);
 const bodyData = ref<BodyData[]>([]);
 const { run, isLoading } = useLoader({
-  initialLoading: true,
+  defaultStartDelay: 100,
 });
 
 const datePickerSelction: DateRangeSelectionId[] = [
