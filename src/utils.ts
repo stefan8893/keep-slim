@@ -11,7 +11,7 @@ export function isDate(candidate: unknown): candidate is Date {
   return isDateFn(candidate);
 }
 
-type LoaderOptions = {
+export type LoaderOptions = {
   defaultStartDelay?: number;
   initialLoading?: boolean;
   skipDelayOnFirstRun?: boolean;
@@ -21,15 +21,16 @@ export function useLoader(options: LoaderOptions = {}) {
   const { defaultStartDelay = 0, initialLoading = false, skipDelayOnFirstRun = false } = options;
 
   const isLoading = ref(initialLoading);
-  let delayHandle: ReturnType<typeof setTimeout> | null = null;
   let runningCount = 0;
   let hasRun = false;
 
-  const clearDelay = () => {
-    if (delayHandle !== null) {
-      clearTimeout(delayHandle);
-      delayHandle = null;
+  const delayHandles = new Set<ReturnType<typeof setTimeout>>();
+
+  const clearDelays = () => {
+    for (const handle of delayHandles) {
+      clearTimeout(handle);
     }
+    delayHandles.clear();
   };
 
   const startLoading = () => {
@@ -42,20 +43,22 @@ export function useLoader(options: LoaderOptions = {}) {
     runningCount--;
     if (runningCount <= 0) {
       runningCount = 0;
-      clearDelay();
+      clearDelays();
       isLoading.value = false;
     }
   };
 
   const run = async <R>(action: () => R | Promise<R>, startDelay?: number): Promise<R> => {
     const delay = !hasRun && skipDelayOnFirstRun ? 0 : (startDelay ?? defaultStartDelay ?? 0);
-
+    hasRun = true;
     runningCount++;
 
     if (delay > 0) {
-      delayHandle = setTimeout(() => {
+      const handle = setTimeout(() => {
+        delayHandles.delete(handle);
         startLoading();
       }, delay);
+      delayHandles.add(handle);
     } else {
       startLoading();
     }
@@ -63,7 +66,6 @@ export function useLoader(options: LoaderOptions = {}) {
     try {
       return await action();
     } finally {
-      hasRun = true;
       stopLoading();
     }
   };
