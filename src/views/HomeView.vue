@@ -59,8 +59,8 @@ const fetchData = async () => {
   const start = dateRange.value.start;
   const end = dateRange.value.end;
 
-  const startExtended =
-    isMonday(start) || isSameDay(startOfMonth(start), start) ? subDays(start, 1) : start;
+  const isFirstDayOfMonth = isSameDay(startOfMonth(start), start);
+  const startExtended = isMonday(start) || isFirstDayOfMonth ? subDays(start, 1) : start;
 
   await run(async () => {
     const result = await bodyDataRepository.query({ start: startExtended, end });
