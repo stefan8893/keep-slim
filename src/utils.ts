@@ -49,7 +49,6 @@ export function useLoader(options: LoaderOptions = {}) {
 
   const run = async <R>(action: () => R | Promise<R>, startDelay?: number): Promise<R> => {
     const delay = !hasRun && skipDelayOnFirstRun ? 0 : (startDelay ?? defaultStartDelay ?? 0);
-    console.log('running action with delay: ', delay);
 
     runningCount++;
 

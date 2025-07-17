@@ -4,7 +4,7 @@ export function isStartDateDisabled(
   date: Date,
   minDate: Date,
   maxDate: Date,
-  endDate: Date | undefined | null,
+  endDate?: Date | undefined | null,
 ) {
   if (!!endDate && isSameDay(endDate, date)) return false;
 
@@ -19,7 +19,7 @@ export function isEndDateDisabled(
   date: Date,
   minDate: Date,
   maxDate: Date,
-  startDate: Date | undefined | null,
+  startDate?: Date | undefined | null,
 ) {
   if (!!startDate && isSameDay(startDate, date)) return false;
 
