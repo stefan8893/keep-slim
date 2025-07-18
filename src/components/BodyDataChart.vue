@@ -89,7 +89,7 @@ const getTooltip = (
 
   const timeInfo = !isSummarizedByDay
     ? `<span>${t(MessageKey.calendarWeekShort)} ${getISOWeek(time)}</span><span>${formatDate(time)} - ${formatDate(endOfISOWeek(time))}</span>`
-    : `<span>${formatDateTime(time)}</span>`;
+    : `<span>${formatDateTime(time, 'PPPPp')}</span>`;
 
   return `
         <div class="flex flex-col flex-nowrap items-start justify-center gap-y-1">
