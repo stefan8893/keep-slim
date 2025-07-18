@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { WidgetValues } from '@/bodyData/aggregations/widget-values';
-import { formatDate, formatTime } from '@/i18n/date-utils';
+import { formatDate } from '@/i18n/date-utils';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { InfoFilled } from '@element-plus/icons-vue';
 import { computed } from 'vue';
@@ -32,14 +32,13 @@ const isEmpty = computed(() => props.values.state === 'empty');
       <div class="flex max-w-48 flex-col flex-nowrap items-center justify-start break-keep">
         <span>{{
           $t(isSingleDay ? MessageKey.recordedAt : MessageKey.lastRecordedAt, {
-            date: formatDate(latestRecordDateTime, 'PP'),
-            time: formatTime(latestRecordDateTime),
+            dateTime: formatDate(latestRecordDateTime, 'PPPPp'),
           })
         }}</span>
         <span v-show="!isSingleDay" class="mt-4 break-keep">
           {{
             $t(MessageKey.calculationInfo, {
-              date: formatDate(oldestRecordDateTime, 'PP'),
+              date: formatDate(oldestRecordDateTime, 'PPP'),
             })
           }}
         </span>
