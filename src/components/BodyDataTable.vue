@@ -3,6 +3,7 @@ import type { BodyData } from '@/bodyData/body-data.types';
 import { formatDateTime } from '@/i18n/date-utils';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { Delete } from '@element-plus/icons-vue';
+import { useWindowSize } from '@vueuse/core';
 import { compareAsc, compareDesc, isDate } from 'date-fns';
 import { computed, ref } from 'vue';
 
@@ -17,6 +18,7 @@ const props = withDefaults(
 );
 
 const tooltipDisabled = ref(false);
+const { width } = useWindowSize();
 
 const emit = defineEmits<{
   (event: 'deleteRecord', recordedAt: Date): void;
@@ -35,6 +37,9 @@ const pageSize = ref(10);
 const currentPage = ref(1);
 
 const maxPages = computed(() => Math.ceil(bodyData.value.length / pageSize.value));
+
+const paginatorSize = computed(() => (width.value <= 640 ? 'small' : 'default'));
+const pagerCount = computed(() => (width.value <= 640 ? 5 : 7));
 
 const sortProp = ref<keyof BodyData | undefined>();
 const sortOrder = ref<string>('');
@@ -150,13 +155,14 @@ const deleteRecord = async (recordedAt: Date) => {
     <div class="flex flex-row flex-wrap items-center justify-center">
       <el-pagination
         class="mt-4"
+        :size="paginatorSize"
         background
         layout="prev, pager, next"
         v-model:current-page="currentPage"
         :hide-on-single-page="true"
         :page-count="maxPages"
+        :pager-count="pagerCount"
         :total="bodyData.length"
-        :pager-count="4"
       />
     </div>
   </div>
