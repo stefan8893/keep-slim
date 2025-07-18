@@ -88,7 +88,7 @@ watch(csvImportDialogVisible, (newValue) => {
 </script>
 
 <template>
-  <div class="flex flex-row flex-nowrap items-start justify-between">
+  <div class="flex flex-row flex-nowrap items-center justify-between">
     <DateRangePicker
       class="w-full"
       v-model:date-range="dateRange"
@@ -102,7 +102,7 @@ watch(csvImportDialogVisible, (newValue) => {
       :content="t(MessageKey.importCsvFile)"
       :disabled="csvImportDialogTooltipDisabled"
     >
-      <el-button type="primary" :icon="Plus" @click="openCsvImportDialog" />
+      <el-button class="self-start" type="primary" :icon="Plus" @click="openCsvImportDialog" />
     </el-tooltip>
   </div>
   <BodyDataWidgetSkeletons v-if="isLoading" class="mt-8" />
