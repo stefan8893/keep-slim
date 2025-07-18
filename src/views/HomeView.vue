@@ -37,6 +37,7 @@ const { run, isLoading } = useLoader({
 });
 
 const csvImportDialogVisible = ref(false);
+const csvImportDialogTooltipDisabled = ref(false);
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -72,6 +73,10 @@ const fetchData = async () => {
 const openCsvImportDialog = () => {
   csvImportDialogVisible.value = true;
 };
+
+watch(csvImportDialogVisible, (newValue) => {
+  csvImportDialogTooltipDisabled.value = newValue;
+});
 </script>
 
 <template>
@@ -83,7 +88,12 @@ const openCsvImportDialog = () => {
       :available-selections="datePickerSelction"
     />
 
-    <el-tooltip placement="top-end" :show-after="1000" :content="t(MessageKey.importCsvFile)">
+    <el-tooltip
+      placement="top-end"
+      :show-after="500"
+      :content="t(MessageKey.importCsvFile)"
+      :disabled="csvImportDialogTooltipDisabled"
+    >
       <el-button type="primary" :icon="Plus" @click="openCsvImportDialog" />
     </el-tooltip>
   </div>

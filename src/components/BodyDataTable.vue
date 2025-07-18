@@ -136,14 +136,7 @@ const deleteRecord = async (recordedAt: Date) => {
         <template #default="scope">
           <div class="flex flex-row flex-wrap items-center justify-center">
             <el-button link type="primary" @click="deleteRecord(scope.row.recordedAt)">
-              <el-tooltip
-                :show-after="1000"
-                class="box-item"
-                :content="$t(MessageKey.delete)"
-                placement="top"
-              >
-                <el-icon size="large"><Delete /></el-icon>
-              </el-tooltip>
+              <el-icon size="large"><Delete /></el-icon>
             </el-button>
           </div>
         </template>
