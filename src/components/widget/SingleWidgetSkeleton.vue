@@ -18,9 +18,9 @@ const props = defineProps<{
             <template #template>
               <div class="flex flex-col flex-nowrap items-center justify-start">
                 <el-skeleton-item variant="circle" />
-                <el-skeleton-item class="single-skeleton-widget mt-4" />
-                <el-skeleton-item class="single-skeleton-widget mt-6" />
-                <el-skeleton-item class="single-skeleton-widget mt-6" />
+                <el-skeleton-item class="skeleton-widget-item mt-4" />
+                <el-skeleton-item class="skeleton-widget-item mt-6" />
+                <el-skeleton-item class="skeleton-widget-item mt-6" />
               </div>
             </template>
           </el-skeleton>
@@ -31,7 +31,7 @@ const props = defineProps<{
 </template>
 
 <style scoped>
-.single-skeleton-widget {
+.skeleton-widget-item {
   height: 21px;
 }
 </style>
