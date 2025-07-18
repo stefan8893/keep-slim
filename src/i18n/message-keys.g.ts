@@ -78,6 +78,7 @@ export const MessageKey = {
 	importComplete: 'importComplete',
 	csvImportSuccess: 'csvImportSuccess',
 	uploadFile: 'uploadFile',
+	loading3Dots: 'loading3Dots',
 } as const;
 
 export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];

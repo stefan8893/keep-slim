@@ -71,5 +71,6 @@
   "calorieUnit": "kcal",
   "importComplete": "Import abgeschlossen",
   "csvImportSuccess": "Die CSV-Datei wurde erfolgreich importiert.",
-  "uploadFile": "Datei hier ablegen oder zum Hochladen klicken."
+  "uploadFile": "Datei hier ablegen oder zum Hochladen klicken.",
+  "loading3Dots": "Lädt ..."
 }

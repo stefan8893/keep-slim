@@ -90,11 +90,11 @@ const openCsvImportDialog = () => {
   <BodyDataWidgetSkeletons v-if="isLoading" class="mt-8" />
   <BodyDataWidgets v-else class="mt-8" :body-data="bodyData" />
   <BodyDatatWeeklyWeightChangeChart
-    v-loading="isLoading"
+    :loading="isLoading"
     class="mt-8"
     :body-data="bodyDataExtended"
   />
-  <BodyDataChart v-loading="isLoading" class="mt-8" :body-data="bodyData" />
+  <BodyDataChart :loading="isLoading" class="mt-8" :body-data="bodyData" />
   <CsvImport v-model:visible="csvImportDialogVisible" @refresh="fetchData" />
 </template>
 

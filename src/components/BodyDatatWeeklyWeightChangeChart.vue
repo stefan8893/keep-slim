@@ -9,7 +9,7 @@ import type { ThemingControl } from '@/plugins/theming.plugin';
 import { useLocaleStore } from '@/stores/localeStore';
 import { differenceInCalendarMonths, endOfISOWeek, getISOWeek } from 'date-fns';
 import Highcharts from 'highcharts';
-import { computed, inject, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const useMonthlyChangesForMoreThanNMonths = 5;
@@ -20,9 +20,15 @@ const chart = ref<Highcharts.Chart | null>(null);
 const localeStore = useLocaleStore();
 const { weigthColor } = useColors();
 
-const props = defineProps<{
-  bodyData: BodyData[];
-}>();
+const props = withDefaults(
+  defineProps<{
+    bodyData: BodyData[];
+    loading: boolean;
+  }>(),
+  {
+    loading: false,
+  },
+);
 
 const useMonthlyChanges = computed(
   () =>
@@ -102,7 +108,6 @@ const renderChart = () => {
         text: t(MessageKey.weightChange),
       },
       labels: {
-        //format: '{value} kg',
         formatter: function () {
           return typeof this.value === 'number' ? n(this.value, 'weight') : this.value;
         },
@@ -118,19 +123,32 @@ const renderChart = () => {
       },
     ],
   });
+
+  if (props.loading) chart.value.showLoading(t(MessageKey.loading3Dots));
 };
 
-watch(localeStore, () => {
-  renderChart();
-});
+const updateChart = () => {
+  chart.value?.xAxis[0].setCategories([...categories.value], false);
+  chart.value?.series[0].setData([...changesOverTime.value.map((x) => x.value)], false);
 
-watch(changesOverTime, () => {
-  renderChart();
-});
+  chart.value?.redraw(false);
+};
 
-onBeforeUnmount(() => {
-  chart.value?.destroy();
-});
+watch(
+  () => props.loading,
+  (newValue) => {
+    if (newValue) chart.value?.showLoading(t(MessageKey.loading3Dots));
+    else chart.value?.hideLoading();
+  },
+);
+
+watch(localeStore, () => updateChart());
+
+watch(changesOverTime, () => updateChart());
+
+onMounted(() => renderChart());
+
+onBeforeUnmount(() => chart.value?.destroy());
 </script>
 
 <template>

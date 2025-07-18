@@ -15,7 +15,7 @@ import type { ThemingControl } from '@/plugins/theming.plugin';
 import { useLocaleStore } from '@/stores/localeStore';
 import { endOfISOWeek, getISOWeek, parse } from 'date-fns';
 import Highcharts from 'highcharts';
-import { computed, inject, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { isDark } = inject(themingControlKey) as ThemingControl;
@@ -25,9 +25,15 @@ const localeStore = useLocaleStore();
 const dateLocales = useDateLocales();
 const { weigthColor, muscleMassColor, bodyFatColor, waterColor } = useColors();
 
-const props = defineProps<{
-  bodyData: BodyData[];
-}>();
+const props = withDefaults(
+  defineProps<{
+    bodyData: BodyData[];
+    loading: boolean;
+  }>(),
+  {
+    loading: false,
+  },
+);
 
 const preparedBodyData = computed(() => prepareBodyDataForChart(props.bodyData));
 
@@ -102,6 +108,22 @@ const getTooltip = (
         `;
 };
 
+const getCategoryLabel = (value: string | number) => {
+  if (typeof value === 'number') return value.toString();
+
+  if (isSummarizedByWeek.value) {
+    const parsed = parse(value.toString(), 'P', new Date(), {
+      locale: dateLocales.getCurrentLocale(),
+    });
+    return getISOWeek(parsed).toString();
+  } else {
+    const parsed = parse(value.toString(), 'Pp', new Date(), {
+      locale: dateLocales.getCurrentLocale(),
+    });
+    return formatDate(parsed);
+  }
+};
+
 const renderChart = () => {
   chart.value?.destroy();
   chart.value = Highcharts.chart('body-data-chart', {
@@ -123,6 +145,13 @@ const renderChart = () => {
           },
         },
       },
+      series: {
+        states: {
+          inactive: {
+            enabled: false,
+          },
+        },
+      },
     },
     tooltip: {
       useHTML: true,
@@ -131,20 +160,10 @@ const renderChart = () => {
       },
     },
     xAxis: {
-      categories: categories.value,
+      categories: [...categories.value],
       labels: {
         formatter: function () {
-          if (isSummarizedByWeek.value) {
-            const parsed = parse(this.value.toString(), 'P', new Date(), {
-              locale: dateLocales.getCurrentLocale(),
-            });
-            return getISOWeek(parsed).toString();
-          } else {
-            const parsed = parse(this.value.toString(), 'Pp', new Date(), {
-              locale: dateLocales.getCurrentLocale(),
-            });
-            return formatDate(parsed);
-          }
+          return getCategoryLabel(this.value);
         },
       },
     },
@@ -171,14 +190,14 @@ const renderChart = () => {
     series: [
       {
         name: t(MessageKey.weight),
-        data: weightSeries.value,
+        data: [...weightSeries.value],
         type: 'line',
         color: weigthColor,
         yAxis: 0,
       },
       {
         name: t(MessageKey.muscleMass),
-        data: muscleMassSeries.value,
+        data: [...muscleMassSeries.value],
         type: 'line',
         color: muscleMassColor,
         visible: false,
@@ -186,7 +205,7 @@ const renderChart = () => {
       },
       {
         name: t(MessageKey.bodyFat),
-        data: bodyFatSeries.value,
+        data: [...bodyFatSeries.value],
         type: 'line',
         color: bodyFatColor,
         visible: false,
@@ -194,7 +213,7 @@ const renderChart = () => {
       },
       {
         name: t(MessageKey.water),
-        data: waterSeries.value,
+        data: [...waterSeries.value],
         type: 'line',
         color: waterColor,
         visible: false,
@@ -202,18 +221,40 @@ const renderChart = () => {
       },
     ],
   });
+
+  if (props.loading) chart.value.showLoading(t(MessageKey.loading3Dots));
 };
 
+const updateChart = () => {
+  chart.value?.xAxis[0].setCategories([...categories.value], false);
+  chart.value?.series[0].setData([...weightSeries.value], false);
+  chart.value?.series[1].setData([...muscleMassSeries.value], false);
+  chart.value?.series[2].setData([...bodyFatSeries.value], false);
+  chart.value?.series[3].setData([...waterSeries.value], false);
+
+  chart.value?.redraw(false);
+};
+
+watch(
+  () => props.loading,
+  (newValue) => {
+    if (newValue) chart.value?.showLoading(t(MessageKey.loading3Dots));
+    else chart.value?.hideLoading();
+  },
+);
+
 watch(localeStore, () => {
-  renderChart();
+  updateChart();
 });
 
 watch(
   () => props.bodyData,
   () => {
-    renderChart();
+    updateChart();
   },
 );
+
+onMounted(() => renderChart());
 
 onBeforeUnmount(() => {
   chart.value?.destroy();
