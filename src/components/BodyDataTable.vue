@@ -9,14 +9,14 @@ import { computed, ref } from 'vue';
 const props = withDefaults(
   defineProps<{
     bodyData: BodyData[];
-    loading?: boolean;
     showActionsColumn?: boolean;
   }>(),
   {
-    loading: false,
     showActionsColumn: true,
   },
 );
+
+const tooltipDisabled = ref(false);
 
 const emit = defineEmits<{
   (event: 'deleteRecord', recordedAt: Date): void;
@@ -74,18 +74,15 @@ const onSortChange = ({ prop, order }: { prop: keyof BodyData; order: string }) 
 };
 
 const deleteRecord = async (recordedAt: Date) => {
+  tooltipDisabled.value = true;
   emit('deleteRecord', recordedAt);
+  setTimeout(() => (tooltipDisabled.value = false), 1000);
 };
 </script>
 
 <template>
   <div class="table-container">
-    <el-table
-      v-loading="props.loading"
-      :data="currentSortedBodyDataPage"
-      @sort-change="onSortChange"
-      width="100%"
-    >
+    <el-table :data="currentSortedBodyDataPage" @sort-change="onSortChange" width="100%">
       <el-table-column prop="recordedAt" width="170px" sortable :label="$t(MessageKey.recorded)">
         <template #default="scope">{{ formatDateTime(scope.row.recordedAt) }}</template>
       </el-table-column>
@@ -136,7 +133,15 @@ const deleteRecord = async (recordedAt: Date) => {
         <template #default="scope">
           <div class="flex flex-row flex-wrap items-center justify-center">
             <el-button link type="primary" @click="deleteRecord(scope.row.recordedAt)">
-              <el-icon size="large"><Delete /></el-icon>
+              <el-tooltip
+                class="box-item"
+                placement="top"
+                :show-after="1000"
+                :content="$t(MessageKey.delete)"
+                :disabled="tooltipDisabled"
+              >
+                <el-icon size="large"><Delete /></el-icon>
+              </el-tooltip>
             </el-button>
           </div>
         </template>
