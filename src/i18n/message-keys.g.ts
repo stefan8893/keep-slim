@@ -77,6 +77,7 @@ export const MessageKey = {
 	calorieUnit: 'calorieUnit',
 	importComplete: 'importComplete',
 	csvImportSuccess: 'csvImportSuccess',
+	uploadFile: 'uploadFile',
 } as const;
 
 export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];

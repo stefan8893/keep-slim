@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { MessageKey } from '@/i18n/message-keys.g';
 import { UploadFilled } from '@element-plus/icons-vue';
 import type { UploadInstance, UploadProps, UploadRawFile, UploadUserFile } from 'element-plus';
 import { genFileId } from 'element-plus';
@@ -33,6 +34,7 @@ watch(selectedFile, () => {
   <el-upload
     ref="uploadInstance"
     v-model:file-list="files"
+    accept=".csv"
     action="http://localhost:5173"
     drag
     :limit="1"
@@ -42,7 +44,7 @@ watch(selectedFile, () => {
   >
     <div class="flex min-h-60 w-full flex-col flex-nowrap items-center justify-center">
       <el-icon class="el-icon--upload" size="60"><UploadFilled /></el-icon>
-      <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+      <div class="el-upload__text">{{ $t(MessageKey.uploadFile) }}</div>
     </div>
   </el-upload>
 </template>

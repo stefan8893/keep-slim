@@ -70,5 +70,6 @@
   "calories": "Calories",
   "calorieUnit": "kcal",
   "importComplete": "Import complete",
-  "csvImportSuccess": "The CSV file was imported successfully."
+  "csvImportSuccess": "The CSV file was imported successfully.",
+  "uploadFile": "Drop file here or click to upload."
 }
