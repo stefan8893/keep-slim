@@ -19,3 +19,15 @@
 :root {
   --el-text-color-regular-dark: #d2d6df;
 }
+
+/*
+  Workaround: Force the ElMessageBox wrapper to appear above all other elements.
+
+  In some cases, ElMessageBox might be visually overlapped by components like el-table.
+
+  This CSS override ensures the message box stays on top by manually setting a high z-index.
+  Use with caution, and only if adjusting the global z-index configuration is not feasible.
+*/
+.el-overlay-message-box {
+  z-index: 2200;
+}
