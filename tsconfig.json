@@ -5,6 +5,7 @@
       "ES2024",
       "DOM"
     ],
+    "strict": true,
   },
   "files": [],
   "references": [
