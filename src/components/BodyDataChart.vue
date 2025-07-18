@@ -126,6 +126,7 @@ const renderChart = () => {
     },
     chart: {
       type: 'line',
+      animation: false,
     },
     title: {
       text: '',

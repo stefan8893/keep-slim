@@ -54,6 +54,7 @@ const renderChart = () => {
     },
     chart: {
       type: 'column',
+      animation: false,
     },
     title: {
       text: '',
