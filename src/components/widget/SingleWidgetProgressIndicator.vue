@@ -24,10 +24,10 @@ const percentage = computed(() => {
   <el-progress
     type="dashboard"
     stroke-linecap="square"
-    :width="115"
+    :width="130"
     :show-text="true"
     :color="options.color"
-    :stroke-width="16"
+    :stroke-width="18"
     :percentage="percentage"
   >
     <template #default>

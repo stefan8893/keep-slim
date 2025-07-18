@@ -110,5 +110,3 @@ const waterValues = computed(() =>
     />
   </div>
 </template>
-
-<style scoped></style>

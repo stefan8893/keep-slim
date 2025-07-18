@@ -156,6 +156,7 @@ const deleteRecord = async (recordedAt: Date) => {
         :hide-on-single-page="true"
         :page-count="maxPages"
         :total="bodyData.length"
+        :pager-count="4"
       />
     </div>
   </div>

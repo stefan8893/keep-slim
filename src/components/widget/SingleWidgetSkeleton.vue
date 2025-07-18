@@ -14,7 +14,7 @@ const props = defineProps<{
     <template #default>
       <div class="flex flex-col flex-nowrap items-center justify-start">
         <div class="w-40">
-          <el-skeleton style="--el-skeleton-circle-size: 115px" animated>
+          <el-skeleton style="--el-skeleton-circle-size: 130px" animated>
             <template #template>
               <div class="flex flex-col flex-nowrap items-center justify-start">
                 <el-skeleton-item variant="circle" />
