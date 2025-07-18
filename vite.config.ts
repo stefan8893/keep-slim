@@ -31,8 +31,4 @@ export default defineConfig({
       },
     },
   },
-  define: {
-    // simulate process.env to satisfy @azure/data-tables
-    'process.env': {},
-  },
 });
