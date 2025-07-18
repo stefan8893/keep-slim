@@ -25,15 +25,9 @@ const localeStore = useLocaleStore();
 const dateLocales = useDateLocales();
 const { weigthColor, muscleMassColor, bodyFatColor, waterColor } = useColors();
 
-const props = withDefaults(
-  defineProps<{
-    bodyData: BodyData[];
-    loading: boolean;
-  }>(),
-  {
-    loading: false,
-  },
-);
+const props = defineProps<{
+  bodyData: BodyData[];
+}>();
 
 const preparedBodyData = computed(() => prepareBodyDataForChart(props.bodyData));
 
@@ -221,8 +215,6 @@ const renderChart = () => {
       },
     ],
   });
-
-  if (props.loading) chart.value.showLoading(t(MessageKey.loading3Dots));
 };
 
 const updateChart = () => {
@@ -234,14 +226,6 @@ const updateChart = () => {
 
   chart.value?.redraw(false);
 };
-
-watch(
-  () => props.loading,
-  (newValue) => {
-    if (newValue) chart.value?.showLoading(t(MessageKey.loading3Dots));
-    else chart.value?.hideLoading();
-  },
-);
 
 watch(localeStore, () => {
   updateChart();

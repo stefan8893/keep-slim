@@ -20,15 +20,9 @@ const chart = ref<Highcharts.Chart | null>(null);
 const localeStore = useLocaleStore();
 const { weigthColor } = useColors();
 
-const props = withDefaults(
-  defineProps<{
-    bodyData: BodyData[];
-    loading: boolean;
-  }>(),
-  {
-    loading: false,
-  },
-);
+const props = defineProps<{
+  bodyData: BodyData[];
+}>();
 
 const useMonthlyChanges = computed(
   () =>
@@ -123,24 +117,14 @@ const renderChart = () => {
       },
     ],
   });
-
-  if (props.loading) chart.value.showLoading(t(MessageKey.loading3Dots));
 };
 
 const updateChart = () => {
   chart.value?.xAxis[0].setCategories([...categories.value], false);
   chart.value?.series[0].setData([...changesOverTime.value.map((x) => x.value)], false);
 
-  chart.value?.redraw(false);
+  chart.value?.redraw(true);
 };
-
-watch(
-  () => props.loading,
-  (newValue) => {
-    if (newValue) chart.value?.showLoading(t(MessageKey.loading3Dots));
-    else chart.value?.hideLoading();
-  },
-);
 
 watch(localeStore, () => updateChart());
 

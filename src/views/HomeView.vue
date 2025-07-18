@@ -32,7 +32,7 @@ const bodyDataExtended = ref<BodyData[]>([]);
 
 const { run, isLoading } = useLoader({
   initialLoading: true,
-  defaultStartDelay: 200,
+  defaultStartDelay: 250,
   skipDelayOnFirstRun: true,
 });
 
@@ -90,11 +90,11 @@ const openCsvImportDialog = () => {
   <BodyDataWidgetSkeletons v-if="isLoading" class="mt-8" />
   <BodyDataWidgets v-else class="mt-8" :body-data="bodyData" />
   <BodyDatatWeeklyWeightChangeChart
-    :loading="isLoading"
+    v-loading="isLoading"
     class="mt-8"
     :body-data="bodyDataExtended"
   />
-  <BodyDataChart :loading="isLoading" class="mt-8" :body-data="bodyData" />
+  <BodyDataChart v-loading="isLoading" class="mt-8" :body-data="bodyData" />
   <CsvImport v-model:visible="csvImportDialogVisible" @refresh="fetchData" />
 </template>
 
