@@ -13,10 +13,6 @@ export const MessageKey = {
 	login: 'login',
 	underConstruction: 'underConstruction',
 	copied: 'copied',
-	entryNotFound: 'entryNotFound',
-	oopsSomethingWentWrong: 'oopsSomethingWentWrong',
-	unexpectedErrorOccured: 'unexpectedErrorOccured',
-	technicalDifficulties: 'technicalDifficulties',
 	retry: 'retry',
 	environment: 'environment',
 	name: 'name',
@@ -25,7 +21,7 @@ export const MessageKey = {
 	loadingTook: 'loadingTook',
 	goHome: 'goHome',
 	pageNotFound: 'pageNotFound',
-	settingNotSave: 'settingNotSave',
+	settingNotSaved: 'settingNotSaved',
 	close: 'close',
 	genericErrorMessage: 'genericErrorMessage',
 	german: 'german',
@@ -79,6 +75,17 @@ export const MessageKey = {
 	csvImportSuccess: 'csvImportSuccess',
 	uploadFile: 'uploadFile',
 	loading3Dots: 'loading3Dots',
+	loadingFailed: 'loadingFailed',
+	unexpectedErrorOccured: 'unexpectedErrorOccured',
+	restartApp: 'restartApp',
+	actionFailed: 'actionFailed',
+	erroWhileDeletingRecord: 'erroWhileDeletingRecord',
 } as const;
 
-export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];
+type ExtractStringValues<T> = T extends string
+  ? T
+  : T extends Record<string, unknown>
+    ? ExtractStringValues<T[keyof T]>
+    : never;
+
+export type MessageKey = ExtractStringValues<typeof MessageKey>;

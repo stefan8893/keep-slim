@@ -8,6 +8,7 @@ import {
   type DateRangeSelectionId,
   emptyDateRange,
 } from '@/components/infrastructure/DatePicker/date-range.types';
+import { useSimpleMessageBox } from '@/components/infrastructure/composables/useSimpleMessageBox';
 import { bodyDataRepositoryKey } from '@/injection.types';
 import { isDate, useLoader } from '@/utils';
 import { inject, ref, watch } from 'vue';
@@ -19,6 +20,7 @@ const bodyData = ref<BodyData[]>([]);
 const { run, isLoading } = useLoader({
   defaultStartDelay: 100,
 });
+const { showAlert } = useSimpleMessageBox();
 
 const datePickerSelction: DateRangeSelectionId[] = [
   'L7D',
@@ -43,7 +45,8 @@ const fetchData = async () => {
     bodyData.value = await run(() => bodyDataRepository.query({ start, end }));
   } catch (error) {
     console.error(error);
-    console.error('TOOD: handle error');
+    bodyData.value = [];
+    showAlert('loading-failed', 'unexpectedErrorOccured');
   }
 };
 
@@ -55,7 +58,7 @@ const deleteRecord = async (recordedAt: Date) => {
     });
   } catch (error) {
     console.error(error);
-    console.error('TOOD: handle error');
+    showAlert('action-failed', 'erroWhileDeletingRecord');
   }
 };
 </script>

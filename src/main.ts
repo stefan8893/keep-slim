@@ -38,11 +38,10 @@ async function initializeAuth(app: App<Element>): Promise<PublicClientApplicatio
   const accounts = msalInstance.getAllAccounts();
   const isAuthenticated = accounts.length > 0;
 
-  if (!isAuthenticated) {
-    return msalInstance;
+  if (isAuthenticated) {
+    await onAuthenticated(accounts, msalInstance);
   }
 
-  await onAuthenticated(accounts, msalInstance);
   return msalInstance;
 }
 

@@ -11,6 +11,7 @@ import {
   type DateRangeSelectionId,
   emptyDateRange,
 } from '@/components/infrastructure/DatePicker/date-range.types';
+import { useSimpleMessageBox } from '@/components/infrastructure/composables/useSimpleMessageBox';
 import BodyDataWidgetSkeletons from '@/components/widget/BodyDataWidgetSkeletons.vue';
 import BodyDataWidgets from '@/components/widget/BodyDataWidgets.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
@@ -25,6 +26,7 @@ useCommonChartOptions();
 
 const bodyDataRepository = inject(bodyDataRepositoryKey) as BodyDataRepository;
 const { t } = useI18n();
+const { showAlert } = useSimpleMessageBox();
 
 const dateRange = ref<DateRange>(emptyDateRange);
 const bodyData = ref<BodyData[]>([]);
@@ -63,11 +65,17 @@ const fetchData = async () => {
   const isFirstDayOfMonth = isSameDay(startOfMonth(start), start);
   const startExtended = isMonday(start) || isFirstDayOfMonth ? subDays(start, 1) : start;
 
-  await run(async () => {
-    const result = await bodyDataRepository.query({ start: startExtended, end });
-    bodyDataExtended.value = result;
-    bodyData.value = bodyDataExtended.value.filter((x) => x.recordedAt >= start);
-  });
+  try {
+    await run(async () => {
+      const result = await bodyDataRepository.query({ start: startExtended, end });
+
+      bodyDataExtended.value = result;
+      bodyData.value = bodyDataExtended.value.filter((x) => x.recordedAt >= start);
+    });
+  } catch (error) {
+    console.error(error);
+    showAlert('loading-failed', MessageKey.unexpectedErrorOccured);
+  }
 };
 
 const openCsvImportDialog = () => {

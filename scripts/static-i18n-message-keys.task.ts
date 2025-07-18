@@ -20,7 +20,11 @@ function findInMessages(
   return undefined;
 }
 
-function generateEntry(transl: Record<string, object | string>, key: string): string {
+function generateEntry(
+  transl: Record<string, object | string>,
+  key: string,
+  path: string = '',
+): string {
   if (!key) return '';
 
   const currentItem = findInMessages(transl, key);
@@ -29,14 +33,15 @@ function generateEntry(transl: Record<string, object | string>, key: string): st
     return '';
   }
 
-  if (typeof currentItem === 'string') return `${key}: '${key}',`;
+  const fullPath = !path ? key : path;
+  if (typeof currentItem === 'string') return `${key}: '${fullPath}',`;
 
   if (typeof currentItem !== 'object') return '';
 
   const nested = Object.keys(currentItem)
     .filter((x) => currentItem.hasOwnProperty(x))
-    .map((x) => generateEntry(currentItem, x))
-    .join('');
+    .map((x) => generateEntry(currentItem, x, `${key}.${x}`))
+    .join(' ');
 
   return `${key}: { ${nested} },`;
 }
@@ -60,7 +65,13 @@ export async function generateI18nMessageKeys(): Promise<void> {
 
 export const MessageKey = {\n\t${properties}\n} as const;
 
-export type MessageKey = (typeof MessageKey)[keyof typeof MessageKey];
+type ExtractStringValues<T> = T extends string
+  ? T
+  : T extends Record<string, unknown>
+    ? ExtractStringValues<T[keyof T]>
+    : never;
+
+export type MessageKey = ExtractStringValues<typeof MessageKey>;
 `;
 
   console.log(`Write message keys to file: ${targetFile}`);

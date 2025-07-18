@@ -7,10 +7,6 @@
   "login": "Anmelden",
   "underConstruction": "In Bearbeitung",
   "copied": "Kopiert",
-  "entryNotFound": "Der gewünschte Eintrag existiert nicht",
-  "oopsSomethingWentWrong": "Oops! Etwas ist schief gelaufen",
-  "unexpectedErrorOccured": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-  "technicalDifficulties": "Technische Schwierigkeiten",
   "retry": "Erneut versuchen",
   "environment": "Umgebung",
   "name": "Name",
@@ -19,7 +15,7 @@
   "loadingTook": "Die Ladezeit betrug {duration}.",
   "goHome": "Zurück zur Startseite",
   "pageNotFound": "404 - Seite nicht gefunden",
-  "settingNotSave": "Einstellung nicht übernommen",
+  "settingNotSaved": "Einstellung nicht übernommen",
   "close": "Schließen",
   "genericErrorMessage": "Beim Ausführen der Aktion ist ein Fehler aufgetreten.",
   "german": "Deutsch",
@@ -72,5 +68,10 @@
   "importComplete": "Import abgeschlossen",
   "csvImportSuccess": "Die CSV-Datei wurde erfolgreich importiert.",
   "uploadFile": "Datei hier ablegen oder zum Hochladen klicken.",
-  "loading3Dots": "Lädt ..."
+  "loading3Dots": "Lädt ...",
+  "loadingFailed": "Ladevorgang fehlgeschlagen",
+  "unexpectedErrorOccured": "Ein unerwarteter Fehler ist aufgetreten.",
+  "restartApp": "Bitte laden Sie die Anwendung neu.",
+  "actionFailed": "Aktion fehlgeschlagen",
+  "erroWhileDeletingRecord": "Beim Löschen des Datensatzes ist ein Fehler aufgetreten."
 }
