@@ -220,9 +220,13 @@ const renderChart = () => {
 const updateChart = () => {
   chart.value?.xAxis[0].setCategories([...categories.value], false);
   chart.value?.series[0].setData([...weightSeries.value], false);
+  chart.value?.series[0].update({ type: 'line', name: t(MessageKey.weight) }, false);
   chart.value?.series[1].setData([...muscleMassSeries.value], false);
+  chart.value?.series[1].update({ type: 'line', name: t(MessageKey.muscleMass) }, false);
   chart.value?.series[2].setData([...bodyFatSeries.value], false);
+  chart.value?.series[2].update({ type: 'line', name: t(MessageKey.bodyFat) }, false);
   chart.value?.series[3].setData([...waterSeries.value], false);
+  chart.value?.series[3].update({ type: 'line', name: t(MessageKey.water) }, false);
 
   chart.value?.redraw(false);
 };

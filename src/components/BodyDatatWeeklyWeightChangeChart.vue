@@ -122,6 +122,11 @@ const renderChart = () => {
 const updateChart = () => {
   chart.value?.xAxis[0].setCategories([...categories.value], false);
   chart.value?.series[0].setData([...changesOverTime.value.map((x) => x.value)], false);
+  chart.value?.series[0].update({ type: 'column', name: t(MessageKey.weight) }, false);
+
+  chart.value?.yAxis[0].update({
+    title: { text: t(MessageKey.weightChange) },
+  } as Highcharts.YAxisOptions);
 
   chart.value?.redraw(true);
 };
