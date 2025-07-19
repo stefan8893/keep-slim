@@ -29,10 +29,6 @@ const router = createRouter({
           path: 'body-data',
           component: () => import('@/views/BodyDataTableView.vue'),
         },
-        {
-          path: 'user-settings',
-          component: () => import('@/views/UserSettingsView.vue'),
-        },
       ],
     },
     {

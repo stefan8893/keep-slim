@@ -62,6 +62,7 @@ export class DevBodyDataCsvImportService implements BodyDataCsvImportService {
     const newEntries = await this.getPreview(csvFile);
 
     this.bodyDataRepository.add(newEntries);
+
     return newEntries;
   }
 }
