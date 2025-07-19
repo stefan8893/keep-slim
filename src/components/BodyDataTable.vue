@@ -83,6 +83,7 @@ const onSortChange = ({ prop, order }: { prop: keyof BodyData; order: string }) 
 };
 
 const deleteRecord = async (recordedAt: Date) => {
+  tooltipDisabled.value = true;
   const recordedAtFormatted = formatDateTime(recordedAt, 'PPp');
   ElMessageBox.confirm(
     t(MessageKey.recordDeleteConfirmation, { dateTime: recordedAtFormatted }),
@@ -94,11 +95,10 @@ const deleteRecord = async (recordedAt: Date) => {
     },
   )
     .then(() => {
-      tooltipDisabled.value = true;
       emit('deleteRecord', recordedAt);
-      setTimeout(() => (tooltipDisabled.value = false), 1000);
     })
-    .catch(() => {});
+    .catch(() => {})
+    .finally(() => (tooltipDisabled.value = false));
 };
 </script>
 
