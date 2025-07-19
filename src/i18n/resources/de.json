@@ -76,5 +76,7 @@
   "unexpectedErrorOccured": "Ein unerwarteter Fehler ist aufgetreten.",
   "restartApp": "Bitte laden Sie die Anwendung neu.",
   "actionFailed": "Aktion fehlgeschlagen",
-  "erroWhileDeletingRecord": "Beim Löschen des Datensatzes ist ein Fehler aufgetreten."
+  "erroWhileDeletingRecord": "Beim Löschen des Datensatzes ist ein Fehler aufgetreten.",
+  "ok": "Ok",
+  "recordDeleteConfirmation": "Eintrag vom {dateTime} löschen?"
 }

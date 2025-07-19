@@ -5,7 +5,11 @@ import { MessageKey } from '@/i18n/message-keys.g';
 import { Delete } from '@element-plus/icons-vue';
 import { useWindowSize } from '@vueuse/core';
 import { compareAsc, compareDesc, isDate } from 'date-fns';
+import { ElMessageBox } from 'element-plus';
 import { computed, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = withDefaults(
   defineProps<{
@@ -79,9 +83,22 @@ const onSortChange = ({ prop, order }: { prop: keyof BodyData; order: string }) 
 };
 
 const deleteRecord = async (recordedAt: Date) => {
-  tooltipDisabled.value = true;
-  emit('deleteRecord', recordedAt);
-  setTimeout(() => (tooltipDisabled.value = false), 1000);
+  const recordedAtFormatted = formatDateTime(recordedAt, 'PPp');
+  ElMessageBox.confirm(
+    t(MessageKey.recordDeleteConfirmation, { dateTime: recordedAtFormatted }),
+    t(MessageKey.delete),
+    {
+      confirmButtonText: t(MessageKey.ok),
+      cancelButtonText: t(MessageKey.cancel),
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      tooltipDisabled.value = true;
+      emit('deleteRecord', recordedAt);
+      setTimeout(() => (tooltipDisabled.value = false), 1000);
+    })
+    .catch(() => {});
 };
 </script>
 

@@ -76,5 +76,7 @@
   "unexpectedErrorOccured": "An unexpected error has occurred. Please restart the application.",
   "restartApp": "Please restart the application.",
   "actionFailed": "Action Failed",
-  "erroWhileDeletingRecord": "An error occured while deleting the record."
+  "erroWhileDeletingRecord": "An error occured while deleting the record.",
+  "ok": "Ok",
+  "recordDeleteConfirmation": "Delete entry from {dateTime}?"
 }

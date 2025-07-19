@@ -83,6 +83,8 @@ export const MessageKey = {
 	restartApp: 'restartApp',
 	actionFailed: 'actionFailed',
 	erroWhileDeletingRecord: 'erroWhileDeletingRecord',
+	ok: 'ok',
+	recordDeleteConfirmation: 'recordDeleteConfirmation',
 } as const;
 
 type ExtractStringValues<T> = T extends string
