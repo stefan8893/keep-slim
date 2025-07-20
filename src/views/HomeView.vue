@@ -17,7 +17,7 @@ import BodyDataWidgets from '@/components/widget/BodyDataWidgets.vue';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { bodyDataRepositoryKey } from '@/injection.types';
 import { isDate, useLoader } from '@/utils';
-import { Plus } from '@element-plus/icons-vue';
+import { Upload } from '@element-plus/icons-vue';
 import { isMonday, isSameDay, startOfMonth, subDays } from 'date-fns';
 import { inject, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -102,7 +102,9 @@ watch(csvImportDialogVisible, (newValue) => {
       :content="t(MessageKey.importCsvFile)"
       :disabled="csvImportDialogTooltipDisabled"
     >
-      <el-button class="self-start" type="primary" :icon="Plus" @click="openCsvImportDialog" />
+      <el-button class="self-start" type="primary" circle size="large" @click="openCsvImportDialog"
+        ><el-icon size="large"><Upload /></el-icon>
+      </el-button>
     </el-tooltip>
   </div>
   <BodyDataWidgetSkeletons v-if="isLoading" class="mt-8" />
