@@ -18,6 +18,7 @@
 
 :root {
   --el-text-color-regular-dark: #d2d6df;
+  --el-border-radius-base: 8px;
 }
 
 /*
