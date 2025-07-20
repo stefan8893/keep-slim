@@ -97,7 +97,7 @@ const widgetProps: WidgetProps[] = [
       v-for="widget in widgetProps"
       :key="widget.titleMessageKey"
       class="xs:w-[calc(50%-0.5rem)] w-[calc(100%-2.75rem)] md:w-[calc(33.333%-0.666rem)] lg:w-[calc(25%-0.75rem)]"
-      :title-message-key="MessageKey.weight"
+      :title-message-key="widget.titleMessageKey"
       :options="widget.options"
       :values="widget.values.value"
     />
