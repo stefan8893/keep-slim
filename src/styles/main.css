@@ -31,4 +31,5 @@
 */
 .el-overlay-message-box {
   z-index: 2200;
+  background-color: var(--el-overlay-color-lighter);
 }
