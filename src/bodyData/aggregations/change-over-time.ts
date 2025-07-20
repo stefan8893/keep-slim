@@ -1,4 +1,8 @@
 import { BodyDataInterpolation } from '@/bodyData/aggregations/body-data-interpolation';
+import {
+  MonthlyExactIntervalUtils,
+  WeeklyExactIntervalUtils,
+} from '@/bodyData/aggregations/interval-utils.ts';
 import type {
   BodyData,
   BodyDataChange,
@@ -8,8 +12,6 @@ import type {
 import type { NumberKeys } from '@/types/helpers.types';
 import { identity } from '@vueuse/core';
 import { compareAsc } from 'date-fns';
-
-import { MonthlyExactIntervalUtils, WeeklyExactIntervalUtils } from './interval-utils';
 
 export interface IntervalUtils {
   getStartOfNextInterval(date: Date): Date;
@@ -52,6 +54,23 @@ function determineTimePeriods(intervalUtis: IntervalUtils, bodyData: BodyData[])
     .sort((a, b) => compareAsc(a.range.start, b.range.start));
 }
 
+function getDifferenceByInterpolation(
+  property: NumberKeys<BodyData>,
+  bodyData: BodyData[],
+  period: Period,
+) {
+  const interpolation = new BodyDataInterpolation(bodyData);
+
+  const valueAtStart = interpolation.at(period.range.start, property)?.value;
+  const valueAtEnd = interpolation.at(period.range.end, property)?.value;
+
+  if (!valueAtStart)
+    throw Error(`Couldn't interpolate the value at start date '${period.range.start}'.`);
+  if (!valueAtEnd) throw Error(`Couldn't interpolate the value at end date. '${period.range.end}'`);
+
+  return valueAtEnd - valueAtStart;
+}
+
 export function calculateChangeOverTime(
   interval: ChangeOverTimeInterval,
   property: NumberKeys<BodyData>,
@@ -62,21 +81,15 @@ export function calculateChangeOverTime(
   const intervalUtils =
     interval === 'weeklyExact' ? new WeeklyExactIntervalUtils() : new MonthlyExactIntervalUtils();
 
-  const interpolation = new BodyDataInterpolation(bodyData);
-
   return determineTimePeriods(intervalUtils, bodyData).map((x) => {
-    const valueAtStart = interpolation.at(x.range.start, property)?.value;
-    const valueAtEnd = interpolation.at(x.range.end, property)?.value;
-
-    if (!valueAtStart) throw Error(`Couldn't interpolate the value at the start date.`);
-    if (!valueAtEnd) throw Error(`Couldn't interpolate the value at the end date.`);
+    const difference = getDifferenceByInterpolation(property, bodyData, x);
 
     return {
       start: x.range.start,
       end: x.range.end,
       interval: interval,
       property: property,
-      value: valueAtEnd - valueAtStart,
+      value: difference,
     };
   });
 }
