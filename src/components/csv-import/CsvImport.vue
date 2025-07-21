@@ -185,9 +185,9 @@ watch(
   max-width: 64rem;
 }
 
-@media (width < 64rem) {
+@media (width < 67rem) {
   .csv-import-dialog {
-    width: 90%;
+    width: calc(100% - 3rem);
   }
 }
 </style>
