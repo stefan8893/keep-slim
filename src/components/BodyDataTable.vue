@@ -108,24 +108,49 @@ const deleteRecord = async (recordedAt: Date) => {
       <el-table-column prop="recordedAt" width="170px" sortable :label="$t(MessageKey.recorded)">
         <template #default="scope">{{ formatDateTime(scope.row.recordedAt) }}</template>
       </el-table-column>
-      <el-table-column prop="weight" min-width="110px" sortable :label="$t(MessageKey.weight)">
+      <el-table-column
+        prop="weight"
+        min-width="110px"
+        sortable
+        align="right"
+        :label="$t(MessageKey.weight)"
+      >
         <template #default="scope">{{ $n(scope.row.weight, 'weight') }}</template>
       </el-table-column>
       <el-table-column
         prop="muscleMass"
         min-width="145px"
         sortable
+        align="right"
         :label="$t(MessageKey.muscleMass)"
       >
         <template #default="scope">{{ $n(scope.row.muscleMass, 'percent') }}</template>
       </el-table-column>
-      <el-table-column prop="bodyFat" min-width="120px" sortable :label="$t(MessageKey.bodyFat)">
+      <el-table-column
+        prop="bodyFat"
+        min-width="120px"
+        sortable
+        align="right"
+        :label="$t(MessageKey.bodyFat)"
+      >
         <template #default="scope">{{ $n(scope.row.bodyFat, 'percent') }}</template>
       </el-table-column>
-      <el-table-column prop="water" min-width="140px" sortable :label="$t(MessageKey.water)">
+      <el-table-column
+        prop="water"
+        min-width="140px"
+        sortable
+        align="right"
+        :label="$t(MessageKey.water)"
+      >
         <template #default="scope">{{ $n(scope.row.water, 'percent') }}</template>
       </el-table-column>
-      <el-table-column prop="bmi" min-width="80px" sortable :label="$t(MessageKey.bmiShort)">
+      <el-table-column
+        prop="bmi"
+        min-width="80px"
+        sortable
+        align="right"
+        :label="$t(MessageKey.bmiShort)"
+      >
         <template #default="scope">{{ $n(scope.row.bmi, 'decimal') }}</template>
       </el-table-column>
 
@@ -133,6 +158,7 @@ const deleteRecord = async (recordedAt: Date) => {
         prop="dailyCalorieRequirement"
         min-width="110px"
         sortable
+        align="right"
         :label="$t(MessageKey.calories)"
       >
         <template #default="scope"
