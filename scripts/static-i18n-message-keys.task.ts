@@ -40,7 +40,7 @@ function generateEntry(
 
   const nested = Object.keys(currentItem)
     .filter((x) => currentItem.hasOwnProperty(x))
-    .map((x) => generateEntry(currentItem, x, `${key}.${x}`))
+    .map((x) => generateEntry(currentItem, x, `${fullPath}.${x}`))
     .join(' ');
 
   return `${key}: { ${nested} },`;
