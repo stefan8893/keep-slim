@@ -1,6 +1,6 @@
 import { average } from '@/bodyData/aggregations/math-utils';
 import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
-import type { NumberKeys } from '@/types/helpers.types';
+import type { NumberKeys } from '@/types/common.types';
 import {
   compareAsc,
   differenceInCalendarMonths,

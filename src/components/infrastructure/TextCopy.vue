@@ -60,7 +60,7 @@ const triggerRef = ref({
       :virtual-ref="triggerRef"
     />
     <span class="cursor-pointer" @click="copyText">
-      <slot>{{ props.text }}</slot>
+      <slot :text="props.text">{{ props.text }}</slot>
     </span>
   </div>
 </template>

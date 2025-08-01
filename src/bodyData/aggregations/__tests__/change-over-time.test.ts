@@ -1,7 +1,7 @@
 import { createBodyDataRecord } from '@/bodyData/aggregations/__tests__/test-infrastructure';
 import { calculateChangeOverTime } from '@/bodyData/aggregations/change-over-time';
 import type { BodyData } from '@/bodyData/body-data.types';
-import type { NumberKeys } from '@/types/helpers.types';
+import type { NumberKeys } from '@/types/common.types';
 import { addWeeks, endOfDay, endOfISOWeek, endOfMonth, parseISO } from 'date-fns';
 import { describe, expect, test } from 'vitest';
 

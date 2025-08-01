@@ -1,6 +1,6 @@
 import { getBoundaryRecords } from '@/bodyData/aggregations/boundaries';
 import type { BodyData } from '@/bodyData/body-data.types';
-import type { NumberKeys } from '@/types/helpers.types';
+import type { NumberKeys } from '@/types/common.types';
 import { endOfMonth, parseISO } from 'date-fns';
 
 const bodyDataTemplate: BodyData = {

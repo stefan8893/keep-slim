@@ -1,4 +1,4 @@
-import type { NumberKeys } from '@/types/helpers.types';
+import type { NumberKeys } from '@/types/common.types';
 
 export type IntervalChangeOverTime = 'weeklyExact' | 'monthlyExact';
 
