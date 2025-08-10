@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import DateRangeSelectionDropdown from '@/components/infrastructure/DatePicker/DateRangeSelectionDropdown.vue';
+import DateRangeStringified from '@/components/infrastructure/DatePicker/DateRangeStringified.vue';
+import SingleDatePicker from '@/components/infrastructure/DatePicker/SingleDatePicker.vue';
 import { dateRangeSelections } from '@/components/infrastructure/DatePicker/date-range-selection';
 import {
   type DateRange,
   type DateRangeSelectionId,
   emptyDateRange,
 } from '@/components/infrastructure/DatePicker/date-range.types';
+import {
+  isEndDateDisabled,
+  isStartDateDisabled,
+} from '@/components/infrastructure/DatePicker/disabled-dates.ts';
 import { MessageKey } from '@/i18n/message-keys.g';
 import { addDays, endOfDay } from 'date-fns';
 import { computed, ref, watch } from 'vue';
-
-import DateRangeSelectionDropdown from './DateRangeSelectionDropdown.vue';
-import DateRangeStringified from './DateRangeStringified.vue';
-import SingleDatePicker from './SingleDatePicker.vue';
-import { isEndDateDisabled, isStartDateDisabled } from './disabled-dates';
 
 const props = defineProps<{
   availableSelections: DateRangeSelectionId[];
