@@ -4,9 +4,7 @@ import type {
   BodyDataCsvImportService,
   ClearBodyDataRepositoryCacheFn,
 } from '@/bodyData/body-data-persistence.types';
-import { DevBodyDataCsvImportService } from '@/bodyData/persistence/body-data-csv-import-dev.service';
 import { AzureFunctionsBodyDataCsvImportService } from '@/bodyData/persistence/body-data-csv-import.service';
-import { DevBodyDataRepository } from '@/bodyData/persistence/body-data-dev.repository';
 import { AzureFunctionsBodyDataRepository } from '@/bodyData/persistence/body-data-repository-az-func';
 import { BodyDataRepositoryCacheProxy } from '@/bodyData/persistence/body-data-repository-cache-proxy';
 import { bodyDataCsvImportServiceKey, bodyDataRepositoryKey } from '@/injection.types';
@@ -48,20 +46,6 @@ function useCsvImportService(
 
 export const bodyData = {
   install: (app: App<Element>, msalInstance: PublicClientApplication) => {
-    const isDev = import.meta.env.DEV;
-
-    if (isDev) {
-      console.log('Use Development Body Data Plugin');
-
-      const devBodyDataRepository = new DevBodyDataRepository();
-      const devBodyDataCsvImportService = new DevBodyDataCsvImportService(devBodyDataRepository);
-
-      app.provide(bodyDataRepositoryKey, devBodyDataRepository);
-      app.provide(bodyDataCsvImportServiceKey, devBodyDataCsvImportService);
-
-      return;
-    }
-
     const acquireToken = () => acquireAzureFunctionAppAccessToken(msalInstance);
 
     const bodyDataRepository = useBodyDataRepository(acquireToken);
