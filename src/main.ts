@@ -14,19 +14,17 @@ import 'element-plus/theme-chalk/src/notification.scss';
 import { createPinia } from 'pinia';
 import { type App, createApp } from 'vue';
 
-(async () => {
-  const app = createApp(AppVue);
+const app = createApp(AppVue);
 
-  const msalInstance = await initializeAuth(app);
+const msalInstance = await initializeAuth(app);
 
-  app.use(router);
-  app.use(createPinia());
-  app.use(i18n);
-  app.use(theming);
-  app.use(bodyData, msalInstance);
+app.use(router);
+app.use(createPinia());
+app.use(i18n);
+app.use(theming);
+app.use(bodyData, msalInstance);
 
-  app.mount('#app');
-})().catch((error) => console.error(error));
+app.mount('#app');
 
 async function initializeAuth(app: App<Element>): Promise<PublicClientApplication> {
   const msalInstance = new PublicClientApplication(authConfiguration);
