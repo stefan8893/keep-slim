@@ -18,8 +18,8 @@ export const useLocaleStore = defineStore('locale', () => {
     localeInLocalStorage.value = locale.value;
   });
 
-  const language = computed(() => locale.value.split('-')[0]);
-  const country = computed(() => locale.value.split('-')[1]);
+  const language = computed(() => locale.value.split('-').at(0)!);
+  const country = computed(() => locale.value.split('-').at(1));
 
   return {
     locale,

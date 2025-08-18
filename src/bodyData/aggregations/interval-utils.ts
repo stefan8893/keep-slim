@@ -19,8 +19,8 @@ export class MonthlyExactIntervalUtils implements IntervalUtils {
       type: 'monthlyExact',
       month: identifier,
       range: {
-        start: range[0],
-        end: range[1],
+        start: range[0]!,
+        end: range[1]!,
       },
     };
   }
@@ -47,8 +47,8 @@ export class WeeklyExactIntervalUtils implements IntervalUtils {
       type: 'weeklyExact',
       isoWeek: identifier,
       range: {
-        start: range[0],
-        end: range[1],
+        start: range.at(0)!,
+        end: range.at(1)!,
       },
     };
   }

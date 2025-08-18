@@ -28,7 +28,10 @@ const useMonthlyChanges = computed(
   () =>
     props.bodyData.length > 1 &&
     Math.abs(
-      differenceInCalendarMonths(props.bodyData[0].recordedAt, props.bodyData.at(-1)!.recordedAt),
+      differenceInCalendarMonths(
+        props.bodyData.at(0)!.recordedAt,
+        props.bodyData.at(-1)!.recordedAt,
+      ),
     ) > useMonthlyChangesForMoreThanNMonths,
 );
 
@@ -121,11 +124,11 @@ const renderChart = () => {
 };
 
 const updateChart = () => {
-  chart.value?.xAxis[0].setCategories([...categories.value], false);
-  chart.value?.series[0].setData([...changesOverTime.value.map((x) => x.value)], false);
-  chart.value?.series[0].update({ type: 'column', name: t(MessageKey.weight) }, false);
+  chart.value?.xAxis.at(0)!.setCategories([...categories.value], false);
+  chart.value?.series.at(0)!.setData([...changesOverTime.value.map((x) => x.value)], false);
+  chart.value?.series.at(0)!.update({ type: 'column', name: t(MessageKey.weight) }, false);
 
-  chart.value?.yAxis[0].update({
+  chart.value?.yAxis.at(0)!.update({
     title: { text: t(MessageKey.weightChange) },
   } as Highcharts.YAxisOptions);
 

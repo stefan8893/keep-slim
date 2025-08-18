@@ -1,6 +1,6 @@
 import type { BodyData, BoundaryRecords } from '@/bodyData/body-data.types';
 
-function determineRecordsToTake(size: number) {
+function determineRecordsToTake(size: number): [number, number] {
   if (size <= 2) return [1, 1];
   else if (size <= 4) return [2, 1];
   else if (size <= 7) return [3, 2];
@@ -19,6 +19,6 @@ export function getBoundaryRecords(bodyData: BodyData[]): BoundaryRecords | null
     first: bodyData.at(0)!,
     firstN: bodyData.slice(0, takeFirstN),
     last: bodyData.at(-1)!,
-    lastN: bodyData.slice(-takeLastN).reverse(),
+    lastN: bodyData.slice(-takeLastN!).reverse(),
   };
 }

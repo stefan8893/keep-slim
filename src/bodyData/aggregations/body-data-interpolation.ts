@@ -13,34 +13,39 @@ export class BodyDataInterpolation {
   private data: BodyData[];
 
   constructor(data: BodyData[]) {
+    if (data.length < 2)
+      throw new Error(
+        'There must be at least two entries in order to interpolate body data values',
+      );
+
     this.data = data.sort((a, b) => compareAsc(a.recordedAt, b.recordedAt));
   }
 
   // based on https://en.wikipedia.org/wiki/Binary_search
   private search(mode: SearchMode, target: Date, low = 0, high = this.data.length - 1): BodyData {
-    if (target < this.data[low].recordedAt) {
-      return this.data[low];
+    if (target < this.data.at(low)!.recordedAt) {
+      return this.data[low]!;
     }
 
-    if (target > this.data[high].recordedAt) {
-      return this.data[high];
+    if (target > this.data.at(high)!.recordedAt) {
+      return this.data.at(high)!;
     }
 
     if (high - low < 2) {
-      return mode === 'previous-if-no-exact-match' ? this.data[low] : this.data[high];
+      return mode === 'previous-if-no-exact-match' ? this.data.at(low)! : this.data.at(high)!;
     }
 
     const middle = Math.floor((high + low) / 2);
 
-    if (target < this.data[middle].recordedAt) {
+    if (target < this.data.at(middle)!.recordedAt) {
       return this.search(mode, target, low, middle);
     }
 
-    if (target > this.data[middle].recordedAt) {
+    if (target > this.data.at(middle)!.recordedAt) {
       return this.search(mode, target, middle, high);
     }
 
-    return this.data[middle];
+    return this.data[middle]!;
   }
 
   private findSurroundingEntries(x: Date): {

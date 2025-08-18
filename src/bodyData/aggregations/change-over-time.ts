@@ -27,7 +27,7 @@ export interface IntervalUtils {
 }
 
 function determineTimePeriods(intervalUtis: IntervalUtils, bodyData: BodyData[]): Period[] {
-  const firstRecord = bodyData[0];
+  const firstRecord = bodyData.at(0)!;
 
   const startPoint = intervalUtis.getStartOfNextInterval(firstRecord.recordedAt);
   const endPoint = bodyData.at(-1)!.recordedAt;

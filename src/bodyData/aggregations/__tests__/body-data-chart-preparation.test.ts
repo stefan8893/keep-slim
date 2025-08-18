@@ -40,10 +40,10 @@ describe('prepareBodyDataForChart', () => {
     expect(preparedForChart.result).toHaveLength(1);
     expect(preparedForChart.type).toBe('summarizedByDay');
     const summarizedByDay = preparedForChart as BodyDataSummarizedByDay;
-    expect(summarizedByDay.result[0].day).toEqual(startOfJuly.recordedAt);
-    expect(summarizedByDay.result[0].values.weight).toBeTruthy();
-    expect(summarizedByDay.result[0].values.weight?.value).toBe(66);
-    expect(summarizedByDay.result[0].values.weight?.count).toBe(1);
+    expect(summarizedByDay.result.at(0)!.day).toEqual(startOfJuly.recordedAt);
+    expect(summarizedByDay.result.at(0)!.values.weight).toBeTruthy();
+    expect(summarizedByDay.result.at(0)!.values.weight?.value).toBe(66);
+    expect(summarizedByDay.result.at(0)!.values.weight?.count).toBe(1);
   });
 
   test('returns two items without summarization when having two records on different days', () => {
@@ -53,13 +53,13 @@ describe('prepareBodyDataForChart', () => {
     const preparedForChart = prepareBodyDataForChart([startOfJuly, endOfAugust]);
 
     expect(preparedForChart.result).toHaveLength(2);
-    expect(preparedForChart.result[0].values.weight).toBeTruthy();
-    expect(preparedForChart.result[0].values.weight?.value).toBe(startOfJuly.weight);
-    expect(preparedForChart.result[0].values.weight?.count).toBe(1);
+    expect(preparedForChart.result.at(0)!.values.weight).toBeTruthy();
+    expect(preparedForChart.result.at(0)!.values.weight?.value).toBe(startOfJuly.weight);
+    expect(preparedForChart.result.at(0)!.values.weight?.count).toBe(1);
 
-    expect(preparedForChart.result[1].values.weight).toBeTruthy();
-    expect(preparedForChart.result[1].values.weight?.value).toBe(endOfAugust.weight);
-    expect(preparedForChart.result[1].values.weight?.count).toBe(1);
+    expect(preparedForChart.result.at(1)!.values.weight).toBeTruthy();
+    expect(preparedForChart.result.at(1)!.values.weight?.value).toBe(endOfAugust.weight);
+    expect(preparedForChart.result.at(1)!.values.weight?.count).toBe(1);
   });
 
   test('returns one item with summarization when having two records on the same day', () => {
@@ -72,9 +72,9 @@ describe('prepareBodyDataForChart', () => {
     const preparedForChart = prepareBodyDataForChart([startOfJuly, startOfJulyOneHourLater]);
 
     expect(preparedForChart.result).toHaveLength(1);
-    expect(preparedForChart.result[0].values.weight).toBeTruthy();
-    expect(preparedForChart.result[0].values.weight?.value).toBe(66.5);
-    expect(preparedForChart.result[0].values.weight?.count).toBe(2);
+    expect(preparedForChart.result.at(0)!.values.weight).toBeTruthy();
+    expect(preparedForChart.result.at(0)!.values.weight?.value).toBe(66.5);
+    expect(preparedForChart.result.at(0)!.values.weight?.count).toBe(2);
   });
 
   test('returns one item with correct average values when having two records on the same day', () => {
@@ -96,14 +96,14 @@ describe('prepareBodyDataForChart', () => {
     const preparedForChart = prepareBodyDataForChart([firstOfJulyNoon, firstOfJulyEvening]);
 
     expect(preparedForChart.result).toHaveLength(1);
-    expect(preparedForChart.result[0].values.weight?.value).toBe(65.5);
-    expect(preparedForChart.result[0].values.weight?.count).toBe(2);
-    expect(preparedForChart.result[0].values.muscleMass?.value).toBe(45.5);
-    expect(preparedForChart.result[0].values.muscleMass?.count).toBe(2);
-    expect(preparedForChart.result[0].values.bodyFat?.value).toBe(13.5);
-    expect(preparedForChart.result[0].values.bodyFat?.count).toBe(2);
-    expect(preparedForChart.result[0].values.water?.value).toBe(60.5);
-    expect(preparedForChart.result[0].values.water?.count).toBe(2);
+    expect(preparedForChart.result.at(0)!.values.weight?.value).toBe(65.5);
+    expect(preparedForChart.result.at(0)!.values.weight?.count).toBe(2);
+    expect(preparedForChart.result.at(0)!.values.muscleMass?.value).toBe(45.5);
+    expect(preparedForChart.result.at(0)!.values.muscleMass?.count).toBe(2);
+    expect(preparedForChart.result.at(0)!.values.bodyFat?.value).toBe(13.5);
+    expect(preparedForChart.result.at(0)!.values.bodyFat?.count).toBe(2);
+    expect(preparedForChart.result.at(0)!.values.water?.value).toBe(60.5);
+    expect(preparedForChart.result.at(0)!.values.water?.count).toBe(2);
   });
 
   test('returns one item with correct date summarization when having two records on the same day', () => {
@@ -115,7 +115,7 @@ describe('prepareBodyDataForChart', () => {
     expect(preparedForChart.result).toHaveLength(1);
     expect(preparedForChart.type).toBe('summarizedByDay');
     const summarizedByDay = preparedForChart as BodyDataSummarizedByDay;
-    expect(summarizedByDay.result[0].day).toEqual(parseISO('2025-07-01T12:00:00'));
+    expect(summarizedByDay.result.at(0)!.day).toEqual(parseISO('2025-07-01T12:00:00'));
   });
 
   test('returns summarized items by week when having plenty of data', () => {

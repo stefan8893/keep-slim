@@ -30,9 +30,9 @@ const dateRange = defineModel<DateRange>('dateRange', {
   default: emptyDateRange,
 });
 
-const currentSelectionId = ref(
+const currentSelectionId = ref<DateRangeSelectionId>(
   props.initialSelection ??
-    (props.availableSelections.length > 0 ? props.availableSelections[0] : 'CUSTOM'),
+    (props.availableSelections.length > 0 ? props.availableSelections.at(0)! : 'CUSTOM'),
 );
 
 const currentSelection = computed(() => dateRangeSelections.get(currentSelectionId.value)!);

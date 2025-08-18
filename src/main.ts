@@ -44,7 +44,7 @@ async function initializeAuth(app: App<Element>): Promise<PublicClientApplicatio
 }
 
 async function onAuthenticated(accounts: AccountInfo[], msalInstance: PublicClientApplication) {
-  const account = accounts[0];
+  const account = accounts[0]!;
   msalInstance.setActiveAccount(account);
 
   const environment = import.meta.env.MODE;

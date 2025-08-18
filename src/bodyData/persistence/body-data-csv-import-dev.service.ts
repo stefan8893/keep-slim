@@ -44,7 +44,7 @@ export class DevBodyDataCsvImportService implements BodyDataCsvImportService {
 
     if (parsed.length === 0) return [];
 
-    const first = parsed[0];
+    const first = parsed.at(0)!;
     const last = parsed.at(-1)!;
 
     const existing = (

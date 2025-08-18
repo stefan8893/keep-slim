@@ -10,8 +10,8 @@ export class BodyDataRepositoryCacheProxy implements BodyDataRepository {
   private getBoundariesOfCachedData() {
     if (this.cache.length < 2) return null;
 
-    const oldest = this.cache[0].recordedAt;
-    const latest = this.cache[this.cache.length - 1].recordedAt;
+    const oldest = this.cache.at(0)!.recordedAt;
+    const latest = this.cache.at(this.cache.length - 1)!.recordedAt;
 
     return {
       latest,

@@ -7,7 +7,7 @@ export function getTestData(): BodyData[] {
     (x) =>
       ({
         ...x,
-        recordedAt: new Date(x.recordedAt),
+        recordedAt: new Date(x.recordedAt!),
       }) as BodyData,
   );
 }

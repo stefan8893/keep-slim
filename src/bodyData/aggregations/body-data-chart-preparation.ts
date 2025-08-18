@@ -41,7 +41,7 @@ function summarizeByDay(grouped: Map<string, BodyData[]>): BodyDataSummarizedByD
   return {
     type: 'summarizedByDay',
     result: Array.from(grouped).map(([, group]) => ({
-      day: group.length === 1 ? group[0].recordedAt : averageDate(group.map((x) => x.recordedAt)),
+      day: group.length === 1 ? group[0]!.recordedAt : averageDate(group.map((x) => x.recordedAt)),
       values: summarizeValues(group),
     })),
   };

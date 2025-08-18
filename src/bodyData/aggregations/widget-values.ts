@@ -33,13 +33,13 @@ export type WidgetValues = Empty | SingleDay | Range;
 
 function getFirstValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecords): number {
   return boundaryRecords.firstN.length === 1
-    ? boundaryRecords.firstN[0][key]
+    ? boundaryRecords.firstN[0]![key]
     : average(boundaryRecords.firstN.map((x) => x[key]));
 }
 
 function getLastValue(key: NumberKeys<BodyData>, boundaryRecords: BoundaryRecords): number {
   return boundaryRecords.lastN.length === 1
-    ? boundaryRecords.lastN[0][key]
+    ? boundaryRecords.lastN[0]![key]
     : average(boundaryRecords.lastN.map((x) => x[key]));
 }
 

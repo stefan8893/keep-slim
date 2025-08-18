@@ -44,7 +44,7 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[0].value).toBeCloseTo(1, 4);
+    expect(change.at(0)!.value).toBeCloseTo(1, 4);
   });
 
   test('returns the correct change of a begun week', function () {
@@ -67,7 +67,7 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[1].value).toBeCloseTo(0.5, 4);
+    expect(change.at(1)!.value).toBeCloseTo(0.5, 4);
   });
 
   test('returns the correct change of an exact month', function () {
@@ -82,7 +82,7 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[0].value).toBeCloseTo(1, 4);
+    expect(change.at(0)!.value).toBeCloseTo(1, 4);
   });
 
   test('returns the correct change of a begun month', function () {
@@ -97,7 +97,7 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[1].value).toBeCloseTo(0.5, 4);
+    expect(change.at(1)!.value).toBeCloseTo(0.5, 4);
   });
 
   test('returns the correct change of an exact month when weight were loss -> negative change', function () {
@@ -112,7 +112,7 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[0].value).toBeCloseTo(-1, 4);
+    expect(change.at(0)!.value).toBeCloseTo(-1, 4);
   });
 
   test('returns the correct time range for the change of an exact week', function () {
@@ -135,8 +135,8 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('weeklyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[0].start).toEqual(parseISO('2025-07-07T00:00:00'));
-    expect(change[0].end).toEqual(endOfISOWeek(parseISO('2025-07-07T00:00:00')));
+    expect(change.at(0)!.start).toEqual(parseISO('2025-07-07T00:00:00'));
+    expect(change.at(0)!.end).toEqual(endOfISOWeek(parseISO('2025-07-07T00:00:00')));
   });
 
   test('returns the correct time range for the change of an exact month', function () {
@@ -151,8 +151,8 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[0].start).toEqual(parseISO('2025-07-01T00:00:00'));
-    expect(change[0].end).toEqual(endOfDay(parseISO('2025-07-31T00:00:00')));
+    expect(change.at(0)!.start).toEqual(parseISO('2025-07-01T00:00:00'));
+    expect(change.at(0)!.end).toEqual(endOfDay(parseISO('2025-07-31T00:00:00')));
   });
 
   test('returns the correct property for the change of an exact week', function () {
@@ -176,7 +176,7 @@ describe('calculateChangeOverTime', function () {
 
     const property: NumberKeys<BodyData> = 'muscleMass';
     expect(change).toHaveLength(2);
-    expect(change[0].property).toEqual(property);
+    expect(change.at(0)!.property).toEqual(property);
   });
 
   test('returns an empty array when the records are all within one week interval', function () {
@@ -213,8 +213,8 @@ describe('calculateChangeOverTime', function () {
     const change = calculateChangeOverTime('monthlyExact', 'weight', bodyDataRecords);
 
     expect(change).toHaveLength(2);
-    expect(change[0].start).toEqual(parseISO('2024-12-01T00:00:00'));
-    expect(change[0].end).toEqual(endOfDay(parseISO('2024-12-31T00:00:00')));
+    expect(change.at(0)!.start).toEqual(parseISO('2024-12-01T00:00:00'));
+    expect(change.at(0)!.end).toEqual(endOfDay(parseISO('2024-12-31T00:00:00')));
   });
 
   test('works for plenty of data for exact monthly changes', function () {
@@ -224,8 +224,8 @@ describe('calculateChangeOverTime', function () {
 
     expect(change).toHaveLength(10);
     // assert random entry
-    expect(change[4].start).toEqual(parseISO('2025-02-01'));
-    expect(change[4].end).toEqual(endOfMonth(parseISO('2025-02-01')));
+    expect(change.at(4)!.start).toEqual(parseISO('2025-02-01'));
+    expect(change.at(4)!.end).toEqual(endOfMonth(parseISO('2025-02-01')));
   });
 
   test('works for plenty of data for exact weekly changes', function () {
@@ -235,7 +235,7 @@ describe('calculateChangeOverTime', function () {
 
     expect(change).toHaveLength(43);
     // assert random entry
-    expect(change[28].start).toEqual(parseISO('2025-03-31'));
-    expect(change[28].end).toEqual(endOfDay(parseISO('2025-04-06')));
+    expect(change.at(28)!.start).toEqual(parseISO('2025-03-31'));
+    expect(change.at(28)!.end).toEqual(endOfDay(parseISO('2025-04-06')));
   });
 });
