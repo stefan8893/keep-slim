@@ -39,6 +39,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: has_next_version
     if: ${{ needs.has_next_version.outputs.HasNextVersion == 'true' }}
+    environment:
+      name: Production
+    permissions:
+      id-token: write
 
     env:
       Version: ${{ needs.has_next_version.outputs.Version }}
