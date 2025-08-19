@@ -28,6 +28,7 @@ const datePickerSelction: DateRangeSelectionId[] = [
   'L30D',
   'L2M',
   'L3M',
+  'L6M',
   'CURR_YEAR',
   'PREV_YEAR',
   'CUSTOM',
