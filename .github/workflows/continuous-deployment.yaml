@@ -34,8 +34,8 @@ jobs:
           git tag $nextVersion
           git push origin $nextVersion
 
-  package:
-    name: Package App
+  publish:
+    name: Publish App
     runs-on: ubuntu-latest
     needs: has_next_version
     if: ${{ needs.has_next_version.outputs.HasNextVersion == 'true' }}
@@ -62,28 +62,6 @@ jobs:
           npm version ${{ env.Version }} --allow-same-version --no-git-tag-version
           npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: keep-slim
-          path: ./dist
-
-  deploy:
-    name: Deploy App
-    runs-on: ubuntu-latest
-    needs: package
-    environment:
-      name: Production
-    permissions:
-      id-token: write
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: keep-slim
-          path: ./keep-slim
-
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -97,9 +75,9 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az storage blob delete-batch --account-name "$CLIENT_APP_STORAGE_ACCOUNT" --source '$web' --pattern '*'
-            az storage blob upload-batch --account-name "$CLIENT_APP_STORAGE_ACCOUNT" --destination '$web' --source ./keep-slim --overwrite
+            az storage blob upload-batch --account-name "$CLIENT_APP_STORAGE_ACCOUNT" --destination '$web' --source ./dist --overwrite
 
             # set cache-control header for index.html only by re-uploading it with the --content-cache option
-            az storage blob upload --account-name "$CLIENT_APP_STORAGE_ACCOUNT" --container-name '$web' --file ./keep-slim/index.html --name index.html --content-cache 'no-cache' --overwrite
+            az storage blob upload --account-name "$CLIENT_APP_STORAGE_ACCOUNT" --container-name '$web' --file ./dist/index.html --name index.html --content-cache 'no-cache' --overwrite
         env:
           CLIENT_APP_STORAGE_ACCOUNT: ${{ vars.CLIENT_APP_STORAGE_ACCOUNT }}
