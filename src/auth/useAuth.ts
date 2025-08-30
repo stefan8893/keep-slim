@@ -12,11 +12,10 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
       refreshTokenExpirationOffsetSeconds: 12 * 60 * 60,
     });
   } catch (error) {
-    console.error(error);
+    console.error('Error while ensuring fresh token', error);
+    console.error('Error instance: ', typeof error);
     if (error instanceof InteractionRequiredAuthError) {
-      msalInstance.acquireTokenRedirect({
-        scopes: loginScopes,
-      });
+      msalInstance.loginRedirect({ scopes: loginScopes });
     }
 
     throw error;
