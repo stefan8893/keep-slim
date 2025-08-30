@@ -4,6 +4,18 @@ import { msalInstanceKey } from '@/injection.types';
 import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
 import { inject } from 'vue';
 
+function getErrorType(error: unknown): string {
+  if (error == null) {
+    return String(error);
+  }
+
+  if (typeof error === 'object' && 'constructor' in error && error.constructor?.name) {
+    return error.constructor.name;
+  }
+
+  return typeof error;
+}
+
 export const ensureFreshTokens = async (msalInstance: PublicClientApplication) => {
   try {
     await msalInstance.acquireTokenSilent({
@@ -13,7 +25,7 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
     });
   } catch (error) {
     console.error('Error while ensuring fresh token', error);
-    console.error('Error instance: ', typeof error);
+    console.error('Error Type: ', getErrorType(error));
     if (error instanceof InteractionRequiredAuthError) {
       msalInstance.loginRedirect({ scopes: loginScopes });
     }
