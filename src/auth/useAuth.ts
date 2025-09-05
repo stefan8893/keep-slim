@@ -11,7 +11,8 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
       forceRefresh: true,
       refreshTokenExpirationOffsetSeconds: 12 * 60 * 60,
     });
-  } catch {
+  } catch (error) {
+    console.error('Error while ensuring fresh token', error);
     msalInstance.loginRedirect({ scopes: loginScopes });
   }
 };
