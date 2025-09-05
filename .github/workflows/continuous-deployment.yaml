@@ -48,7 +48,7 @@ jobs:
       Version: ${{ needs.has_next_version.outputs.Version }}
 
     steps:
-      - name: Checkout repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.CI_PAT }}
@@ -61,7 +61,7 @@ jobs:
       - name: Install packages
         run: npm install
 
-      - name: Build for production
+      - name: Build for Production
         run: |
           npm version ${{ env.Version }} --allow-same-version --no-git-tag-version
           npm run build
@@ -73,7 +73,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy client app
+      - name: Deploy Client App
         uses: azure/CLI@v2
         with:
           azcliversion: latest
