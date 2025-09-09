@@ -78,10 +78,10 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            az storage blob delete-batch --account-name $CLIENT_APP_STORAGE_ACCOUNT --source '$web' --pattern '*'
+            az storage blob delete-batch --account-name $CLIENT_APP_STORAGE_ACCOUNT --source '$web'
             az storage blob upload-batch --account-name $CLIENT_APP_STORAGE_ACCOUNT --destination '$web' --source ./dist --overwrite
 
             # set cache-control header for index.html only by re-uploading it with the --content-cache option
-            # az storage blob upload --account-name $CLIENT_APP_STORAGE_ACCOUNT --container-name '$web' --file ./dist/index.html --name index.html --content-cache 'no-cache' --overwrite
+            az storage blob upload --account-name $CLIENT_APP_STORAGE_ACCOUNT --container-name '$web' --file ./dist/index.html --name index.html --content-cache 'no-cache' --overwrite
         env:
           CLIENT_APP_STORAGE_ACCOUNT: ${{ vars.CLIENT_APP_STORAGE_ACCOUNT }}
