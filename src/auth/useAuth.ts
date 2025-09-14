@@ -19,7 +19,7 @@ function getErrorType(error: unknown): string {
 export const ensureFreshTokens = async (msalInstance: PublicClientApplication) => {
   try {
     await msalInstance.acquireTokenSilent({
-      scopes: loginScopes,
+      scopes: azFunctionAppScope,
       forceRefresh: true,
       refreshTokenExpirationOffsetSeconds: 12 * 60 * 60,
     });
@@ -29,7 +29,7 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
 
     if (error instanceof InteractionRequiredAuthError) {
       msalInstance.acquireTokenRedirect({
-        scopes: loginScopes,
+        scopes: azFunctionAppScope,
       });
     }
 
