@@ -1,7 +1,7 @@
 import { azFunctionAppScope, loginScopes } from '@/auth/auth.config';
 import type { AuthContext } from '@/auth/auth.types';
 import { msalInstanceKey } from '@/injection.types';
-import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
+import { PublicClientApplication } from '@azure/msal-browser';
 import { inject } from 'vue';
 
 function getErrorType(error: unknown): string {
@@ -27,11 +27,9 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
     console.error('Error while ensuring fresh token', error);
     console.error('Error Type: ', getErrorType(error));
 
-    if (error instanceof InteractionRequiredAuthError) {
-      msalInstance.acquireTokenRedirect({
-        scopes: azFunctionAppScope,
-      });
-    }
+    msalInstance.acquireTokenRedirect({
+      scopes: azFunctionAppScope,
+    });
 
     throw error;
   }
@@ -49,11 +47,9 @@ export const acquireAzureFunctionAppAccessToken = async (
   } catch (error) {
     console.error(error);
 
-    if (error instanceof InteractionRequiredAuthError) {
-      msalInstance.acquireTokenRedirect({
-        scopes: azFunctionAppScope,
-      });
-    }
+    msalInstance.acquireTokenRedirect({
+      scopes: azFunctionAppScope,
+    });
 
     throw error;
   }
