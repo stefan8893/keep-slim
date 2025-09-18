@@ -27,13 +27,9 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
     console.error('Error while ensuring fresh token', error);
     console.error('Error Type: ', getErrorType(error));
 
-    if (error instanceof InteractionRequiredAuthError) {
-      await msalInstance.acquireTokenRedirect({
-        scopes: azFunctionAppScope,
-      });
-    }
-
-    throw error;
+    await msalInstance.loginRedirect({
+      scopes: loginScopes,
+    });
   }
 };
 
