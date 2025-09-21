@@ -20,8 +20,6 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
   try {
     await msalInstance.acquireTokenSilent({
       scopes: azFunctionAppScope,
-      forceRefresh: true,
-      refreshTokenExpirationOffsetSeconds: 12 * 60 * 60,
     });
   } catch (error) {
     console.error('Error while ensuring fresh token', error);
