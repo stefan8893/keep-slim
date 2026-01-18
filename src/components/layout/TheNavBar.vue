@@ -31,5 +31,10 @@ const activeMenu = computed(() => {
 <style scoped>
 .nav-bar.el-menu--horizontal.el-menu {
   border-bottom: none;
+  background-color: var(--color-white);
+}
+
+html.dark .nav-bar.el-menu--horizontal.el-menu {
+  background-color: var(--color-zinc-900);
 }
 </style>
