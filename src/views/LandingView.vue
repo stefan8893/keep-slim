@@ -17,11 +17,7 @@ const { login } = useAuth();
     </template>
     <template #default>
       <div class="flex h-full flex-col flex-nowrap items-center justify-center">
-        <el-result icon="primary" :title="$t(MessageKey.underConstruction)">
-          <template #extra>
-            <el-button type="primary" @click="login">{{ $t(MessageKey.login) }}</el-button>
-          </template>
-        </el-result>
+        <el-result icon="primary" :title="$t(MessageKey.underConstruction)"> </el-result>
       </div>
     </template>
   </TheLayout>
