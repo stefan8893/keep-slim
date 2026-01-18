@@ -43,7 +43,7 @@ const beforeCloseUserMenu = () => {
       </div>
       <div class="ml-5 select-none">
         <TextCopy class="text-lg font-medium break-normal" :text="name" ref="nameText" />
-        <TextCopy class="mt-0.5 max-w-[268px] truncate" :text="email" ref="emailText" />
+        <TextCopy class="mt-0.5 max-w-67 truncate" :text="email" ref="emailText" />
       </div>
     </div>
     <el-divider />
