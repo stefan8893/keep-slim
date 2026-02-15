@@ -53,10 +53,10 @@ jobs:
         with:
           token: ${{ secrets.CI_PAT }}
 
-      - name: Setup node 22.x
-        uses: actions/setup-node@v4
+      - name: Setup node 24
+        uses: actions/setup-node@v6
         with:
-          node-version: '22.x'
+          node-version: '24'
 
       - name: Install packages
         run: npm install
