@@ -8,7 +8,6 @@ export const authConfiguration: msal.Configuration = {
   auth: {
     clientId: import.meta.env.VITE_AUTH_CLIENT_ID,
     authority: import.meta.env.VITE_AUTH_AUTHORITY,
-    navigateToLoginRequestUrl: false,
     redirectUri: window.location.origin,
     postLogoutRedirectUri: window.location.origin,
   },
