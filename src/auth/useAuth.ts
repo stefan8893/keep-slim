@@ -20,6 +20,7 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
   try {
     await msalInstance.acquireTokenSilent({
       scopes: azFunctionAppScope,
+      redirectUri: window.location.origin,
     });
   } catch (error) {
     console.error('Error while ensuring fresh token', error);
