@@ -1,6 +1,5 @@
 import AppVue from '@/App.vue';
 import { authConfiguration } from '@/auth/auth.config';
-import { ensureFreshTokens } from '@/auth/useAuth';
 import i18n from '@/i18n/i18n-config';
 import { msalInstanceKey } from '@/injection.types';
 import { bodyData } from '@/plugins/body-data.plugin';
@@ -46,7 +45,4 @@ async function initializeAuth(app: App<Element>): Promise<PublicClientApplicatio
 async function onAuthenticated(accounts: AccountInfo[], msalInstance: PublicClientApplication) {
   const account = accounts[0]!;
   msalInstance.setActiveAccount(account);
-
-  const environment = import.meta.env.MODE;
-  if (environment === 'production') await ensureFreshTokens(msalInstance);
 }
