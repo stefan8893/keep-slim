@@ -18,9 +18,8 @@ function getErrorType(error: unknown): string {
 
 export const ensureFreshTokens = async (msalInstance: PublicClientApplication) => {
   try {
-    await msalInstance.acquireTokenRedirect({
+    await msalInstance.acquireTokenSilent({
       scopes: azFunctionAppScope,
-      redirectUri: window.location.origin,
     });
   } catch (error) {
     console.error('Error while ensuring fresh token', error);

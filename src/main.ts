@@ -47,6 +47,5 @@ async function onAuthenticated(accounts: AccountInfo[], msalInstance: PublicClie
   const account = accounts[0]!;
   msalInstance.setActiveAccount(account);
 
-  const environment = import.meta.env.MODE;
-  if (environment === 'production') await ensureFreshTokens(msalInstance);
+  await ensureFreshTokens(msalInstance);
 }
