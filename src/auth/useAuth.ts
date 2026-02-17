@@ -4,6 +4,34 @@ import { msalInstanceKey } from '@/injection.types';
 import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
 import { inject } from 'vue';
 
+function getErrorType(error: unknown): string {
+  if (error == null) {
+    return String(error);
+  }
+
+  if (typeof error === 'object' && 'constructor' in error && error.constructor?.name) {
+    return error.constructor.name;
+  }
+
+  return typeof error;
+}
+
+export const ensureFreshTokens = async (msalInstance: PublicClientApplication) => {
+  try {
+    await msalInstance.acquireTokenRedirect({
+      scopes: azFunctionAppScope,
+      redirectUri: window.location.origin,
+    });
+  } catch (error) {
+    console.error('Error while ensuring fresh token', error);
+    console.error('Error Type: ', getErrorType(error));
+
+    await msalInstance.loginRedirect({
+      scopes: loginScopes,
+    });
+  }
+};
+
 export const acquireAzureFunctionAppAccessToken = async (
   msalInstance: PublicClientApplication,
 ): Promise<string> => {
