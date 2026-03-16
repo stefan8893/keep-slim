@@ -42,7 +42,7 @@
     "eslint": "^10.0.2",
     "eslint-plugin-vue": "^10.3.0",
     "jiti": "^2.4.2",
-    "jsdom": "^28.1.0",
+    "jsdom": "^29.0.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.7.1",
