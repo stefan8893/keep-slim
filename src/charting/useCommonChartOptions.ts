@@ -15,7 +15,6 @@ export function useCommonChartOptions() {
       backgroundColor: 'var(--el-text-color-primary)',
       style: {
         color: 'var(--el-bg-color)',
-        borderRadius: 4,
       },
     },
   });
