@@ -43,6 +43,7 @@ jobs:
       name: Production
     permissions:
       id-token: write
+      contents: read
 
     env:
       Version: ${{ needs.has_next_version.outputs.Version }}
@@ -51,7 +52,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
         with:
-          token: ${{ secrets.CI_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup node 24
         uses: actions/setup-node@v6
