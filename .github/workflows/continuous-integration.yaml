@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
       - name: Audit packages
-        run: npm audit --production --audit-level=high
+        run: npm audit --audit-level=high
 
       - name: Build
         run: npm run build

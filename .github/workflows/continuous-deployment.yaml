@@ -63,7 +63,7 @@ jobs:
         run: npm ci
 
       - name: Audit packages
-        run: npm audit --production --audit-level=high
+        run: npm audit --audit-level=high
 
       - name: Build for Production
         run: |
