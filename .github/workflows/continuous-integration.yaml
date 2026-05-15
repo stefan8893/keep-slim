@@ -19,7 +19,7 @@ jobs:
           node-version: '24'
 
       - name: Install packages
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Audit packages
         run: npm audit --audit-level=high
