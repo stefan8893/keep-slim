@@ -21,13 +21,13 @@ jobs:
       - name: Install packages
         run: npm ci
 
+      - name: Audit packages
+        run: npm audit --audit-level=high
+
       - name: Lint
         env:
           CI: true
         run: npm run lint
-
-      - name: Audit packages
-        run: npm audit --audit-level=high
 
       - name: Build
         run: npm run build
