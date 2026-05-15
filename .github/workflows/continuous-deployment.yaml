@@ -62,6 +62,9 @@ jobs:
       - name: Install packages
         run: npm ci
 
+      - name: Audit packages
+        run: npm audit --production --audit-level=high
+
       - name: Build for Production
         run: |
           npm version ${{ env.Version }} --allow-same-version --no-git-tag-version
