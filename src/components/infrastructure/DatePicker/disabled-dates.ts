@@ -6,9 +6,9 @@ export function isStartDateDisabled(
   maxDate: Date,
   endDate?: Date | undefined | null,
 ) {
-  if (!!endDate && isSameDay(endDate, date)) return false;
+  if (endDate && isSameDay(endDate, date)) return false;
 
-  if (!!endDate && date > endDate) return true;
+  if (endDate && date > endDate) return true;
 
   if (date > maxDate || date < minDate) return true;
 
@@ -21,9 +21,9 @@ export function isEndDateDisabled(
   maxDate: Date,
   startDate?: Date | undefined | null,
 ) {
-  if (!!startDate && isSameDay(startDate, date)) return false;
+  if (startDate && isSameDay(startDate, date)) return false;
 
-  if (!!startDate && date < startDate) return true;
+  if (startDate && date < startDate) return true;
 
   if (date > maxDate || date < minDate) return true;
 

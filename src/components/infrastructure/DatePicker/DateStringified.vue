@@ -17,7 +17,7 @@ const props = defineProps<{
   formatString?: string;
 }>();
 
-const isDateToday = computed(() => !!props.date && isToday(props.date));
+const isDateToday = computed(() => props.date && isToday(props.date));
 
 const displayValue = computed(() => {
   if (!props.date) return props.placeholder ?? getDateFormatString(localeStore.locale);

@@ -85,7 +85,7 @@ const finishImport = async () => {
 const goForward = () => {
   if (
     activeStep.value === 'FileSelection' &&
-    !!csvImport.value.csvFile &&
+    csvImport.value.csvFile &&
     !errorOnLoadingPreview.value
   ) {
     goToPreview();
@@ -100,7 +100,7 @@ const goForward = () => {
 const forwardEnabled = computed(
   () =>
     (activeStep.value === 'FileSelection' &&
-      !!csvImport.value.csvFile &&
+      csvImport.value.csvFile &&
       !errorOnLoadingPreview.value) ||
     (activeStep.value === 'Preview' && csvImport.value.newRecords.length > 0) ||
     activeStep.value === 'Succeeded' ||
@@ -128,7 +128,7 @@ const reset = () => {
 watch(
   csvImport,
   (newValue) => {
-    if (!!newValue.csvFile) errorOnLoadingPreview.value = '';
+    if (newValue.csvFile) errorOnLoadingPreview.value = '';
   },
   { deep: true },
 );

@@ -25,7 +25,7 @@ const dateFormat = computed(() => getDateFormatString(localeStore.locale));
 
 watch(dateInternal, () => {
   model.value =
-    !!dateInternal.value && props.setTimeToEndOfDay
+    dateInternal.value && props.setTimeToEndOfDay
       ? endOfDay(dateInternal.value)
       : dateInternal.value;
 });

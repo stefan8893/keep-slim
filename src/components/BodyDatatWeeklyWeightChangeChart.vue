@@ -83,7 +83,7 @@ const renderChart = () => {
         const bodyDataRecord = changesOverTime.value.at(this.index);
 
         const timeRangeInfo =
-          !!bodyDataRecord && bodyDataRecord.interval === 'weeklyExact'
+          bodyDataRecord && bodyDataRecord.interval === 'weeklyExact'
             ? `<span>${formatDate(bodyDataRecord.start)} - ${formatDate(endOfISOWeek(bodyDataRecord.end))}</span>`
             : '';
 

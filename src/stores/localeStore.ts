@@ -29,12 +29,12 @@ export const useLocaleStore = defineStore('locale', () => {
 });
 
 function getInitialLocale(): SupportedLocale {
-  if (!!localeInLocalStorage.value) return localeInLocalStorage.value;
+  if (localeInLocalStorage.value) return localeInLocalStorage.value;
 
   const browserLanguage = new Intl.Locale(navigator.language).baseName;
   const supportedBrowserLanguage = getSupportedLocale(browserLanguage);
 
-  if (!!supportedBrowserLanguage) return supportedBrowserLanguage;
+  if (supportedBrowserLanguage) return supportedBrowserLanguage;
 
   return defaultLocale;
 }

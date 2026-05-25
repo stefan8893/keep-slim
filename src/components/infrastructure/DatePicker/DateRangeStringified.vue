@@ -15,7 +15,7 @@ const prefix = computed(() => {
 
   if (isSameDay(props.start, props.end)) return '';
 
-  const fromToday = !!props.start && isToday(props.start) ? 1 : 2;
+  const fromToday = props.start && isToday(props.start) ? 1 : 2;
   return t(MessageKey.dateFromCapitalized, fromToday);
 });
 
@@ -32,7 +32,7 @@ const separator = computed(() => {
 });
 
 const endDate = computed(() => {
-  if (!!props.start && !!props.end && isSameDay(props.start, props.end)) return undefined;
+  if (props.start && props.end && isSameDay(props.start, props.end)) return undefined;
 
   return props.end;
 });
