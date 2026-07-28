@@ -27,7 +27,7 @@ const minDate = computed(() => props.minDate ?? new Date(2000, 0));
 const maxDate = computed(() => props.maxDate ?? endOfDay(addDays(new Date(), 2)));
 
 const dateRange = defineModel<DateRange>('dateRange', {
-  default: emptyDateRange,
+  default: () => emptyDateRange,
 });
 
 const currentSelectionId = ref<DateRangeSelectionId>(
