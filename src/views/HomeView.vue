@@ -3,7 +3,7 @@ import type { BodyDataRepository } from '@/bodyData/body-data-persistence.types'
 import type { BodyData } from '@/bodyData/body-data.types';
 import { useCommonChartOptions } from '@/charting/useCommonChartOptions';
 import BodyDataChart from '@/components/BodyDataChart.vue';
-import BodyDatatWeeklyWeightChangeChart from '@/components/BodyDatatWeeklyWeightChangeChart.vue';
+import BodyDataWeeklyWeightChangeChart from '@/components/BodyDataWeeklyWeightChangeChart.vue';
 import CsvImport from '@/components/csv-import/CsvImport.vue';
 import DateRangePicker from '@/components/infrastructure/DatePicker/DateRangePicker.vue';
 import {
@@ -109,7 +109,7 @@ watch(csvImportDialogVisible, (newValue) => {
   </div>
   <BodyDataWidgetSkeletons v-if="isLoading" class="mt-8" />
   <BodyDataWidgets v-else class="mt-8" :body-data="bodyData" />
-  <BodyDatatWeeklyWeightChangeChart
+  <BodyDataWeeklyWeightChangeChart
     v-loading="isLoading"
     class="mt-8"
     :body-data="bodyDataExtended"

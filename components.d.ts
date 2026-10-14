@@ -13,7 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BodyDataChart: typeof import('./src/components/BodyDataChart.vue')['default']
     BodyDataTable: typeof import('./src/components/BodyDataTable.vue')['default']
-    BodyDatatWeeklyWeightChangeChart: typeof import('./src/components/BodyDatatWeeklyWeightChangeChart.vue')['default']
+    BodyDataWeeklyWeightChangeChart: typeof import('./src/components/BodyDataWeeklyWeightChangeChart.vue')['default']
     BodyDataWidgets: typeof import('./src/components/widget/BodyDataWidgets.vue')['default']
     BodyDataWidgetSkeletons: typeof import('./src/components/widget/BodyDataWidgetSkeletons.vue')['default']
     CsvImport: typeof import('./src/components/csv-import/CsvImport.vue')['default']
