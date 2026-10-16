@@ -1,6 +1,5 @@
 import AppVue from '@/App.vue';
 import { authConfiguration } from '@/auth/auth.config';
-import { ensureFreshTokens } from '@/auth/useAuth';
 import i18n from '@/i18n/i18n-config';
 import { msalInstanceKey } from '@/injection.types';
 import { bodyData } from '@/plugins/body-data.plugin';
@@ -47,5 +46,5 @@ async function onAuthenticated(accounts: AccountInfo[], msalInstance: PublicClie
   const account = accounts[0]!;
   msalInstance.setActiveAccount(account);
 
-  await ensureFreshTokens(msalInstance);
+  //await ensureFreshTokens(msalInstance);
 }
