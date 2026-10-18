@@ -1,5 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
+import { resolve } from 'node:path';
 import { URL, fileURLToPath } from 'node:url';
 import AutoImport from 'unplugin-auto-import/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
@@ -33,5 +34,11 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 750,
+    rolldownOptions: {
+      input: {
+        main: resolve(import.meta.dirname, 'index.html'),
+        redirect: resolve(import.meta.dirname, 'redirect.html'),
+      },
+    },
   },
 });

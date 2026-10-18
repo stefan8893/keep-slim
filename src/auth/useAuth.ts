@@ -20,7 +20,7 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
   try {
     await msalInstance.acquireTokenSilent({
       scopes: azFunctionAppScope,
-      redirectUri: `${window.location.origin}/msal-blank.html`,
+      redirectUri: `${window.location.origin}/redirect.html`,
     });
   } catch (error) {
     console.error('Error while ensuring fresh token', error);
@@ -28,6 +28,7 @@ export const ensureFreshTokens = async (msalInstance: PublicClientApplication) =
 
     await msalInstance.loginRedirect({
       scopes: loginScopes,
+      redirectUri: `${window.location.origin}/redirect.html`,
     });
   }
 };
@@ -38,6 +39,7 @@ export const acquireAzureFunctionAppAccessToken = async (
   try {
     const authResult = await msalInstance.acquireTokenSilent({
       scopes: azFunctionAppScope,
+      redirectUri: `${window.location.origin}/redirect.html`,
     });
 
     return authResult.accessToken;
@@ -47,6 +49,7 @@ export const acquireAzureFunctionAppAccessToken = async (
     if (error instanceof InteractionRequiredAuthError) {
       await msalInstance.acquireTokenRedirect({
         scopes: azFunctionAppScope,
+        redirectUri: `${window.location.origin}/redirect.html`,
       });
     }
 
@@ -87,7 +90,11 @@ export function useAuth(): AuthContext {
       .toUpperCase();
   };
 
-  const login = () => msalInstance.loginRedirect({ scopes: loginScopes });
+  const login = () =>
+    msalInstance.loginRedirect({
+      scopes: loginScopes,
+      redirectUri: `${window.location.origin}/redirect.html`,
+    });
 
   const logout = () => {
     return msalInstance.logoutRedirect({
