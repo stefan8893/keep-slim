@@ -6,6 +6,25 @@ import TheLayout from '@/layouts/TheLayout.vue';
 import { DataAnalysis, TrendCharts, Upload } from '@element-plus/icons-vue';
 
 const { login } = useAuth();
+
+const features = [
+  {
+    icon: DataAnalysis,
+    title: MessageKey.landingFeatureMetricsTitle,
+    description: MessageKey.landingFeatureMetricsDescription,
+  },
+  {
+    icon: TrendCharts,
+    title: MessageKey.landingFeatureTrendsTitle,
+    description: MessageKey.landingFeatureTrendsDescription,
+  },
+  {
+    icon: Upload,
+    title: MessageKey.landingFeatureImportTitle,
+    description: MessageKey.landingFeatureImportDescription,
+  },
+];
+
 </script>
 
 <template>
@@ -18,7 +37,7 @@ const { login } = useAuth();
     </template>
     <template #default>
       <div
-        class="min-h-full bg-linear-to-b from-white to-zinc-100 px-6 py-12 text-zinc-900 dark:from-zinc-900 dark:to-zinc-950 dark:text-zinc-100 sm:px-10 sm:py-16"
+        class="min-h-full bg-linear-to-b from-white to-zinc-100 px-6 py-12 text-zinc-900 sm:px-10 sm:py-16 dark:from-zinc-900 dark:to-zinc-950 dark:text-zinc-100"
       >
         <main class="mx-auto max-w-6xl">
           <section class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
@@ -42,7 +61,7 @@ const { login } = useAuth();
 
             <div
               aria-hidden="true"
-              class="relative mx-auto w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-900/5 dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-black/20 sm:p-8"
+              class="relative mx-auto w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-900/5 sm:p-8 dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-black/20"
             >
               <div class="flex items-start justify-between gap-4">
                 <div>
@@ -53,7 +72,9 @@ const { login } = useAuth();
                     {{ $t(MessageKey.weight) }}
                   </p>
                 </div>
-                <div class="rounded-2xl bg-emerald-100 p-3 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+                <div
+                  class="rounded-2xl bg-emerald-100 p-3 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                >
                   <el-icon size="24"><TrendCharts /></el-icon>
                 </div>
               </div>
@@ -82,23 +103,7 @@ const { login } = useAuth();
 
           <section class="mt-16 grid gap-4 sm:grid-cols-3 md:mt-24">
             <article
-              v-for="feature in [
-                {
-                  icon: DataAnalysis,
-                  title: MessageKey.landingFeatureMetricsTitle,
-                  description: MessageKey.landingFeatureMetricsDescription,
-                },
-                {
-                  icon: TrendCharts,
-                  title: MessageKey.landingFeatureTrendsTitle,
-                  description: MessageKey.landingFeatureTrendsDescription,
-                },
-                {
-                  icon: Upload,
-                  title: MessageKey.landingFeatureImportTitle,
-                  description: MessageKey.landingFeatureImportDescription,
-                },
-              ]"
+              v-for="feature in features"
               :key="feature.title"
               class="rounded-2xl border border-zinc-200 bg-white/80 p-6 dark:border-zinc-700 dark:bg-zinc-800/80"
             >
