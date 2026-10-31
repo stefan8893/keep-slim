@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import packageInfo from '@/../package.json';
+
+const version = packageInfo.version;
 </script>
 
 <template>
@@ -10,7 +12,7 @@ import packageInfo from '@/../package.json';
       </el-link>
     </div>
     <div class="my-auto ml-3">
-      <span>{{ packageInfo.version }}</span>
+      <span>{{ version }}</span>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@ import { genFileId } from 'element-plus';
 import { ref, watch } from 'vue';
 
 const selectedFile = defineModel<File | null>('selectedFile');
-
+const uploadFileKey = MessageKey.uploadFile;
 const files = ref<UploadUserFile[]>([]);
 const uploadInstance = ref<UploadInstance>();
 
@@ -44,7 +44,7 @@ watch(selectedFile, () => {
   >
     <div class="flex min-h-60 w-full flex-col flex-nowrap items-center justify-center">
       <el-icon class="el-icon--upload" size="60"><UploadFilled /></el-icon>
-      <div class="el-upload__text">{{ $t(MessageKey.uploadFile) }}</div>
+      <div class="el-upload__text">{{ $t(uploadFileKey) }}</div>
     </div>
   </el-upload>
 </template>
